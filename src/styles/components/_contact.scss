@@ -1,0 +1,253 @@
+// _contact.scss
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:color';
+
+.contact-section {
+  padding: $section-padding 0;
+  background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 5%) 0%, $bg-dark 100%);
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $gap-lg;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title {
+    margin-bottom: $gap-sm;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  &__content {
+    display: grid;
+    gap: $gap-lg;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @include desktop {
+      grid-template-columns: 1.5fr 1fr;
+      gap: $gap-xl;
+    }
+  }
+
+  &__social {
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__social-title {
+    font-size: 1.5rem;
+    margin-bottom: $gap-md;
+    color: $text-primary;
+  }
+
+  &__social-grid {
+    display: grid;
+    gap: $gap-sm;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: color.adjust($bg-dark, $lightness: 5%);
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    color: $text-secondary;
+    text-decoration: none;
+    transition: $transition-base;
+
+    &:hover {
+      border-color: $accent;
+      color: $accent;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 2px;
+    }
+  }
+
+  &__social-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+
+.contact-form {
+  background: color.adjust($bg-dark, $lightness: 3%);
+  padding: $gap-lg;
+  border-radius: $radius-lg;
+  border: 1px solid $border;
+
+  @include mobile {
+    padding: $gap-md;
+  }
+
+  &__field {
+    margin-bottom: $gap-md;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $text-primary;
+    font-weight: 500;
+  }
+
+  &__required {
+    color: $color-primary;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: $bg-dark;
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    color: $text-primary;
+    font-size: 1rem;
+    transition: $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba($accent, 0.1);
+    }
+
+    &::placeholder {
+      color: $text-secondary;
+      opacity: 0.6;
+    }
+
+    &--error {
+      border-color: $error;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($error, 0.1);
+      }
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__error {
+    display: block;
+    margin-top: 0.5rem;
+    color: $error;
+    font-size: 0.875rem;
+    min-height: 1.25rem;
+  }
+
+  &__actions {
+    margin-top: $gap-lg;
+  }
+
+  &__submit {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: $dj-gradient;
+    color: white;
+    border: none;
+    border-radius: $radius-md;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-base;
+    position: relative;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 2px;
+    }
+
+    &--loading {
+      .contact-form__submit-text {
+        opacity: 0;
+      }
+
+      .contact-form__submit-loading {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__submit-text {
+    transition: opacity $transition-fast;
+  }
+
+  &__submit-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+
+  &__message {
+    margin-top: $gap-md;
+    padding: 1rem;
+    border-radius: $radius-md;
+    font-size: 0.938rem;
+
+    &--success {
+      background: rgba($success, 0.1);
+      color: $success;
+      border: 1px solid rgba($success, 0.3);
+    }
+
+    &--error {
+      background: rgba($error, 0.1);
+      color: $error;
+      border: 1px solid rgba($error, 0.3);
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .contact-section {
+    &__social-link,
+    .contact-form__submit {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

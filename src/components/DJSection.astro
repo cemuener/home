@@ -1,0 +1,126 @@
+---
+import type { Mix, Event } from '../types';
+import mixesData from '../data/mixes.json';
+import eventsData from '../data/events.json';
+import { translations } from '../i18n/translations';
+
+const t = translations.de; // Default to German
+const mixes = mixesData as Mix[];
+const events = eventsData as Event[];
+
+// Filter featured mixes and sort by date (newest first)
+const featuredMixes = mixes
+  .filter(mix => mix.featured)
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Filter upcoming events and sort by date
+const upcomingEvents = events
+  .filter(event => event.status === 'upcoming')
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+// Format date for display
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('de-DE', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  }).format(date);
+};
+---
+
+<section class="dj-section" id="dj">
+  <div class="dj-section__container">
+    <header class="dj-section__header">
+      <h2 class="dj-section__title text--gradient-dj" data-i18n="dj.title">{t.dj.title}</h2>
+      <p class="dj-section__subtitle" data-i18n="dj.subtitle">{t.dj.subtitle}</p>
+    </header>
+
+    <div class="dj-section__bio">
+      <p data-i18n="dj.bioPara1">
+        {t.dj.bioPara1}
+      </p>
+      <p data-i18n="dj.bioPara2">
+        {t.dj.bioPara2}
+      </p>
+    </div>
+
+    {featuredMixes.length > 0 && (
+      <div class="dj-section__mixes">
+        <h3 class="dj-section__section-title" data-i18n="dj.latestMixes">{t.dj.latestMixes}</h3>
+        <div class="dj-section__mix-grid">
+          {featuredMixes.map((mix) => (
+            <article class="dj-section__mix-card" key={mix.id}>
+              <div class="dj-section__mix-cover">
+                <img
+                  src={mix.coverImage}
+                  alt={`${mix.title} Cover`}
+                  loading="lazy"
+                  width="1000"
+                  height="1000"
+                />
+                <div class="dj-section__mix-overlay">
+                  <span class="dj-section__mix-duration">{mix.duration}</span>
+                </div>
+              </div>
+              <div class="dj-section__mix-content">
+                <h4 class="dj-section__mix-title">{mix.title}</h4>
+                <p class="dj-section__mix-date">{formatDate(mix.date)}</p>
+                <div class="dj-section__mix-genres">
+                  {mix.genres.map((genre) => (
+                    <span class="dj-section__genre-tag" key={genre}>
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={mix.embedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="dj-section__mix-link"
+                >
+                  <span data-i18n="dj.listenOn">{t.dj.listenOn}</span> →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {upcomingEvents.length > 0 && (
+      <div class="dj-section__events">
+        <h3 class="dj-section__section-title" data-i18n="dj.upcomingEvents">{t.dj.upcomingEvents}</h3>
+        <div class="dj-section__event-list">
+          {upcomingEvents.map((event) => (
+            <article class="dj-section__event-card" key={event.id}>
+              <div class="dj-section__event-date">
+                <span class="dj-section__event-day">
+                  {new Date(event.date).getDate()}
+                </span>
+                <span class="dj-section__event-month">
+                  {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
+                    new Date(event.date)
+                  )}
+                </span>
+              </div>
+              <div class="dj-section__event-content">
+                <h4 class="dj-section__event-title">{event.title}</h4>
+                <p class="dj-section__event-venue">📍 {event.venue}</p>
+                {event.description && (
+                  <p class="dj-section__event-description">
+                    {event.description}
+                  </p>
+                )}
+                <span class="dj-section__event-type dj-section__event-type--{event.type}">
+                  {event.type}
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+

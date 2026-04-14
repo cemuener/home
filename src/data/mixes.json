@@ -1,0 +1,33 @@
+[
+  {
+    "id": "mix-001",
+    "title": "balcony beats mix #1 - (123bpm)",
+    "date": "2024-08-24",
+    "duration": "49:06",
+    "coverImage": "https://i1.sndcdn.com/artworks-CjVWOpbHPc49PUZF-zMtipQ-t1080x1080.png",
+    "embedUrl": "https://on.soundcloud.com/YM0ErarT0V1QHdXLk6",
+    "genres": ["House", "Afro"],
+    "featured": true
+  },
+  {
+    "id": "mix-002",
+    "title": "balcony beats #2 - (124-126bpm)",
+    "date": "2026-02-16",
+    "duration": "93:33",
+    "coverImage": "https://i1.sndcdn.com/artworks-yiCWYYFeYNstsq8Q-QRIBLw-t1080x1080.png",
+    "embedUrl": "https://on.soundcloud.com/7dfL3O8aMqvaIus2ND",
+    "genres": ["House", "Funk"],
+    "featured": true
+  },
+  {
+    "id": "mix-003",
+    "title": "ticktack.bpm event 31st August - summer afro beatz (120-123bpm)",
+    "date": "2024-09-02",
+    "duration": "51:18",
+    "coverImage": "https://i1.sndcdn.com/artworks-6cFJ2LwLE2zmGEbE-LyiHFA-t1080x1080.jpg",
+    "embedUrl": "https://on.soundcloud.com/byZI8SzbKl153h5qRE",
+    "genres": ["Oriental", "Afro House"],
+    "featured": true
+  }
+]
+

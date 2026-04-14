@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# Cem Üner - Portfolio Website
 
-```sh
-npm create astro@latest -- --template minimal
+Modern bilingual portfolio website showcasing DJ services and customer testimonials.
+
+## Quick Start
+
+```bash
+npm install
+npm run dev     # http://localhost:4321
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-## 🚀 Project Structure
+- 🌍 Bilingual (DE/EN toggle in navigation)
+- 🎵 DJ Section with SoundCloud mixes
+- ⭐ Customer testimonials  
+- 📧 Contact form (Formspree)
+- 📱 Fully responsive
+- ♿ WCAG 2.1 AA accessible
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Astro 4.x
+- SCSS + BEM
+- TypeScript
+- Formspree.io
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Configuration
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Contact Form
+1. Sign up at https://formspree.io
+2. Get form ID
+3. Replace `YOUR_FORMSPREE_ID` in `src/components/ContactSection.astro` line 18
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Content
+- Mixes: `src/data/mixes.json`
+- Events: `src/data/events.json`
+- Testimonials: `src/data/testimonials.json`
+- Translations: `src/i18n/translations.ts`
 
-## 🧞 Commands
+### Theme Colors
+Edit `src/styles/_variables.scss`
 
-All commands are run from the root of the project, from a terminal:
+## Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Ready for GitHub Pages. Push to main branch for auto-deploy.
 
-## 👀 Want to learn more?
+## Author
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Cem Üner** - DJ • Cycling Coach • Developer  
+Munich, Germany
+

@@ -1,0 +1,38 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#011F26;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#026873;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F2668B;stop-opacity:0.8" />
+    </linearGradient>
+    <radialGradient id="glow1">
+      <stop offset="0%" style="stop-color:#03A688;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#03A688;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glow2">
+      <stop offset="0%" style="stop-color:#F2668B;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#F2668B;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#heroGrad)"/>
+
+  <!-- Glowing orbs for depth -->
+  <circle cx="300" cy="200" r="400" fill="url(#glow1)" opacity="0.6"/>
+  <circle cx="1600" cy="800" r="500" fill="url(#glow2)" opacity="0.5"/>
+
+  <!-- Geometric pattern overlay -->
+  <g opacity="0.1" stroke="#E8F4F8" stroke-width="2" fill="none">
+    <circle cx="960" cy="540" r="400"/>
+    <circle cx="960" cy="540" r="300"/>
+    <circle cx="960" cy="540" r="200"/>
+  </g>
+
+  <!-- Abstract lines -->
+  <g opacity="0.15" stroke="#03A688" stroke-width="3" fill="none">
+    <path d="M 0 540 Q 480 400, 960 540 T 1920 540"/>
+    <path d="M 0 600 Q 480 460, 960 600 T 1920 600"/>
+  </g>
+</svg>
+

@@ -1,0 +1,301 @@
+// _dj-section.scss
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:color';
+
+.dj-section {
+  padding: $section-padding 0;
+  background: linear-gradient(180deg, $bg-dark 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $gap-lg;
+  }
+
+  &__title {
+    margin-bottom: $gap-sm;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 1.125rem;
+    font-weight: 400;
+  }
+
+  &__bio {
+    max-width: 800px;
+    margin: 0 auto $gap-lg;
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: $text-secondary;
+      margin-bottom: $gap-md;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__mixes {
+    margin-bottom: $gap-lg;
+  }
+
+  &__section-title {
+    font-size: 2rem;
+    margin-bottom: $gap-md;
+    text-align: center;
+    background: $dj-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__mix-grid {
+    @include responsive-grid(1, 2, 3);
+  }
+
+  &__mix-card {
+    background: color.adjust($bg-dark, $lightness: 5%);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: $transition-base;
+    border: 1px solid $border;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      border-color: $dj-primary;
+
+      .dj-section__mix-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__mix-cover {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: $bg-dark;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__mix-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba($bg-dark, 0.8) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: $gap-sm;
+    opacity: 0;
+    transition: $transition-base;
+  }
+
+  &__mix-duration {
+    color: $text-primary;
+    font-weight: 600;
+    font-size: 1.125rem;
+  }
+
+  &__mix-content {
+    padding: $gap-md;
+  }
+
+  &__mix-title {
+    font-size: 1.25rem;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+  }
+
+  &__mix-date {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin-bottom: $gap-sm;
+  }
+
+  &__mix-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: $gap-md;
+  }
+
+  &__genre-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba($dj-primary, 0.1);
+    border: 1px solid rgba($dj-primary, 0.3);
+    border-radius: $radius-sm;
+    color: $dj-primary;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__mix-link {
+    display: inline-block;
+    color: $accent;
+    font-weight: 600;
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      color: color.adjust($accent, $lightness: 10%);
+      transform: translateX(4px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 2px;
+    }
+  }
+
+  &__events {
+    margin-bottom: $gap-lg;
+  }
+
+  &__event-list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-md;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__event-card {
+    display: flex;
+    gap: $gap-md;
+    background: color.adjust($bg-dark, $lightness: 5%);
+    padding: $gap-md;
+    border-radius: $radius-md;
+    border-left: 4px solid $dj-primary;
+    transition: $transition-base;
+
+    &:hover {
+      background: color.adjust($bg-dark, $lightness: 8%);
+      transform: translateX(4px);
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: $gap-sm;
+    }
+  }
+
+  &__event-date {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: $dj-gradient;
+    border-radius: $radius-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__event-day {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__event-month {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__event-content {
+    flex: 1;
+  }
+
+  &__event-title {
+    font-size: 1.25rem;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+  }
+
+  &__event-venue {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__event-description {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin-bottom: $gap-sm;
+  }
+
+  &__event-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: $radius-sm;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+
+    &--wedding {
+      background: rgba($dj-primary, 0.1);
+      color: $dj-primary;
+    }
+
+    &--birthday {
+      background: rgba($accent, 0.1);
+      color: $accent;
+    }
+
+    &--club {
+      background: rgba($color-teal-mid, 0.1);
+      color: $color-teal-mid;
+    }
+
+    &--corporate {
+      background: rgba($text-secondary, 0.1);
+      color: $text-secondary;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .dj-section {
+    &__mix-card,
+    &__event-card,
+    &__mix-link {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

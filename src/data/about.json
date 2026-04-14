@@ -1,0 +1,34 @@
+{
+  "name": "Cem Üner",
+  "tagline": "DJ, Indoor Cycling Coach & Full-Stack Developer",
+  "bio": "I'm a multi-talented professional who brings passion and energy to everything I do. Whether I'm creating immersive musical experiences, motivating people to reach their fitness goals, or building innovative digital solutions, I strive for excellence in every domain.",
+  "highlights": [
+    "10+ years experience as a DJ",
+    "Certified Indoor Cycling Coach",
+    "Full-Stack Developer specializing in modern web technologies",
+    "Passionate about creating memorable experiences"
+  ],
+  "socialLinks": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/cuener",
+      "icon": "github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/cem-uener",
+      "icon": "linkedin"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://instagram.com/cemuener",
+      "icon": "instagram"
+    },
+    {
+      "platform": "SoundCloud",
+      "url": "https://soundcloud.com/cemuener",
+      "icon": "soundcloud"
+    }
+  ]
+}
+

@@ -1,0 +1,45 @@
+// main.scss - Main entry point for all styles
+
+// Load variables and mixins first (required by other files)
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'typography';
+@use 'animations';
+
+// Component Styles (Only implemented components)
+@use 'components/navigation';
+@use 'components/scroll-nav';
+@use 'components/dj-section';
+@use 'components/testimonials-section';
+@use 'components/contact';
+
+// Global reset and base styles
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}

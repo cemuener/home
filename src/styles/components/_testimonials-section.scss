@@ -1,0 +1,170 @@
+// _testimonials-section.scss
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:color';
+
+.testimonials-section {
+  padding: $section-padding 0;
+  background: linear-gradient(180deg, $bg-dark 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $gap-xl;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title {
+    margin-bottom: $gap-sm;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  &__grid {
+    @include responsive-grid(1, 2, 2);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $gap-xl;
+    color: $text-secondary;
+  }
+}
+
+.testimonial-card {
+  background: color.adjust($bg-dark, $lightness: 3%);
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: $gap-lg;
+  transition: $transition-base;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+
+  &:hover {
+    border-color: rgba($dj-primary, 0.5);
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__header {
+    display: flex;
+    gap: $gap-sm;
+    align-items: flex-start;
+  }
+
+  &__photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $border;
+  }
+
+  &__meta {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.125rem;
+    color: $text-primary;
+    margin-bottom: 0.25rem;
+  }
+
+  &__role {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  &__star {
+    color: $border;
+    font-size: 1.25rem;
+
+    &--filled {
+      color: $color-primary;
+    }
+  }
+
+  &__quote {
+    flex: 1;
+    margin: 0;
+
+    p {
+      color: $text-secondary;
+      line-height: 1.7;
+      font-size: 1rem;
+      font-style: italic;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-sm;
+    padding-top: $gap-sm;
+    border-top: 1px solid $border;
+  }
+
+  &__date {
+    color: $text-secondary;
+    font-size: 0.875rem;
+  }
+
+  &__service {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: $radius-sm;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    &--dj {
+      background: rgba($dj-primary, 0.1);
+      color: $dj-primary;
+      border: 1px solid rgba($dj-primary, 0.3);
+    }
+
+    &--cycling {
+      background: rgba($cycling-primary, 0.1);
+      color: $cycling-primary;
+      border: 1px solid rgba($cycling-primary, 0.3);
+    }
+
+    &--development {
+      background: rgba($dev-primary, 0.1);
+      color: $dev-primary;
+      border: 1px solid rgba($dev-primary, 0.3);
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+

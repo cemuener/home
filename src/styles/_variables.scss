@@ -1,0 +1,77 @@
+// _variables.scss - Design System Variables
+
+// ============================================
+// PRIMARY COLOR PALETTE - Highspeed Tunnel Drive Theme
+// Easily modifiable - change here to update globally
+// ============================================
+
+// Base Colors
+$color-primary: #F2668B;      // Pink/Coral (DJ brand)
+$color-teal-dark: #025E73;    // Deep teal
+$color-bg-dark: #011F26;      // Very dark teal (backgrounds)
+$color-teal-mid: #026873;     // Mid teal
+$color-teal-bright: #03A688;  // Bright teal/turquoise (accents)
+
+// Identity Colors (Semantic Assignments)
+$dj-primary: $color-primary;
+$dj-secondary: $color-teal-bright;
+$dj-gradient: linear-gradient(135deg, $color-primary 0%, $color-teal-bright 100%);
+
+$cycling-primary: $color-teal-bright;
+$cycling-secondary: $color-teal-mid;
+$cycling-gradient: linear-gradient(135deg, $color-teal-bright 0%, $color-teal-mid 100%);
+
+$dev-primary: $color-teal-mid;
+$dev-secondary: $color-teal-bright;
+$dev-gradient: linear-gradient(135deg, $color-teal-mid 0%, $color-teal-bright 100%);
+
+// Base Colors
+$bg-dark: $color-bg-dark;
+$bg-light: #FFFFFF;
+$text-primary: #E8F4F8;       // Light text on dark bg
+$text-secondary: #A0C4D0;     // Muted text
+$accent: $color-teal-bright;
+$border: rgba($color-teal-dark, 0.3);
+
+// UI States
+$success: #10B981;
+$error: #EF4444;
+$warning: #F59E0B;
+
+// Spacing
+$section-padding: clamp(4rem, 10vh, 8rem);
+$container-max: 1400px;
+$gap-sm: 1rem;
+$gap-md: 2rem;
+$gap-lg: 4rem;
+$gap-xl: 6rem;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+// Border Radius
+$radius-sm: 0.375rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+$radius-xl: 2rem;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1400px;
+
+// Z-index layers
+$z-below: -1;
+$z-normal: 1;
+$z-above: 10;
+$z-modal: 100;
+$z-navigation: 1000;
+$z-overlay: 9999;

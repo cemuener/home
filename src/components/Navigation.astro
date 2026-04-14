@@ -1,0 +1,201 @@
+---
+// Navigation component with scroll spy functionality
+import { translations } from '../i18n/translations';
+
+const t = translations;
+---
+
+<nav class="navigation" id="main-nav">
+  <div class="navigation__container">
+    <a href="#" class="navigation__logo">
+      <span class="navigation__logo-text">CMUNR</span>
+    </a>
+
+    <div class="navigation__actions">
+      <button
+        class="navigation__lang-toggle"
+        id="lang-toggle"
+        aria-label="Switch language"
+        title="Switch language"
+      >
+        <span class="navigation__lang-current" data-lang="de">DE</span>
+        <span class="navigation__lang-divider">/</span>
+        <span class="navigation__lang-option" data-lang="en">EN</span>
+      </button>
+
+      <button
+        class="navigation__toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="navigation__toggle-icon"></span>
+      </button>
+    </div>
+
+    <ul class="navigation__menu" id="nav-menu">
+      <li class="navigation__item">
+        <a href="#dj" class="navigation__link" data-section="dj">
+          <span data-i18n="nav.dj">{t.de.nav.dj}</span>
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="#testimonials" class="navigation__link" data-section="testimonials">
+          <span data-i18n="nav.references">{t.de.nav.references}</span>
+        </a>
+      </li>
+      <li class="navigation__item">
+        <a href="#contact" class="navigation__link" data-section="contact">
+          <span data-i18n="nav.contact">{t.de.nav.contact}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import { translations } from '../i18n/translations';
+  import { getStoredLanguage, setStoredLanguage, getCurrentLanguage } from '../i18n/utils';
+
+  type Language = 'de' | 'en';
+
+  // Initialize language from localStorage or default to 'de'
+  let currentLang: Language = getStoredLanguage();
+  document.documentElement.setAttribute('lang', currentLang);
+
+  // Update UI to match stored language
+  function updateLanguageUI(lang: Language) {
+    const langToggle = document.getElementById('lang-toggle');
+    if (!langToggle) return;
+
+    const deSpan = langToggle.querySelector('[data-lang="de"]');
+    const enSpan = langToggle.querySelector('[data-lang="en"]');
+
+    if (lang === 'de') {
+      deSpan?.classList.add('navigation__lang-current');
+      deSpan?.classList.remove('navigation__lang-option');
+      enSpan?.classList.add('navigation__lang-option');
+      enSpan?.classList.remove('navigation__lang-current');
+    } else {
+      enSpan?.classList.add('navigation__lang-current');
+      enSpan?.classList.remove('navigation__lang-option');
+      deSpan?.classList.add('navigation__lang-option');
+      deSpan?.classList.remove('navigation__lang-current');
+    }
+  }
+
+  // Update all translatable elements
+  function updateContent(lang: Language) {
+    const t = translations[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      if (key) {
+        const keys = key.split('.');
+        let value: any = t;
+        for (const k of keys) {
+          value = value?.[k];
+        }
+        if (value) {
+          element.textContent = value;
+        }
+      }
+    });
+  }
+
+  // Initialize UI with stored language
+  updateLanguageUI(currentLang);
+  updateContent(currentLang);
+
+  // Scroll spy and smooth scrolling functionality
+  const nav = document.getElementById('main-nav');
+  const navLinks = document.querySelectorAll('.navigation__link');
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const langToggle = document.getElementById('lang-toggle');
+  const sections = document.querySelectorAll('section[id]');
+
+  // Language toggle
+  langToggle?.addEventListener('click', () => {
+    currentLang = currentLang === 'de' ? 'en' : 'de';
+    setStoredLanguage(currentLang);
+    updateLanguageUI(currentLang);
+    updateContent(currentLang);
+
+    // Trigger custom event for other components to update
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
+  });
+
+  // Smooth scrolling for anchor links
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Close mobile menu after click
+        if (navMenu) {
+          navMenu.classList.remove('navigation__menu--open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  navToggle?.addEventListener('click', () => {
+    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!isExpanded));
+    navMenu?.classList.toggle('navigation__menu--open');
+  });
+
+  // Scroll spy - highlight active section
+  function highlightNavOnScroll() {
+    const scrollPosition = window.scrollY + 100; // Offset for better UX
+
+    sections.forEach(section => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = (section as HTMLElement).offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('navigation__link--active');
+          if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('navigation__link--active');
+          }
+        });
+      }
+    });
+
+    // Add background to nav on scroll
+    if (window.scrollY > 50) {
+      nav?.classList.add('navigation--scrolled');
+    } else {
+      nav?.classList.remove('navigation--scrolled');
+    }
+  }
+
+  // Throttle scroll event for performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        highlightNavOnScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial check
+  highlightNavOnScroll();
+</script>
+

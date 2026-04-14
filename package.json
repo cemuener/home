@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.6"
+    "astro": "^6.1.6",
+    "gsap": "^3.15.0",
+    "locomotive-scroll": "^5.0.1",
+    "sass": "^1.99.0"
   }
 }

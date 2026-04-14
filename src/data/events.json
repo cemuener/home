@@ -1,0 +1,39 @@
+[
+  {
+    "id": "event-001",
+    "title": "Hochzeit - Maria & Thomas",
+    "date": "2026-06-20",
+    "venue": "Gut Kaltenbrunn, Tegernsee",
+    "type": "wedding",
+    "status": "upcoming",
+    "description": "Private Hochzeitsfeier mit 120 Gästen"
+  },
+  {
+    "id": "event-002",
+    "title": "Summer Club Night",
+    "date": "2026-07-15",
+    "venue": "Blitz Club, München",
+    "type": "club",
+    "status": "upcoming",
+    "description": "Resident DJ Night"
+  },
+  {
+    "id": "event-003",
+    "title": "Corporate Event - Tech Summit",
+    "date": "2026-05-10",
+    "venue": "BMW Welt, München",
+    "type": "corporate",
+    "status": "upcoming",
+    "description": "Firmenfeier mit 200 Teilnehmern"
+  },
+  {
+    "id": "event-004",
+    "title": "Birthday Celebration",
+    "date": "2026-03-15",
+    "venue": "Private Location, München",
+    "type": "birthday",
+    "status": "past",
+    "description": "40. Geburtstag mit 80 Gästen"
+  }
+]
+

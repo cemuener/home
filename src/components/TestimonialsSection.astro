@@ -1,0 +1,80 @@
+---
+// Testimonials/References Section - Customer feedback and reviews
+import type { Testimonial } from '../types';
+import testimonialsData from '../data/testimonials.json';
+import { translations } from '../i18n/translations';
+
+const t = translations.de; // Default to German
+const testimonials = testimonialsData as Testimonial[];
+
+// Filter for DJ service testimonials and featured ones
+const djTestimonials = testimonials
+  .filter(test => test.service === 'dj' && test.featured)
+  .sort((a, b) => b.rating - a.rating);
+---
+
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-section__container">
+    <header class="testimonials-section__header">
+      <h2 class="testimonials-section__title text--gradient-dj" data-i18n="testimonials.title">{t.testimonials.title}</h2>
+      <p class="testimonials-section__subtitle" data-i18n="testimonials.subtitle">
+        {t.testimonials.subtitle}
+      </p>
+    </header>
+
+    <div class="testimonials-section__grid">
+      {djTestimonials.map((testimonial) => (
+        <article class="testimonial-card" key={testimonial.id}>
+          <div class="testimonial-card__header">
+            {testimonial.photo && (
+              <img
+                src={testimonial.photo}
+                alt={testimonial.name}
+                class="testimonial-card__photo"
+                loading="lazy"
+                width="60"
+                height="60"
+              />
+            )}
+            <div class="testimonial-card__meta">
+              <h3 class="testimonial-card__name">{testimonial.name}</h3>
+              {testimonial.role && (
+                <p class="testimonial-card__role">{testimonial.role}</p>
+              )}
+              <div class="testimonial-card__rating" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={`testimonial-card__star ${i < testimonial.rating ? 'testimonial-card__star--filled' : ''}`}>
+                    ★
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="testimonial-card__quote">
+            <p>{testimonial.text}</p>
+          </blockquote>
+
+          <footer class="testimonial-card__footer">
+            <time class="testimonial-card__date" datetime={testimonial.date}>
+              {new Intl.DateTimeFormat('de-DE', {
+                year: 'numeric',
+                month: 'long'
+              }).format(new Date(testimonial.date))}
+            </time>
+            <span class="testimonial-card__service testimonial-card__service--{testimonial.service}">
+              <span data-i18n="testimonials.djService">{t.testimonials.djService}</span>
+            </span>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    {djTestimonials.length === 0 && (
+      <div class="testimonials-section__empty">
+        <p>More testimonials coming soon!</p>
+      </div>
+    )}
+  </div>
+</section>
+
