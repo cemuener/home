@@ -12,7 +12,7 @@ export const translations = {
     // Hero Section
     hero: {
       name: 'Cem Üner',
-      subtitle: 'DJ • Cycling Coach • Developer',
+      subtitle: 'DJ • Web Developer',
       tagline: 'Energie für die Tanzfläche, Motivation für das Bike und Innovation für Code.',
       ctaPrimary: 'Kontakt aufnehmen',
       ctaSecondary: 'DJ Sets entdecken',
@@ -22,8 +22,8 @@ export const translations = {
     // DJ Section
     dj: {
       title: 'DJ Cem Üner',
-      subtitle: 'München • House • Afro • Oriental • Latin',
-      bioPara1: 'Cem ist ein DJ aus München mit einem feinen Gespür für Menschen und Atmosphäre. In kürzester Zeit erfasst er die Stimmung des Raums und baut daraus einen musikalischen Spannungsbogen, der die Tanzfläche Schritt für Schritt füllt. Seine Sets verbinden House mit Afro-, Oriental- und Latin-Vibes, angereichert mit groovy Funk und viel Gefühl für den richtigen Moment. Vom Lowtempo bis zum energiegeladenen Drop bleibt jedes Detail im Flow.',
+      subtitle: 'München • House • Afro • Latin',
+      bioPara1: 'Cem Üner ist ein DJ aus München mit einem feinen Gespür für Menschen und Atmosphäre. In kürzester Zeit erfasst er die Stimmung des Raums und baut daraus einen musikalischen Spannungsbogen, der die Tanzfläche Schritt für Schritt füllt. Seine Sets verbinden House mit Afro-, Oriental- und Latin-Vibes, angereichert mit groovy Funk und viel Gefühl für den richtigen Moment. Vom Lowtempo bis zum energiegeladenen Drop bleibt jedes Detail im Flow.',
       bioPara2: 'Ob Hochzeit, Geburtstag oder Club-Event – Cem passt Sound, Energie und Wünsche präzise an den Moment an und schafft Abende, die lange in Erinnerung bleiben.',
       latestMixes: 'Neueste Mixes',
       upcomingEvents: 'Kommende Events',
@@ -76,7 +76,7 @@ export const translations = {
     // Hero Section
     hero: {
       name: 'Cem Üner',
-      subtitle: 'DJ • Cycling Coach • Developer',
+      subtitle: 'DJ Web Developer',
       tagline: 'Bringing energy to the dancefloor, motivation to the bike, and innovation to code.',
       ctaPrimary: 'Get in Touch',
       ctaSecondary: 'Explore DJ Sets',
@@ -87,7 +87,7 @@ export const translations = {
     dj: {
       title: 'DJ Cem Üner',
       subtitle: 'Munich • House • Afro • Oriental • Latin',
-      bioPara1: 'Cem is a DJ from Munich with a fine sense for people and atmosphere. In no time, he captures the mood of the room and builds a musical arc of suspense that gradually fills the dance floor. His sets combine House with Afro, Oriental, and Latin vibes, enriched with groovy Funk and a great feeling for the right moment. From low tempo to energetic drops, every detail stays in the flow.',
+      bioPara1: 'Cem Uener is a DJ from Munich with a fine sense for people and atmosphere. In no time, he captures the mood of the room and builds a musical arc of suspense that gradually fills the dance floor. His sets combine House with Afro, Oriental, and Latin vibes, enriched with groovy Funk and a great feeling for the right moment. From low tempo to energetic drops, every detail stays in the flow.',
       bioPara2: 'Whether wedding, birthday, or club event – Cem precisely adapts sound, energy, and wishes to the moment, creating evenings that remain memorable for a long time.',
       latestMixes: 'Latest Mixes',
       upcomingEvents: 'Upcoming Events',

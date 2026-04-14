@@ -1,39 +1,39 @@
 [
   {
     "id": "event-001",
-    "title": "Hochzeit - Maria & Thomas",
-    "date": "2026-06-20",
-    "venue": "Gut Kaltenbrunn, Tegernsee",
-    "type": "wedding",
+    "title": "Bar Night",
+    "date": "2026-04-25",
+    "venue": "Terra Bar, Munich",
+    "type": "bar",
     "status": "upcoming",
-    "description": "Private Hochzeitsfeier mit 120 Gästen"
+    "description": "DJ Performance @ Terra Bar, Munich"
   },
   {
     "id": "event-002",
-    "title": "Summer Club Night",
-    "date": "2026-07-15",
-    "venue": "Blitz Club, München",
-    "type": "club",
+    "title": "Digital Customer Experience Day 2026",
+    "date": "2026-06-25",
+    "venue": "MH5, Munich",
+    "type": "coorporate",
     "status": "upcoming",
-    "description": "Resident DJ Night"
+    "description": "Network Event for eggs unimedia GmbH"
   },
   {
     "id": "event-003",
-    "title": "Corporate Event - Tech Summit",
-    "date": "2026-05-10",
-    "venue": "BMW Welt, München",
-    "type": "corporate",
-    "status": "upcoming",
-    "description": "Firmenfeier mit 200 Teilnehmern"
+    "title": "AMARI Birthday Bash",
+    "date": "2026-02-21",
+    "venue": "AMARI Bar | Kantine, Munich",
+    "type": "bar",
+    "status": "past",
+    "description": "AMARI turns 4 x friends"
   },
   {
     "id": "event-004",
-    "title": "Birthday Celebration",
-    "date": "2026-03-15",
-    "venue": "Private Location, München",
-    "type": "birthday",
+    "title": "Senator Saturdays",
+    "date": "2026-10-30",
+    "venue": "Senatore, Munich",
+    "type": "club",
     "status": "past",
-    "description": "40. Geburtstag mit 80 Gästen"
+    "description": "Saturday House Fever"
   }
 ]
 
