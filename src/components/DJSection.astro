@@ -4,21 +4,18 @@ import mixesData from '../data/mixes.json';
 import eventsData from '../data/events.json';
 import { translations } from '../i18n/translations';
 
-const t = translations.de; // Default to German
+const t = translations.de;
 const mixes = mixesData as Mix[];
 const events = eventsData as Event[];
 
-// Filter featured mixes and sort by date (newest first)
 const featuredMixes = mixes
   .filter(mix => mix.featured)
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-// Filter upcoming events and sort by date
 const upcomingEvents = events
   .filter(event => event.status === 'upcoming')
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-// Format date for display
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('de-DE', {

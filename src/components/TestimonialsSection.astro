@@ -1,13 +1,11 @@
 ---
-// Testimonials/References Section - Customer feedback and reviews
 import type { Testimonial } from '../types';
 import testimonialsData from '../data/testimonials.json';
 import { translations } from '../i18n/translations';
 
-const t = translations.de; // Default to German
+const t = translations.de;
 const testimonials = testimonialsData as Testimonial[];
 
-// Filter for DJ service testimonials and featured ones
 const djTestimonials = testimonials
   .filter(test => test.service === 'dj' && test.featured)
   .sort((a, b) => b.rating - a.rating);
