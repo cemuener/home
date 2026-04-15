@@ -13,7 +13,7 @@ export const translations = {
     hero: {
       name: 'Cem Üner',
       subtitle: 'DJ • Web Developer',
-      tagline: 'Energie für die Tanzfläche, Motivation für das Bike und Innovation für Code.',
+      tagline: 'Beats für die Tanzfläche, Code für das Web – zwei Welten, eine Leidenschaft.',
       ctaPrimary: 'Kontakt aufnehmen',
       ctaSecondary: 'DJ Sets entdecken',
       scrollDown: 'Runterscrollen'
