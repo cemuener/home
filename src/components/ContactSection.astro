@@ -177,6 +177,8 @@ const t = translations.de;
     const messageInput = document.getElementById('message') as HTMLTextAreaElement;
 
     const submitBtn = form.querySelector('.contact-form__submit') as HTMLButtonElement;
+    const submitText = form.querySelector('.contact-form__submit-text') as HTMLElement;
+    const submitLoading = form.querySelector('.contact-form__submit-loading') as HTMLElement;
     const successMessage = form.querySelector('.contact-form__message--success') as HTMLDivElement;
     const errorMessage = form.querySelector('.contact-form__message--error') as HTMLDivElement;
 
@@ -208,12 +210,12 @@ const t = translations.de;
       clearError(input);
 
       if (!input.value.trim()) {
-        showError(input, 'This field is required');
+        showError(input, 'required');
         return false;
       }
 
       if (input.type === 'email' && !emailRegex.test(input.value)) {
-        showError(input, 'Please enter a valid email address');
+        showError(input, 'email');
         return false;
       }
 
@@ -274,7 +276,8 @@ const t = translations.de;
       } finally {
         // Reset button state
         submitBtn.disabled = false;
-        submitBtn.classList.remove('contact-form__submit--loading');
+        submitText.hidden = false;
+        submitLoading.hidden = true;
       }
     });
 
