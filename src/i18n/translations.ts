@@ -76,8 +76,8 @@ export const translations = {
     // Hero Section
     hero: {
       name: 'Cem Üner',
-      subtitle: 'DJ Web Developer',
-      tagline: 'Bringing energy to the dancefloor, motivation to the bike, and innovation to code.',
+      subtitle: 'DJ • Web Developer',
+      tagline: 'Beats for the dancefloor, code for the web – two worlds, one passion.',
       ctaPrimary: 'Get in Touch',
       ctaSecondary: 'Explore DJ Sets',
       scrollDown: 'Scroll Down'

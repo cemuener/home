@@ -6,7 +6,7 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem hat unsere Hochzeit zu einem unvergesslichen Erlebnis gemacht! Seine Musikauswahl war perfekt auf unsere Gäste abgestimmt und die Tanzfläche war den ganzen Abend voll. Er hat genau gespürt, was die Stimmung brauchte. Absolut empfehlenswert!",
-    "photo": "/cu-website/cu-website/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2026-03-15",
     "featured": true
   },
@@ -17,7 +17,7 @@
     "service": "dj",
     "rating": 5,
     "text": "Professionell, zuverlässig und mit einem unglaublichen Gespür für die richtige Musik. Cem hat auf unserem Corporate Event für die perfekte Atmosphäre gesorgt. Die Zusammenarbeit war unkompliziert und das Ergebnis übertraf unsere Erwartungen.",
-    "photo": "/cu-website/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2026-02-20",
     "featured": true
   },
@@ -28,7 +28,7 @@
     "service": "dj",
     "rating": 5,
     "text": "Mein 30. Geburtstag wurde dank Cem's DJ-Skills zum absoluten Highlight! Die Mischung aus House, Latin und Afro-Beats hat alle Generationen auf die Tanzfläche gebracht. Seine Oriental-Vibes waren genau das i-Tüpfelchen!",
-    "photo": "/cu-website/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2026-01-10",
     "featured": true
   },
@@ -39,7 +39,7 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem ist seit einem Jahr unser Resident DJ und bringt jedes Mal frischen Wind in den Club. Seine Sets sind durchdacht, energiegeladen und immer voller Überraschungen. Die Gäste lieben ihn!",
-    "photo": "/cu-website/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2025-12-05",
     "featured": true
   }
