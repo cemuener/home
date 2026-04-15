@@ -44,7 +44,32 @@ Edit `src/styles/_variables.scss`
 
 ## Deployment
 
-Ready for GitHub Pages. Push to main branch for auto-deploy.
+### GitHub Pages Setup
+
+This site is configured for automatic deployment to GitHub Pages.
+
+**One-time setup in GitHub repository:**
+1. Go to your repository settings
+2. Navigate to **Pages** (left sidebar)
+3. Under "Build and deployment":
+   - **Source**: Select "GitHub Actions"
+4. That's it! The workflow is already configured.
+
+**Automatic deployment:**
+- Every push to the `main` branch triggers automatic deployment
+- The GitHub Actions workflow builds and deploys your site
+- View deployment status in the **Actions** tab
+- Site will be live at: `https://cemuener.github.io/home`
+
+**Manual deployment:**
+- Go to **Actions** tab in your repository
+- Select "Deploy to GitHub Pages" workflow
+- Click "Run workflow" button
+
+**Files involved:**
+- `.github/workflows/deploy.yml` - Deployment workflow
+- `astro.config.mjs` - Site URL configuration
+- `public/.nojekyll` - Prevents Jekyll processing
 
 ## Author
 

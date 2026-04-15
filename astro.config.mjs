@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cuener.github.io',
-  base: '/cu-website',
+  site: 'https://cemuener.github.io',
+  base: '/home',
   output: 'static',
   build: {
     assets: 'assets',

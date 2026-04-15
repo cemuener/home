@@ -2,7 +2,7 @@
 dist/
 # generated types
 .astro/
-.github
+.github/skills
 .bmad-task/
 _bmad/
 _bmad-output
