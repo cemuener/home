@@ -6,19 +6,19 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem hat auf meinem 30. Geburtstag aufgelegt und hat uns allen einen ganz tollen Abend beschert! Die Absprache davor war super unkompliziert, alles hat so geklappt wie geplant und unabhängig von allem Organisatorischen ist er einfach ein Herzensmensch, den jeder bei seiner Party dabeihaben sollte!",
-    "photo": "/home/assets/images/dj/nini_30.jpeg",
+    "photo": "/assets/images/dj/nini_30.jpeg",
     "date": "2025-04-11",
     "featured": true
   },
   {
     "id": "test-002",
-    "name": "Michael Weber",
-    "role": "Event Manager, Tech Summit Munich",
+    "name": "Franzi & Johannes",
+    "role": "Hochzeitspaar",
     "service": "dj",
     "rating": 5,
-    "text": "Professionell, zuverlässig und mit einem unglaublichen Gespür für die richtige Musik. Cem hat auf unserem Corporate Event für die perfekte Atmosphäre gesorgt. Die Zusammenarbeit war unkompliziert und das Ergebnis übertraf unsere Erwartungen.",
-    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
-    "date": "2026-02-20",
+    "text": "Cem war letztes Jahr unser Hochzeits DJ. Er hat sich super um alles gekümmert. Zum Essen entspannte Vibes, perfektes Timing zum Hochzeitstanz und richtig gute Party bis spät in die Nacht. Er ist dabei auf die Wünsche der Gäste eingegangen und hatte ein super Gespür für die Stimmung. Wir waren rundum glücklich!",
+    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
+    "date": "2025-09-27",
     "featured": true
   },
   {
@@ -28,9 +28,9 @@
     "service": "dj",
     "rating": 5,
     "text": "Mein 30. Geburtstag wurde dank Cem's DJ-Skills zum absoluten Highlight! Die Mischung aus House, Latin und Afro-Beats hat alle Generationen auf die Tanzfläche gebracht. Seine Oriental-Vibes waren genau das i-Tüpfelchen!",
-    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2026-01-10",
-    "featured": true
+    "featured": false
   },
   {
     "id": "test-004",
@@ -39,9 +39,9 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem ist seit einem Jahr unser Resident DJ und bringt jedes Mal frischen Wind in den Club. Seine Sets sind durchdacht, energiegeladen und immer voller Überraschungen. Die Gäste lieben ihn!",
-    "photo": "/home/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
     "date": "2025-12-05",
-    "featured": true
+    "featured": false
   }
 ]
 

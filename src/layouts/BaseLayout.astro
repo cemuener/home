@@ -9,13 +9,13 @@ export interface Props {
 const {
   title = 'DJ Cem Üner',
   description = 'Multi-talented professional: DJ, Indoor Cycling Coach, and Full-Stack Developer based in Germany.',
-  image = '/home/assets/images/dj/controller_close.jpg',
+  image = '/assets/images/dj/controller_close.jpg',
   type = 'website'
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image, Astro.site);
-const faviconPath = `${import.meta.env.BASE_URL}/favicon.svg`;
+const faviconPath = '/favicon.svg';
 ---
 
 <!DOCTYPE html>
