@@ -165,11 +165,10 @@ const t = translations.de;
     <footer class="contact-section__footer">
       <div class="contact-section__footer-content">
         <p class="contact-section__footer-text">
-          &copy; {new Date().getFullYear()} Cem Üner. Alle Rechte vorbehalten.
+          &copy; {new Date().getFullYear()} Cem Üner. <span data-i18n="contact.footer.copyright">{t.contact.footer.copyright}</span>
         </p>
         <nav class="contact-section__footer-nav">
-          <a href="/impressum" class="contact-section__footer-link">Impressum</a>
-          <a href="/datenschutz" class="contact-section__footer-link">Datenschutz</a>
+          <a href="/impressum" class="contact-section__footer-link" data-i18n="contact.footer.impressum">{t.contact.footer.impressum}</a>
         </nav>
       </div>
     </footer>
