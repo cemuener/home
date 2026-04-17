@@ -49,6 +49,7 @@ export interface Event {
   type: 'wedding' | 'birthday' | 'club' | 'corporate';
   status: 'upcoming' | 'past';
   description?: string;
+  url?: string; // Optional external link (event page, venue, etc.)
 }
 
 // Contact Form Types

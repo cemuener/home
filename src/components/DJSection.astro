@@ -91,28 +91,57 @@ const formatDate = (dateString: string) => {
         <div class="dj-section__event-list">
           {upcomingEvents.map((event) => (
             <article class="dj-section__event-card" key={event.id}>
-              <div class="dj-section__event-date">
-                <span class="dj-section__event-day">
-                  {new Date(event.date).getDate()}
-                </span>
-                <span class="dj-section__event-month">
-                  {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
-                    new Date(event.date)
-                  )}
-                </span>
-              </div>
-              <div class="dj-section__event-content">
-                <h4 class="dj-section__event-title">{event.title}</h4>
-                <p class="dj-section__event-venue">📍 {event.venue}</p>
-                {event.description && (
-                  <p class="dj-section__event-description">
-                    {event.description}
-                  </p>
-                )}
-                <span class="dj-section__event-type dj-section__event-type--{event.type}">
-                  {event.type}
-                </span>
-              </div>
+              {event.url ? (
+                <a href={event.url} target="_blank" rel="noopener noreferrer" class="dj-section__event-link">
+                  <div class="dj-section__event-date">
+                    <span class="dj-section__event-day">
+                      {new Date(event.date).getDate()}
+                    </span>
+                    <span class="dj-section__event-month">
+                      {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
+                        new Date(event.date)
+                      )}
+                    </span>
+                  </div>
+                  <div class="dj-section__event-content">
+                    <h4 class="dj-section__event-title">{event.title}</h4>
+                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.description && (
+                      <p class="dj-section__event-description">
+                        {event.description}
+                      </p>
+                    )}
+                    <span class="dj-section__event-type dj-section__event-type--{event.type}">
+                      {event.type}
+                    </span>
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <div class="dj-section__event-date">
+                    <span class="dj-section__event-day">
+                      {new Date(event.date).getDate()}
+                    </span>
+                    <span class="dj-section__event-month">
+                      {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
+                        new Date(event.date)
+                      )}
+                    </span>
+                  </div>
+                  <div class="dj-section__event-content">
+                    <h4 class="dj-section__event-title">{event.title}</h4>
+                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.description && (
+                      <p class="dj-section__event-description">
+                        {event.description}
+                      </p>
+                    )}
+                    <span class="dj-section__event-type dj-section__event-type--{event.type}">
+                      {event.type}
+                    </span>
+                  </div>
+                </>
+              )}
             </article>
           ))}
         </div>

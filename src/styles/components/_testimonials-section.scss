@@ -132,6 +132,9 @@
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: $radius-sm;
+    background: rgba($dj-primary, 0.1);
+    border: 1px solid rgba($dj-primary, 0.3);
+    color: $dj-primary;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;

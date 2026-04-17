@@ -6,16 +6,18 @@
     "venue": "Terra Bar, Munich",
     "type": "bar",
     "status": "upcoming",
-    "description": "DJ Performance @ Terra Bar, Munich"
+    "description": "DJ Performance @ Terra Bar, Munich",
+    "url": "https://www.terra-bar.de/"
   },
   {
     "id": "event-002",
     "title": "Digital Customer Experience Day 2026",
     "date": "2026-06-25",
     "venue": "MH5, Munich",
-    "type": "coorporate",
+    "type": "corporate",
     "status": "upcoming",
-    "description": "Network Event for eggs unimedia GmbH"
+    "description": "Network Event for eggs unimedia GmbH",
+    "url": "https://www.eggsunimedia.com/de/de/insights/events/customer-experience-days-2026"
   },
   {
     "id": "event-003",

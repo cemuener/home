@@ -286,7 +286,35 @@
       color: $text-secondary;
     }
   }
+
+  &__event-link {
+    display: flex;
+    gap: $gap-md;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding: $gap-md;
+    transition: $transition-base;
+
+    &:hover {
+      .dj-section__event-title {
+        color: $dj-secondary;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $dj-primary;
+      outline-offset: 2px;
+      border-radius: $radius-md;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: $gap-sm;
+    }
+  }
 }
+
 
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
