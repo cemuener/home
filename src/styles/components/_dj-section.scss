@@ -257,6 +257,9 @@
 
   &__event-type {
     display: inline-block;
+    background: rgba($dj-secondary, 0.1);
+    border: 1px solid rgba($dj-secondary, 0.3);
+    color: $dj-secondary;
     padding: 0.25rem 0.75rem;
     border-radius: $radius-sm;
     font-size: 0.75rem;
