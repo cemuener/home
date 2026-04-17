@@ -64,10 +64,30 @@ const t = translations.de;
     min-height: 100vh;
     @include flex-center;
     position: relative;
+
+    // Use optimized WebP with JPG fallback
     background:
       linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
-      url('/assets/images/dj/hero_image.jpg') center/cover no-repeat;
+      url('/assets/images/dj/hero_image.webp') center/cover no-repeat;
     background-attachment: fixed;
+
+    // Fallback for browsers that don't support WebP
+    @supports not (background-image: url('/assets/images/dj/hero_image.webp')) {
+      background:
+        linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
+        url('/assets/images/dj/hero_image_optimized.jpg') center/cover no-repeat;
+    }
+
+    // Mobile optimization - fix cropping issues
+    @include below($tablet) {
+      background-attachment: scroll; // Fixed attachment causes issues on mobile
+      background-position: center center; // Ensure centered positioning
+      background-size: cover; // Ensure full coverage
+      min-height: 100svh; // Use small viewport height for better mobile support
+
+      // Alternative: use specific position if you want to focus on a certain part
+      // background-position: center 40%; // Adjust percentage to show important part
+    }
 
     // Fallback if image doesn't load
     @supports not (background-attachment: fixed) {
@@ -78,6 +98,11 @@ const t = translations.de;
       @include container;
       text-align: center;
       padding: 2rem;
+
+      // Ensure content is visible on mobile with adjusted padding
+      @include below($tablet) {
+        padding: 1rem;
+      }
     }
 
     @include element('title') {
