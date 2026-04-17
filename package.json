@@ -17,5 +17,9 @@
     "gsap": "^3.15.0",
     "locomotive-scroll": "^5.0.1",
     "sass": "^1.99.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5",
+    "sharp-ico": "^0.1.5"
   }
 }
