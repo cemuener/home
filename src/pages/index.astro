@@ -14,10 +14,10 @@ const t = translations.de;
   <Navigation />
   <ScrollNav />
 
-  <main data-scroll-container>
-    <section class="hero" id="hero">
+  <main data-scroll-container role="main" aria-label="Main content">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero__container">
-        <h1 class="hero__title text--gradient-dj" data-i18n="hero.name">{t.hero.name}</h1>
+        <h1 class="hero__title text--gradient-dj" id="hero-title" data-i18n="hero.name">{t.hero.name}</h1>
         <h2 class="hero__subtitle" data-i18n="hero.subtitle">{t.hero.subtitle}</h2>
         <p class="hero__tagline" data-i18n="hero.tagline">
           {t.hero.tagline}

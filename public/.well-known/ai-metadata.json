@@ -1,0 +1,95 @@
+en{
+  "name": "Cem Üner",
+  "description": "Multi-talented professional: DJ, Indoor Cycling Coach, and Full-Stack Developer based in Germany",
+  "url": "https://cemuener.de",
+  "contactEmail": "contact@cemuener.de",
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-17",
+
+  "identities": [
+    {
+      "role": "DJ",
+      "description": "Professional DJ specializing in House, Afro, and Oriental music",
+      "specialties": ["House Music", "Afro House", "Oriental Beats", "Event Performance"],
+      "platforms": {
+        "soundcloud": "https://soundcloud.com/cemuener"
+      },
+      "content": {
+        "mixes": true,
+        "events": true,
+        "bookingAvailable": true
+      }
+    },
+    {
+      "role": "Indoor Cycling Coach",
+      "description": "Certified ICG indoor cycling instructor and fitness coach",
+      "specialties": ["Indoor Cycling", "Group Fitness", "Music-Driven Workouts"],
+      "services": {
+        "groupClasses": true,
+        "privateCoaching": true,
+        "eventWorkshops": true
+      }
+    },
+    {
+      "role": "Full-Stack Developer",
+      "description": "Software developer specializing in modern web technologies",
+      "specialties": ["TypeScript", "React", "Node.js", "Astro", "Full-Stack Development"],
+      "platforms": {
+        "github": "https://github.com/cuener",
+        "linkedin": "https://linkedin.com/in/cemuener"
+      },
+      "technologies": ["TypeScript", "JavaScript", "React", "Node.js", "Astro", "SCSS", "GSAP", "JAVA"]
+    }
+  ],
+
+  "content": {
+    "sections": ["hero", "dj", "cycling", "developer", "testimonials", "contact"],
+    "languages": ["de", "en"],
+    "primaryLanguage": "de"
+  },
+
+  "technical": {
+    "framework": "Astro 6.x",
+    "styling": "SCSS with BEM methodology",
+    "animations": "GSAP + Locomotive Scroll",
+    "typeSystem": "TypeScript",
+    "deployment": "GitHub Pages",
+    "performance": {
+      "targetLighthouse": ">90",
+      "targetLCP": "<2.5s",
+      "accessibility": "WCAG 2.1 AA"
+    }
+  },
+
+  "seo": {
+    "sitemap": "https://cemuener.de/sitemap-index.xml",
+    "robots": "https://cemuener.de/robots.txt",
+    "structuredData": true,
+    "openGraph": true,
+    "twitterCards": true
+  },
+
+  "ai": {
+    "llmFriendly": true,
+    "structuredData": true,
+    "semanticHTML": true,
+    "crawlable": true,
+    "allowedBots": [
+      "GPTBot",
+      "ChatGPT-User",
+      "CCBot",
+      "anthropic-ai",
+      "Claude-Web",
+      "ClaudeBot",
+      "Google-Extended",
+      "cohere-ai"
+    ]
+  },
+
+  "legal": {
+    "impressum": "https://cemuener.de/impressum",
+    "privacyPolicy": "https://cemuener.de/impressum#privacy",
+    "copyright": "© 2026 Cem Üner. All rights reserved."
+  }
+}
+

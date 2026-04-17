@@ -9,13 +9,84 @@ export interface Props {
 const {
   title = 'DJ Cem Üner',
   description = 'Multi-talented professional: DJ, Indoor Cycling Coach, and Full-Stack Developer based in Germany.',
-  image = '/assets/images/dj/profile_close.jpg',
+  image = '/assets/images/og-image.jpg',
   type = 'website'
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image, Astro.site);
 const faviconPath = '/favicon.svg';
+
+// Structured Data (JSON-LD) for SEO and LLM discoverability
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://cemuener.de/#person',
+      name: 'Cem Üner',
+      url: 'https://cemuener.de',
+      image: 'https://cemuener.de/assets/images/og-image.jpg',
+      sameAs: [
+        'https://soundcloud.com/cemuener',
+        'https://github.com/cuener',
+        'https://linkedin.com/in/cemuener'
+      ],
+      jobTitle: ['DJ', 'Indoor Cycling Coach', 'Full-Stack Developer'],
+      knowsAbout: [
+        'DJing',
+        'Music Production',
+        'Indoor Cycling',
+        'Fitness Coaching',
+        'Web Development',
+        'TypeScript',
+        'React',
+        'Node.js'
+      ],
+      description: 'Multi-talented professional: DJ, Indoor Cycling Coach, and Full-Stack Developer based in Germany.',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'DE'
+      }
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://cemuener.de/#website',
+      url: 'https://cemuener.de',
+      name: 'Cem Üner Portfolio',
+      description: 'Portfolio website of Cem Üner - DJ, Indoor Cycling Coach, and Full-Stack Developer',
+      publisher: {
+        '@id': 'https://cemuener.de/#person'
+      },
+      inLanguage: 'de-DE',
+      copyrightYear: new Date().getFullYear(),
+      copyrightHolder: {
+        '@id': 'https://cemuener.de/#person'
+      }
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://cemuener.de/#dj-service',
+      name: 'DJ Cem Üner',
+      description: 'Professional DJ services specializing in House, Afro, and Oriental music',
+      provider: {
+        '@id': 'https://cemuener.de/#person'
+      },
+      areaServed: 'DE',
+      serviceType: ['DJ Services', 'Event Entertainment', 'Music Performance']
+    },
+    {
+      '@type': 'EducationalOrganization',
+      '@id': 'https://cemuener.de/#coaching-service',
+      name: 'Indoor Cycling Coaching by Cem Üner',
+      description: 'Professional indoor cycling instruction and fitness coaching',
+      provider: {
+        '@id': 'https://cemuener.de/#person'
+      },
+      serviceType: ['Indoor Cycling', 'Fitness Coaching', 'Group Classes']
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -52,6 +123,20 @@ const faviconPath = '/favicon.svg';
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#FF006E" />
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="author" content="Cem Üner" />
+  <meta name="keywords" content="DJ, Indoor Cycling Coach, Full-Stack Developer, House Music, Afro House, TypeScript, React, Fitness, Germany" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- Language and Geographic Meta Tags -->
+  <meta name="language" content="German" />
+  <meta name="geo.region" content="DE" />
+  <meta name="geo.placename" content="Germany" />
+
+  <!-- Structured Data (JSON-LD) for SEO and LLM Discovery -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   <slot name="head" />
 </head>

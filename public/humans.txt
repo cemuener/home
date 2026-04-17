@@ -1,0 +1,42 @@
+/* TEAM */
+
+Name: Cem Üner
+Role: DJ, Indoor Cycling Coach, Full-Stack Developer
+Location: Germany
+Contact: Available via contact form on website
+
+/* SITE */
+
+Standards: HTML5, CSS3, SCSS, TypeScript, Astro, WCAG 2.1 AA
+Components: Astro 6.x, GSAP, Locomotive Scroll, SASS
+Software: Visual Studio Code, Node.js, Git
+Languages: German, English, Turkish
+
+/* ABOUT */
+
+This is the personal portfolio website of Cem Üner, showcasing three professional identities:
+- DJ: All kinds of House Music (Afro, Latin, Tech and Oriental) & Open Format DJing for events and clubs
+- Indoor Cycling Coach: Fitness instructor and group class leader
+- Full-Stack Developer: JavaScript, React, JAVA and web development projects
+
+The site is built with modern web technologies prioritizing:
+- Performance (Lighthouse >90)
+- Accessibility (WCAG 2.1 AA)
+- SEO optimization
+- LLM discoverability
+- Responsive design
+- Smooth animations
+
+/* THANKS */
+
+Built with Astro - https://astro.build
+Animations by GSAP - https://greensock.com
+Fonts from Google Fonts - https://fonts.google.com
+Icons and assets created custom for this site
+
+/* LEGAL */
+
+© 2026 Cem Üner. All rights reserved.
+Privacy: See /impressum for legal information
+Last updated: April 2026
+
