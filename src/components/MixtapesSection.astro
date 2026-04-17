@@ -1,0 +1,74 @@
+---
+import type { Mix } from '../types';
+import mixesData from '../data/mixes.json';
+import { translations } from '../i18n/translations';
+
+const t = translations.de;
+const mixes = mixesData as Mix[];
+
+const featuredMixes = mixes
+  .filter(mix => mix.featured)
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('de-DE', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  }).format(date);
+};
+---
+
+<section class="dj-section" id="mixtapes">
+  <div class="dj-section__container">
+    <header class="dj-section__header">
+      <h2 class="dj-section__title text--gradient-dj" data-i18n="mixtapes.title">{t.mixtapes.title}</h2>
+      <p class="dj-section__subtitle" data-i18n="mixtapes.subtitle">{t.mixtapes.subtitle}</p>
+    </header>
+
+    {featuredMixes.length > 0 && (
+      <div class="dj-section__mixes">
+        <div class="dj-section__mix-grid">
+          {featuredMixes.map((mix) => (
+            <article class="dj-section__mix-card" key={mix.id}>
+              <div class="dj-section__mix-cover">
+                <img
+                  src={mix.coverImage}
+                  alt={`${mix.title} Cover`}
+                  loading="lazy"
+                  width="1000"
+                  height="1000"
+                />
+                <div class="dj-section__mix-overlay">
+                  <span class="dj-section__mix-duration">{mix.duration}</span>
+                </div>
+              </div>
+              <div class="dj-section__mix-content">
+                <h4 class="dj-section__mix-title">{mix.title}</h4>
+                <p class="dj-section__mix-date">{formatDate(mix.date)}</p>
+                <div class="dj-section__mix-genres">
+                  {mix.genres.map((genre) => (
+                    <span class="dj-section__genre-tag" key={genre}>
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={mix.embedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="dj-section__mix-link"
+                >
+                  <span data-i18n="mixtapes.listenOn">{t.mixtapes.listenOn}</span> →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+

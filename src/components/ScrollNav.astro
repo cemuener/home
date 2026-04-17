@@ -1,14 +1,20 @@
 ---
+import { translations } from '../i18n/translations';
+
 export interface NavItem {
   id: string;
   label: string;
+  dataI18n?: string;
 }
+
+const t = translations.de;
 
 const navItems: NavItem[] = [
   { id: 'hero', label: 'Home' },
-  { id: 'dj', label: 'DJ' },
-  { id: 'testimonials', label: 'References' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'bio', label: t.nav.bio, dataI18n: 'nav.bio' },
+  { id: 'mixtapes', label: t.nav.mixtapes, dataI18n: 'nav.mixtapes' },
+  { id: 'testimonials', label: t.nav.references, dataI18n: 'nav.references' },
+  { id: 'contact', label: t.nav.contact, dataI18n: 'nav.contact' }
 ];
 ---
 
@@ -24,7 +30,9 @@ const navItems: NavItem[] = [
           title={item.label}
         >
           <span class="scroll-nav__dot"></span>
-          <span class="scroll-nav__label">{item.label}</span>
+          <span class="scroll-nav__label" data-i18n={item.dataI18n || ''}>
+            {item.label}
+          </span>
         </a>
       </li>
     ))}

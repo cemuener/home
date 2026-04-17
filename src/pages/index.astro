@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/Navigation.astro';
 import ScrollNav from '../components/ScrollNav.astro';
-import DJSection from '../components/DJSection.astro';
+import BioSection from '../components/BioSection.astro';
+import MixtapesSection from '../components/MixtapesSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import { translations } from '../i18n/translations';
@@ -26,7 +27,7 @@ const t = translations.de;
           <a href="#contact" class="btn btn--primary">
             <span data-i18n="hero.ctaPrimary">{t.hero.ctaPrimary}</span>
           </a>
-          <a href="#dj" class="btn btn--secondary">
+          <a href="#bio" class="btn btn--secondary">
             <span data-i18n="hero.ctaSecondary">{t.hero.ctaSecondary}</span>
           </a>
         </div>
@@ -39,8 +40,11 @@ const t = translations.de;
       </div>
     </section>
 
-    <!-- Phase 1: DJ Section -->
-    <DJSection />
+    <!-- Phase 1: Bio Section -->
+    <BioSection />
+
+    <!-- Phase 1: Mixtapes Section -->
+    <MixtapesSection />
 
     <!-- Phase 3 (Revised): Customer Testimonials -->
     <TestimonialsSection />

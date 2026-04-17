@@ -1,0 +1,95 @@
+---
+import type { Event } from '../types';
+import eventsData from '../data/events.json';
+import { translations } from '../i18n/translations';
+
+const t = translations.de;
+const events = eventsData as Event[];
+
+const upcomingEvents = events
+  .filter(event => event.status === 'upcoming')
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+---
+
+<section class="dj-section" id="bio">
+  <div class="dj-section__container">
+    <header class="dj-section__header">
+      <h2 class="dj-section__title text--gradient-dj" data-i18n="bio.title">{t.bio.title}</h2>
+      <p class="dj-section__subtitle" data-i18n="bio.subtitle">{t.bio.subtitle}</p>
+    </header>
+
+    <div class="dj-section__bio">
+      <p data-i18n="bio.bioPara1">
+        {t.bio.bioPara1}
+      </p>
+      <p data-i18n="bio.bioPara2">
+        {t.bio.bioPara2}
+      </p>
+    </div>
+
+    {upcomingEvents.length > 0 && (
+      <div class="dj-section__events">
+        <h3 class="dj-section__section-title" data-i18n="bio.upcomingEvents">{t.bio.upcomingEvents}</h3>
+        <div class="dj-section__event-list">
+          {upcomingEvents.map((event) => (
+            <article class="dj-section__event-card" key={event.id}>
+              {event.url ? (
+                <a href={event.url} target="_blank" rel="noopener noreferrer" class="dj-section__event-link">
+                  <div class="dj-section__event-date">
+                    <span class="dj-section__event-day">
+                      {new Date(event.date).getDate()}
+                    </span>
+                    <span class="dj-section__event-month">
+                      {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
+                        new Date(event.date)
+                      )}
+                    </span>
+                  </div>
+                  <div class="dj-section__event-content">
+                    <h4 class="dj-section__event-title">{event.title}</h4>
+                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.description && (
+                      <p class="dj-section__event-description">
+                        {event.description}
+                      </p>
+                    )}
+                    <span class="dj-section__event-type dj-section__event-type--{event.type}">
+                      {event.type}
+                    </span>
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <div class="dj-section__event-date">
+                    <span class="dj-section__event-day">
+                      {new Date(event.date).getDate()}
+                    </span>
+                    <span class="dj-section__event-month">
+                      {new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(
+                        new Date(event.date)
+                      )}
+                    </span>
+                  </div>
+                  <div class="dj-section__event-content">
+                    <h4 class="dj-section__event-title">{event.title}</h4>
+                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.description && (
+                      <p class="dj-section__event-description">
+                        {event.description}
+                      </p>
+                    )}
+                    <span class="dj-section__event-type dj-section__event-type--{event.type}">
+                      {event.type}
+                    </span>
+                  </div>
+                </>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+
