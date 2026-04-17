@@ -16,10 +16,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-AGENTS.md
-IMPLEMENTATION_STATUS.md
-website_impl.md
-
 
 # environment variables
 .env
