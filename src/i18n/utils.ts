@@ -50,8 +50,17 @@ export function setStoredLanguage(lang: Language, updateURL: boolean = true) {
   // Update HTML lang attribute
   document.documentElement.setAttribute('lang', lang);
 
-  // Navigate to language-specific URL within same service
+  // Navigate to language-specific URL within same page/service
   if (updateURL) {
+    const path = window.location.pathname;
+
+    // Handle impressum pages: /de/impressum -> /en/impressum
+    const impressumMatch = path.match(/^\/(de|en)\/(impressum)\/?$/);
+    if (impressumMatch) {
+      window.location.href = `/${lang}/impressum`;
+      return;
+    }
+
     const service = getServiceFromURL() || 'dj'; // Default to dj
     const hash = window.location.hash;
     const newPath = `/${lang}/${service}/${hash}`;
