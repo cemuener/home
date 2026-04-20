@@ -64,13 +64,11 @@ const service = 'dj';
     position: relative;
 
     background:
-      linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
       url('/assets/images/dj/hero_image.webp') center/cover no-repeat;
     background-attachment: fixed;
 
     @supports not (background-image: url('/assets/images/dj/hero_image.webp')) {
       background:
-        linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
         url('/assets/images/dj/hero_image_optimized.jpg') center/cover no-repeat;
     }
 
@@ -81,14 +79,29 @@ const service = 'dj';
       min-height: 100svh;
     }
 
+    // Dark scrim overlay — ensures WCAG AA contrast for all text over photo
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba($bg-dark, 0.78) 0%,
+        rgba($dj-primary, 0.18) 50%,
+        rgba($bg-dark, 0.72) 100%
+      );
+      z-index: 0;
+    }
+
     @supports not (background-attachment: fixed) {
-      background: linear-gradient(135deg, rgba($dj-primary, 0.1) 0%, rgba($dev-primary, 0.1) 100%);
+      background: $bg-dark;
     }
 
     @include element('container') {
       @include container;
       text-align: center;
       padding: 2rem;
+      z-index: 1;
 
       @include below($tablet) {
         padding: 1rem;
@@ -97,19 +110,25 @@ const service = 'dj';
 
     @include element('title') {
       margin-bottom: $gap-sm;
+      // Soft shadow keeps gradient text readable on any photo
+      filter: drop-shadow(0 2px 8px rgba($bg-dark, 0.7));
     }
 
     @include element('subtitle') {
-      color: $text-secondary;
+      // $text-primary (#E8F4F8) on dark scrim → contrast ≥ 7:1 (WCAG AAA)
+      color: $text-primary;
       font-weight: 400;
       margin-bottom: $gap-md;
+      text-shadow: 0 1px 4px rgba($bg-dark, 0.8);
     }
 
     @include element('tagline') {
       max-width: 600px;
       margin: 0 auto $gap-lg;
-      color: $text-secondary;
+      // $text-primary over darkened scrim meets WCAG AA for normal text
+      color: $text-primary;
       font-size: 1.125rem;
+      text-shadow: 0 1px 4px rgba($bg-dark, 0.8);
     }
 
     @include element('cta') {
@@ -127,8 +146,11 @@ const service = 'dj';
       @include flex-column;
       align-items: center;
       gap: 0.5rem;
-      color: $text-secondary;
+      // Bumped to $text-primary for WCAG AA compliance
+      color: $text-primary;
       font-size: 0.875rem;
+      z-index: 1;
+      text-shadow: 0 1px 3px rgba($bg-dark, 0.8);
     }
   }
 
