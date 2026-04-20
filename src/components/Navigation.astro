@@ -218,8 +218,11 @@ const t = translations;
   });
 
   // Scroll spy - highlight active section
+  let lastScrollY = window.scrollY;
+
   function highlightNavOnScroll() {
-    const scrollPosition = window.scrollY + 100; // Offset for better UX
+    const scrollY = window.scrollY;
+    const scrollPosition = scrollY + 100; // Offset for better UX
     let currentSection = '';
 
     sections.forEach(section => {
@@ -244,11 +247,20 @@ const t = translations;
     }
 
     // Add background to nav on scroll
-    if (window.scrollY > 50) {
+    if (scrollY > 50) {
       nav?.classList.add('navigation--scrolled');
     } else {
       nav?.classList.remove('navigation--scrolled');
     }
+
+    // Hide nav on scroll down, show on scroll up
+    const heroHeight = (document.querySelector('section#bio') as HTMLElement)?.offsetTop ?? 600;
+    if (scrollY > lastScrollY && scrollY > heroHeight) {
+      nav?.classList.add('navigation--hidden');
+    } else {
+      nav?.classList.remove('navigation--hidden');
+    }
+    lastScrollY = scrollY;
   }
 
   // Throttle scroll event for performance

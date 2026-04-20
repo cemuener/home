@@ -34,14 +34,14 @@
   &__list {
     list-style: none;
     margin: 0;
-    padding: 1rem;
+    padding: 0.8rem;
     background: rgba($bg-dark, 0.8);
     backdrop-filter: blur(10px);
     border-radius: $radius-lg;
     border: 1px solid $border;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   &__item {
@@ -87,8 +87,8 @@
   }
 
   &__dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: $border;
     transition: all $transition-base;
@@ -97,7 +97,7 @@
 
   &__label {
     color: $text-primary;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 500;
     white-space: nowrap;
     opacity: 0;
@@ -107,7 +107,7 @@
     position: absolute;
     right: calc(100% + 0.5rem);
     background: rgba($bg-dark, 0.95);
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
     border-radius: $radius-sm;
     border: 1px solid $border;
     pointer-events: none;
@@ -160,4 +160,3 @@
     }
   }
 }
-
