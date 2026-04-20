@@ -10,29 +10,6 @@ const t = translations;
       <span class="navigation__logo-text">cem.uener</span>
     </a>
 
-    <div class="navigation__actions">
-      <button
-        class="navigation__lang-toggle"
-        id="lang-toggle"
-        aria-label="Switch language"
-        title="Switch language"
-      >
-        <span class="navigation__lang-current" data-lang="de">DE</span>
-        <span class="navigation__lang-divider">/</span>
-        <span class="navigation__lang-option" data-lang="en">EN</span>
-      </button>
-
-      <button
-        class="navigation__toggle"
-        id="nav-toggle"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="nav-menu"
-      >
-        <span class="navigation__toggle-icon"></span>
-      </button>
-    </div>
-
     <ul class="navigation__menu" id="nav-menu">
       <li class="navigation__item">
         <a href="#bio" class="navigation__link" data-section="bio">
@@ -54,7 +31,34 @@ const t = translations;
           <span data-i18n="nav.contact">{t.de.nav.contact}</span>
         </a>
       </li>
+      <li class="navigation__menu-lang" id="menu-lang">
+        <button class="navigation__menu-lang-btn navigation__menu-lang-btn--active" data-lang="de" id="menu-lang-de">DE</button>
+        <span class="navigation__menu-lang-divider">/</span>
+        <button class="navigation__menu-lang-btn" data-lang="en" id="menu-lang-en">EN</button>
+      </li>
     </ul>
+    <div class="navigation__actions">
+      <button
+          class="navigation__lang-toggle"
+          id="lang-toggle"
+          aria-label="Switch language"
+          title="Switch language"
+      >
+        <span class="navigation__lang-current" data-lang="de">DE</span>
+        <span class="navigation__lang-divider">/</span>
+        <span class="navigation__lang-option" data-lang="en">EN</span>
+      </button>
+
+      <button
+          class="navigation__toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+      >
+        <span class="navigation__toggle-icon"></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -71,21 +75,32 @@ const t = translations;
   // Update UI to match stored language
   function updateLanguageUI(lang: Language) {
     const langToggle = document.getElementById('lang-toggle');
-    if (!langToggle) return;
+    if (langToggle) {
+      const deSpan = langToggle.querySelector('[data-lang="de"]');
+      const enSpan = langToggle.querySelector('[data-lang="en"]');
 
-    const deSpan = langToggle.querySelector('[data-lang="de"]');
-    const enSpan = langToggle.querySelector('[data-lang="en"]');
+      if (lang === 'de') {
+        deSpan?.classList.add('navigation__lang-current');
+        deSpan?.classList.remove('navigation__lang-option');
+        enSpan?.classList.add('navigation__lang-option');
+        enSpan?.classList.remove('navigation__lang-current');
+      } else {
+        enSpan?.classList.add('navigation__lang-current');
+        enSpan?.classList.remove('navigation__lang-option');
+        deSpan?.classList.add('navigation__lang-option');
+        deSpan?.classList.remove('navigation__lang-current');
+      }
+    }
 
+    // Update mobile menu lang buttons
+    const menuLangDe = document.getElementById('menu-lang-de');
+    const menuLangEn = document.getElementById('menu-lang-en');
     if (lang === 'de') {
-      deSpan?.classList.add('navigation__lang-current');
-      deSpan?.classList.remove('navigation__lang-option');
-      enSpan?.classList.add('navigation__lang-option');
-      enSpan?.classList.remove('navigation__lang-current');
+      menuLangDe?.classList.add('navigation__menu-lang-btn--active');
+      menuLangEn?.classList.remove('navigation__menu-lang-btn--active');
     } else {
-      enSpan?.classList.add('navigation__lang-current');
-      enSpan?.classList.remove('navigation__lang-option');
-      deSpan?.classList.add('navigation__lang-option');
-      deSpan?.classList.remove('navigation__lang-current');
+      menuLangEn?.classList.add('navigation__menu-lang-btn--active');
+      menuLangDe?.classList.remove('navigation__menu-lang-btn--active');
     }
   }
 
@@ -147,24 +162,34 @@ const t = translations;
   const langToggle = document.getElementById('lang-toggle');
   const sections = document.querySelectorAll('section[id]');
 
-  // Language toggle
+  // Language toggle (desktop)
   langToggle?.addEventListener('click', () => {
     currentLang = currentLang === 'de' ? 'en' : 'de';
-    setStoredLanguage(currentLang, true); // true = update URL
+    setStoredLanguage(currentLang, true);
     updateLanguageUI(currentLang);
     updateContent(currentLang);
     updateLogoLink(currentLang);
-
-    // Trigger custom event for other components to update
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
   });
+
+  // Language toggle (mobile menu)
+  function switchLang(lang: Language) {
+    currentLang = lang;
+    setStoredLanguage(currentLang, true);
+    updateLanguageUI(currentLang);
+    updateContent(currentLang);
+    updateLogoLink(currentLang);
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
+  }
+  document.getElementById('menu-lang-de')?.addEventListener('click', () => switchLang('de'));
+  document.getElementById('menu-lang-en')?.addEventListener('click', () => switchLang('en'));
 
   // Smooth scrolling for anchor links
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
+      const targetSection = targetId ? document.querySelector(targetId) : null;
 
       if (targetSection) {
         // Update URL hash

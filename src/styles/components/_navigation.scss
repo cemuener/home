@@ -23,6 +23,7 @@
     justify-content: space-between;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    position: relative;
   }
 
   &__logo {
@@ -53,6 +54,7 @@
     display: flex;
     align-items: center;
     gap: $gap-md;
+    margin-left: auto;
   }
 
   &__lang-toggle {
@@ -65,6 +67,10 @@
     gap: 0.25rem;
     font-weight: 600;
     transition: $transition-fast;
+
+    @include mobile {
+      display: none;
+    }
 
     &:hover {
       opacity: 0.8;
@@ -98,18 +104,23 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
     @include mobile {
       position: fixed;
       top: 0;
+      left: unset;
       right: -100%;
+      transform: none;
       width: 70%;
       max-width: 300px;
       height: 100vh;
       background: rgba($bg-dark, 0.98);
       backdrop-filter: blur(20px);
       flex-direction: column;
-      padding: 5rem 2rem;
+      padding: 5rem 2rem 2rem;
       gap: $gap-lg;
       transition: right 0.3s ease;
       box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
@@ -118,6 +129,50 @@
         right: 0;
       }
     }
+  }
+
+  &__menu-lang {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid $border;
+    }
+  }
+
+  &__menu-lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: $transition-fast;
+    color: $text-secondary;
+    opacity: 0.6;
+
+    &--active {
+      color: $accent;
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 4px;
+    }
+  }
+
+  &__menu-lang-divider {
+    color: $border;
+    font-size: 1rem;
   }
 
   &__item {
