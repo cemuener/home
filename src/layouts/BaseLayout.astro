@@ -6,7 +6,10 @@ export interface Props {
   type?: string;
   lang?: 'de' | 'en';
   service?: 'dj' | 'portfolio';
+  hideFooter?: boolean;
 }
+
+import Footer from '../components/Footer.astro';
 
 const {
   title = 'DJ Cem Üner',
@@ -14,7 +17,8 @@ const {
   image = '/assets/images/og-image.jpg',
   type = 'website',
   lang = 'de',
-  service = 'dj'
+  service = 'dj',
+  hideFooter = false
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -158,6 +162,7 @@ const structuredData = {
 </head>
 <body>
   <slot />
+  {!hideFooter && <Footer />}
 </body>
 </html>
 

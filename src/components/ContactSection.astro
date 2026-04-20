@@ -159,17 +159,6 @@ const t = translations.de;
         </div>
       </div>
     </div>
-
-    <footer class="contact-section__footer">
-      <div class="contact-section__footer-content">
-        <p class="contact-section__footer-text">
-          &copy; {new Date().getFullYear()} Cem Üner. <span data-i18n="contact.footer.copyright">{t.contact.footer.copyright}</span>
-        </p>
-        <nav class="contact-section__footer-nav">
-          <a href="/de/impressum" class="contact-section__footer-link" data-i18n="contact.footer.impressum" data-impressum-link="true">{t.contact.footer.impressum}</a>
-        </nav>
-      </div>
-    </footer>
   </div>
 </section>
 
@@ -290,20 +279,9 @@ const t = translations.de;
       }
     });
 
-    // Update impressum link based on language
-    function updateImpressumLink(lang: string) {
-      document.querySelectorAll('[data-impressum-link]').forEach(el => {
-        (el as HTMLAnchorElement).href = `/${lang}/impressum`;
-      });
-    }
-
-    // Set initial impressum link
-    updateImpressumLink(currentLang);
-
     // Listen for language changes
     window.addEventListener('languageChanged', ((e: CustomEvent) => {
       currentLang = e.detail.lang;
-      updateImpressumLink(currentLang);
     }) as EventListener);
   }
 </script>

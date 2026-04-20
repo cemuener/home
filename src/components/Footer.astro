@@ -1,0 +1,84 @@
+---
+import { translations } from '../i18n/translations';
+
+const t = translations.de;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__content">
+    <p class="site-footer__text">
+      &copy; {new Date().getFullYear()} Cem Üner. <span data-i18n="contact.footer.copyright">{t.contact.footer.copyright}</span>
+    </p>
+    <nav class="site-footer__nav">
+      <a href="/de/impressum" class="site-footer__link" data-i18n="contact.footer.impressum" data-impressum-link="true">{t.contact.footer.impressum}</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  import { getStoredLanguage } from '../i18n/utils';
+  import type { Language } from '../i18n/utils';
+
+  function updateImpressumLink(lang: string) {
+    document.querySelectorAll('[data-impressum-link]').forEach(el => {
+      (el as HTMLAnchorElement).href = `/${lang}/impressum`;
+    });
+  }
+
+  // Set initial link
+  updateImpressumLink(getStoredLanguage());
+
+  // Update on language change
+  window.addEventListener('languageChanged', ((e: CustomEvent) => {
+    updateImpressumLink(e.detail.lang);
+  }) as EventListener);
+</script>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+
+  .site-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid $border;
+    background: $bg-dark;
+
+    &__content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    &__text {
+      color: $text-secondary;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    &__nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    &__link {
+      color: $text-secondary;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $accent;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+    }
+  }
+</style>
+
