@@ -53,6 +53,10 @@ const navItems: NavItem[] = [
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
+        // Update URL hash
+        window.history.replaceState(null, '', targetId);
+
+        // Smooth scroll to section
         targetSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
@@ -64,6 +68,7 @@ const navItems: NavItem[] = [
   // Update active dot based on scroll position
   function updateActiveDot() {
     const scrollPosition = window.scrollY + window.innerHeight / 2;
+    let currentSection = '';
 
     sections.forEach(section => {
       const sectionTop = (section as HTMLElement).offsetTop;
@@ -71,6 +76,7 @@ const navItems: NavItem[] = [
       const sectionId = section.getAttribute('id');
 
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSection = sectionId || '';
         scrollLinks.forEach(link => {
           link.classList.remove('scroll-nav__link--active');
           if (link.getAttribute('data-section') === sectionId) {
@@ -79,6 +85,11 @@ const navItems: NavItem[] = [
         });
       }
     });
+
+    // Update URL hash if section changed
+    if (currentSection && window.location.hash !== `#${currentSection}`) {
+      window.history.replaceState(null, '', `#${currentSection}`);
+    }
 
     // Show/hide scroll nav based on scroll position
     if (window.scrollY > 200) {

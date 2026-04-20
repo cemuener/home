@@ -97,7 +97,8 @@ export const translations = {
   en: {
     // Navigation
     nav: {
-      dj: 'DJ',
+      bio: 'Bio',
+      mixtapes: 'Mixtapes',
       references: 'References',
       contact: 'Contact'
     },

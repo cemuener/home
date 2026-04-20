@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import ScrollNav from '../../../components/ScrollNav.astro';
+import BioSection from '../../../components/BioSection.astro';
+import MixtapesSection from '../../../components/MixtapesSection.astro';
+import TestimonialsSection from '../../../components/TestimonialsSection.astro';
+import ContactSection from '../../../components/ContactSection.astro';
+import { translations } from '../../../i18n/translations';
+
+const t = translations.de;
+const lang = 'de';
+const service = 'dj';
+---
+
+<BaseLayout lang={lang} service={service}>
+  <Navigation />
+  <ScrollNav />
+
+  <main data-scroll-container role="main" aria-label="Main content">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__container">
+        <h1 class="hero__title text--gradient-dj" id="hero-title" data-i18n="hero.name">{t.hero.name}</h1>
+        <h2 class="hero__subtitle" data-i18n="hero.subtitle">{t.hero.subtitle}</h2>
+        <p class="hero__tagline" data-i18n="hero.tagline">
+          {t.hero.tagline}
+        </p>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--primary">
+            <span data-i18n="hero.ctaPrimary">{t.hero.ctaPrimary}</span>
+          </a>
+          <a href="#bio" class="btn btn--secondary">
+            <span data-i18n="hero.ctaSecondary">{t.hero.ctaSecondary}</span>
+          </a>
+        </div>
+        <div class="hero__scroll-indicator animate--pulse">
+          <span data-i18n="hero.scrollDown">{t.hero.scrollDown}</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <BioSection />
+    <MixtapesSection />
+    <TestimonialsSection />
+    <ContactSection />
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../../../styles/variables' as *;
+  @use '../../../styles/mixins' as *;
+  @use 'sass:color';
+
+  main {
+    padding-top: 80px;
+  }
+
+  .hero {
+    min-height: 100vh;
+    @include flex-center;
+    position: relative;
+
+    background:
+      linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
+      url('/assets/images/dj/hero_image.webp') center/cover no-repeat;
+    background-attachment: fixed;
+
+    @supports not (background-image: url('/assets/images/dj/hero_image.webp')) {
+      background:
+        linear-gradient(135deg, rgba($dj-primary, 0.3) 0%, rgba($dev-primary, 0.3) 100%),
+        url('/assets/images/dj/hero_image_optimized.jpg') center/cover no-repeat;
+    }
+
+    @include below($tablet) {
+      background-attachment: scroll;
+      background-position: center center;
+      background-size: cover;
+      min-height: 100svh;
+    }
+
+    @supports not (background-attachment: fixed) {
+      background: linear-gradient(135deg, rgba($dj-primary, 0.1) 0%, rgba($dev-primary, 0.1) 100%);
+    }
+
+    @include element('container') {
+      @include container;
+      text-align: center;
+      padding: 2rem;
+
+      @include below($tablet) {
+        padding: 1rem;
+      }
+    }
+
+    @include element('title') {
+      margin-bottom: $gap-sm;
+    }
+
+    @include element('subtitle') {
+      color: $text-secondary;
+      font-weight: 400;
+      margin-bottom: $gap-md;
+    }
+
+    @include element('tagline') {
+      max-width: 600px;
+      margin: 0 auto $gap-lg;
+      color: $text-secondary;
+      font-size: 1.125rem;
+    }
+
+    @include element('cta') {
+      display: flex;
+      gap: $gap-sm;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @include element('scroll-indicator') {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      @include flex-column;
+      align-items: center;
+      gap: 0.5rem;
+      color: $text-secondary;
+      font-size: 0.875rem;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: $radius-md;
+    font-weight: 600;
+    @include smooth-transition;
+    @include focus-visible;
+
+    @include modifier('primary') {
+      background: $dj-gradient;
+      color: white;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg;
+      }
+    }
+
+    @include modifier('secondary') {
+      border: 2px solid $border;
+      color: $text-primary;
+
+      &:hover {
+        border-color: $accent;
+        color: $accent;
+      }
+    }
+  }
+</style>
+

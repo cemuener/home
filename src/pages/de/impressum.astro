@@ -1,14 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/Navigation.astro';
-import { translations } from '../i18n/translations';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import { translations } from '../../i18n/translations';
 
 const t = translations.de;
+const lang = 'de';
 const title = `${t.impressum.title} | Cem Üner`;
 const description = t.impressum.metaDescription;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} lang={lang}>
   <Navigation />
 
   <main class="impressum-page">
@@ -19,9 +20,7 @@ const description = t.impressum.metaDescription;
         <h2 class="impressum-page__heading" data-i18n="impressum.tmgHeading">{t.impressum.tmgHeading}</h2>
         <div class="impressum-page__content">
           <p><strong>Cem Üner</strong></p>
-          <p>DJ-Performances<br/>
-            Schlörstr. 21a<br/>
-            80634 München</p>
+          <p>DJ-Performances<br/>Schlörstr. 21a<br/>80634 München</p>
           <p>Germany</p>
         </div>
       </section>
@@ -37,9 +36,7 @@ const description = t.impressum.metaDescription;
       <section class="impressum-page__section">
         <h2 class="impressum-page__heading" data-i18n="impressum.disputeHeading">{t.impressum.disputeHeading}</h2>
         <div class="impressum-page__content">
-          <p data-i18n="impressum.disputePara1">
-            {t.impressum.disputePara1}
-          </p>
+          <p data-i18n="impressum.disputePara1">{t.impressum.disputePara1}</p>
           <p data-i18n="impressum.disputeSource">{t.impressum.disputeSource}</p>
           <p>
             <span data-i18n="impressum.disputePara2">{t.impressum.disputePara2}</span>
@@ -53,35 +50,31 @@ const description = t.impressum.metaDescription;
       <section class="impressum-page__section">
         <h2 class="impressum-page__heading" data-i18n="impressum.liabilityContentHeading">{t.impressum.liabilityContentHeading}</h2>
         <div class="impressum-page__content">
-          <p data-i18n="impressum.liabilityContent">
-            {t.impressum.liabilityContent}
-          </p>
+          <p data-i18n="impressum.liabilityContent">{t.impressum.liabilityContent}</p>
         </div>
       </section>
 
       <section class="impressum-page__section">
         <h2 class="impressum-page__heading" data-i18n="impressum.liabilityLinksHeading">{t.impressum.liabilityLinksHeading}</h2>
         <div class="impressum-page__content">
-          <p data-i18n="impressum.liabilityLinks">
-            {t.impressum.liabilityLinks}
-          </p>
+          <p data-i18n="impressum.liabilityLinks">{t.impressum.liabilityLinks}</p>
         </div>
       </section>
 
       <div class="impressum-page__back">
-        <a href="/" class="btn btn--secondary" data-i18n="impressum.backToHome">{t.impressum.backToHome}</a>
+        <a href="/de/dj/" class="btn btn--secondary" data-i18n="impressum.backToHome">{t.impressum.backToHome}</a>
       </div>
     </div>
   </main>
 </BaseLayout>
 
 <style lang="scss">
-  @use '../styles/variables' as *;
-  @use '../styles/mixins' as *;
+  @use '../../styles/variables' as *;
+  @use '../../styles/mixins' as *;
 
   .impressum-page {
     min-height: 100vh;
-    padding-top: 80px; // Height of navigation
+    padding-top: 80px;
     background: $bg-dark;
     color: $text-primary;
 

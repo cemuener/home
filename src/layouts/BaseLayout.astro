@@ -4,13 +4,17 @@ export interface Props {
   description?: string;
   image?: string;
   type?: string;
+  lang?: 'de' | 'en';
+  service?: 'dj' | 'portfolio';
 }
 
 const {
   title = 'DJ Cem Üner',
   description = 'Multi-talented professional: DJ, Indoor Cycling Coach, and Full-Stack Developer based in Germany.',
   image = '/assets/images/og-image.jpg',
-  type = 'website'
+  type = 'website',
+  lang = 'de',
+  service = 'dj'
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -90,7 +94,7 @@ const structuredData = {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -101,6 +105,11 @@ const structuredData = {
   <meta name="title" content={title} />
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
+
+  <!-- Alternate Language Links for International SEO -->
+  <link rel="alternate" hreflang="de" href={`https://cemuener.de/de/${service}/`} />
+  <link rel="alternate" hreflang="en" href={`https://cemuener.de/en/${service}/`} />
+  <link rel="alternate" hreflang="x-default" href={`https://cemuener.de/de/${service}/`} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content={type} />
@@ -121,12 +130,19 @@ const structuredData = {
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href={faviconPath} />
 
+  <!-- Preconnect to external resources for performance -->
+  <link rel="preconnect" href="https://soundcloud.com" crossorigin />
+  <link rel="dns-prefetch" href="https://soundcloud.com" />
+
   <!-- Theme Color -->
   <meta name="theme-color" content="#FF006E" />
+  <meta name="msapplication-TileColor" content="#FF006E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <!-- Additional SEO Meta Tags -->
   <meta name="author" content="Cem Üner" />
-  <meta name="keywords" content="DJ, Indoor Cycling Coach, Full-Stack Developer, House Music, Afro House, TypeScript, React, Fitness, Germany" />
+  <meta name="keywords" content="DJ München, DJ Germany, House DJ, Afro House DJ, Oriental Music DJ, DJ Booking, Indoor Cycling Coach München, ICG Instructor, Fitness Coach Germany, Full-Stack Developer Germany, TypeScript Developer, React Developer, Munich DJ, Hochzeits DJ, Event DJ, Cem Üner" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 

@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import { translations } from '../../../i18n/translations';
+
+const t = translations.en;
+const lang = 'en';
+const service = 'developer';
+---
+
+<BaseLayout title="Portfolio | Cem Üner" description="Full-Stack Developer Portfolio" lang={lang} service={service}>
+  <Navigation />
+
+  <main class="portfolio-page">
+    <div class="portfolio-page__container">
+      <section class="portfolio-hero">
+        <h1 class="portfolio-hero__title text--gradient-dev">Portfolio</h1>
+        <h2 class="portfolio-hero__subtitle">Full-Stack Developer</h2>
+        <p class="portfolio-hero__tagline">TypeScript • React • Node.js • Astro</p>
+      </section>
+
+      <section class="portfolio-placeholder">
+        <div class="portfolio-placeholder__content">
+          <h2>🚧 Under Construction</h2>
+          <p>This page is currently being built.</p>
+          <p>My development projects and technical skills will be showcased here soon.</p>
+
+          <div class="portfolio-placeholder__links">
+            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--primary">GitHub</a>
+            <a href="https://linkedin.com/in/cemuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">LinkedIn</a>
+            <a href="/en/dj/" class="btn btn--secondary">DJ Services</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../../../styles/variables' as *;
+  @use '../../../styles/mixins' as *;
+
+  .portfolio-page {
+    min-height: 100vh;
+    padding-top: 80px;
+    background: $bg-dark;
+    color: $text-primary;
+
+    @include element('container') {
+      @include container;
+      padding: $gap-xl 2rem;
+    }
+  }
+
+  .portfolio-hero {
+    text-align: center;
+    padding: $gap-xl 0;
+
+    @include element('title') {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: $gap-sm;
+    }
+
+    @include element('subtitle') {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: $text-secondary;
+      margin-bottom: $gap-md;
+    }
+
+    @include element('tagline') {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: $text-secondary;
+      font-family: monospace;
+    }
+  }
+
+  .portfolio-placeholder {
+    max-width: 600px;
+    margin: $gap-xl auto;
+    padding: $gap-xl;
+    background: rgba($dev-primary, 0.1);
+    border: 2px solid $dev-primary;
+    border-radius: $radius-lg;
+    text-align: center;
+
+    @include element('content') {
+      h2 {
+        font-size: 2rem;
+        margin-bottom: $gap-md;
+      }
+
+      p {
+        color: $text-secondary;
+        margin-bottom: $gap-md;
+        line-height: 1.6;
+      }
+    }
+
+    @include element('links') {
+      display: flex;
+      gap: $gap-sm;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: $gap-lg;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: $radius-md;
+    font-weight: 600;
+    @include smooth-transition;
+    text-decoration: none;
+
+    @include modifier('primary') {
+      background: $dev-gradient;
+      color: white;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg;
+      }
+    }
+
+    @include modifier('secondary') {
+      border: 2px solid $border;
+      color: $text-primary;
+
+      &:hover {
+        border-color: $dev-primary;
+        color: $dev-primary;
+        transform: translateY(-2px);
+      }
+    }
+  }
+</style>
+
