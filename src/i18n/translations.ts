@@ -24,8 +24,8 @@ export const translations = {
     bio: {
       title: 'DJ Cem Üner',
       subtitle: 'München • House • Afro • Latin',
-      bioPara1: 'Cem Üner ist ein DJ aus München mit einem feinen Gespür für Menschen und Atmosphäre. In kürzester Zeit erfasst er die Stimmung des Raums und baut daraus einen musikalischen Spannungsbogen, der die Tanzfläche Schritt für Schritt füllt. Seine Sets verbinden House mit Afro-, Oriental- und Latin-Vibes, angereichert mit groovy Funk und viel Gefühl für den richtigen Moment. Vom Lowtempo bis zum energiegeladenen Drop bleibt jedes Detail im Flow.',
-      bioPara2: 'Ob Hochzeit, Geburtstag oder Club-Event – Cem passt Sound, Energie und Wünsche präzise an den Moment an und schafft Abende, die lange in Erinnerung bleiben.',
+      bioPara1: 'Ich bin ein DJ aus München mit einem feinen Gespür für Menschen und Atmosphäre. In kürzester Zeit erfasse ich die Stimmung des Raums und baue daraus einen musikalischen Spannungsbogen, der die Tanzfläche Schritt für Schritt füllt. Meine Sets verbinden House mit Afro-, Oriental- und Latin-Vibes, angereichert mit groovy Funk und viel Gefühl für den richtigen Moment. Vom Lowtempo bis zum energiegeladenen Drop bleibt jedes Detail im Flow.',
+      bioPara2: 'Ob Hochzeit, Geburtstag oder Club-Event – ich passe Sound, Energie und Wünsche präzise an den Moment an und schaffe Abende, die lange in Erinnerung bleiben.',
       upcomingEvents: 'Kommende Events'
     },
 
@@ -138,8 +138,9 @@ export const translations = {
     bio: {
       title: 'DJ Cem Üner',
       subtitle: 'Munich • House • Afro • Oriental • Latin',
-      bioPara1: 'Cem Uener is a DJ from Munich with a fine sense for people and atmosphere. In no time, he captures the mood of the room and builds a musical arc of suspense that gradually fills the dance floor. His sets combine House with Afro, Oriental, and Latin vibes, enriched with groovy Funk and a great feeling for the right moment. From low tempo to energetic drops, every detail stays in the flow.',
-      bioPara2: 'Whether wedding, birthday, or club event – Cem precisely adapts sound, energy, and wishes to the moment, creating evenings that remain memorable for a long time.',
+      bioPara1: 'I\'m a DJ from Munich with a fine sense for people and atmosphere. I am able to the vibe quickly and build a musical atmosphere that gradually fills the dance floor. My sets combine House with Afro, Oriental, and Latin vibes, enriched with groovy Funk and a great sense for the right moment. From low tempo to energetic drops, every detail goes with the flow.',
+      bioPara2: 'Whether wedding, birthday, or club event – I precisely adapt sound, energy, and wishes to the moment, creating evenings that remain memorable for a long time.',
+
       upcomingEvents: 'Upcoming Events'
     },
 
