@@ -11,6 +11,7 @@ const t = translations.de;
     </p>
     <nav class="site-footer__nav">
       <a href="/de/impressum" class="site-footer__link" data-i18n="contact.footer.impressum" data-impressum-link="true">{t.contact.footer.impressum}</a>
+      <a href="/de/datenschutz" class="site-footer__link" data-i18n="contact.footer.datenschutz" data-datenschutz-link="true">{t.contact.footer.datenschutz}</a>
     </nav>
   </div>
 </footer>
@@ -19,18 +20,21 @@ const t = translations.de;
   import { getStoredLanguage } from '../i18n/utils';
   import type { Language } from '../i18n/utils';
 
-  function updateImpressumLink(lang: string) {
+  function updateFooterLinks(lang: string) {
     document.querySelectorAll('[data-impressum-link]').forEach(el => {
       (el as HTMLAnchorElement).href = `/${lang}/impressum`;
     });
+    document.querySelectorAll('[data-datenschutz-link]').forEach(el => {
+      (el as HTMLAnchorElement).href = `/${lang}/datenschutz`;
+    });
   }
 
-  // Set initial link
-  updateImpressumLink(getStoredLanguage());
+  // Set initial links
+  updateFooterLinks(getStoredLanguage());
 
   // Update on language change
   window.addEventListener('languageChanged', ((e: CustomEvent) => {
-    updateImpressumLink(e.detail.lang);
+    updateFooterLinks(e.detail.lang);
   }) as EventListener);
 </script>
 

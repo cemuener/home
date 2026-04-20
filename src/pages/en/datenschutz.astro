@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import { translations } from '../../i18n/translations';
+
+const t = translations.en;
+const lang = 'en';
+const title = `${t.datenschutz.title} | Cem Üner`;
+const description = t.datenschutz.metaDescription;
+---
+
+<BaseLayout title={title} description={description} lang={lang} hideFooter={true}>
+  <Navigation />
+
+  <main class="impressum-page">
+    <div class="impressum-page__container">
+      <h1 class="impressum-page__title">{t.datenschutz.title}</h1>
+
+      <section class="impressum-page__section">
+        <div class="impressum-page__content">
+          <p>{t.datenschutz.intro}</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.responsibleHeading}</h2>
+        <div class="impressum-page__content">
+          <p>{t.datenschutz.responsibleText}</p>
+          <p><strong>Cem Üner</strong></p>
+          <p>Schlörstr. 21a<br/>80634 München<br/>Germany</p>
+          <p><strong>Email:</strong> dj-cem.uener@outlook.com</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.hostingHeading}</h2>
+        <div class="impressum-page__content">
+          <p>
+            {t.datenschutz.hostingText}
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
+              {t.datenschutz.hostingPrivacyLink}
+            </a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.cookiesHeading}</h2>
+        <div class="impressum-page__content">
+          <p>{t.datenschutz.cookiesText}</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.externalLinksHeading}</h2>
+        <div class="impressum-page__content">
+          <p>{t.datenschutz.externalLinksText}</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.rightsHeading}</h2>
+        <div class="impressum-page__content">
+          <p>{t.datenschutz.rightsText}</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <h2 class="impressum-page__heading">{t.datenschutz.contactHeading}</h2>
+        <div class="impressum-page__content">
+          <p><strong>Cem Üner</strong></p>
+          <p><strong>Email:</strong> dj-cem.uener@outlook.com</p>
+        </div>
+      </section>
+
+      <section class="impressum-page__section">
+        <div class="impressum-page__content">
+          <p><em>{t.datenschutz.lastUpdated}</em></p>
+        </div>
+      </section>
+
+      <div class="impressum-page__back">
+        <a href="/en/dj/" class="btn btn--secondary">{t.datenschutz.backToHome}</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../../styles/variables' as *;
+  @use '../../styles/mixins' as *;
+
+  .impressum-page {
+    min-height: 100vh;
+    padding-top: 80px;
+    background: $bg-dark;
+    color: $text-primary;
+
+    @include element('container') {
+      @include container;
+      padding: $gap-xl 2rem;
+      max-width: 800px;
+    }
+
+    @include element('title') {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: $gap-lg;
+      background: $dj-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @include element('section') {
+      margin-bottom: $gap-lg;
+      padding-bottom: $gap-md;
+      border-bottom: 1px solid $border;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    @include element('heading') {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      margin-bottom: $gap-md;
+      color: $accent;
+    }
+
+    @include element('content') {
+      line-height: 1.8;
+
+      p {
+        margin-bottom: $gap-sm;
+        color: $text-secondary;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        strong {
+          color: $text-primary;
+        }
+      }
+
+      a {
+        color: $accent;
+        text-decoration: underline;
+        @include smooth-transition;
+
+        &:hover {
+          color: $dj-primary;
+        }
+
+        &:focus-visible {
+          outline: 2px solid $accent;
+          outline-offset: 2px;
+          border-radius: $radius-sm;
+        }
+      }
+    }
+
+    @include element('back') {
+      margin-top: $gap-xl;
+      text-align: center;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: $radius-md;
+    font-weight: 600;
+    @include smooth-transition;
+    text-decoration: none;
+
+    @include modifier('secondary') {
+      border: 2px solid $border;
+      color: $text-primary;
+
+      &:hover {
+        border-color: $accent;
+        color: $accent;
+        transform: translateY(-2px);
+      }
+
+      &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 4px;
+      }
+    }
+  }
+</style>
+

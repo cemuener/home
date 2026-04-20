@@ -91,6 +91,27 @@ export const translations = {
       liabilityLinksHeading: 'Haftung für Links',
       liabilityLinks: 'Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
       backToHome: 'Zurück zur Startseite'
+    },
+
+    // Datenschutz Page
+    datenschutz: {
+      title: 'Datenschutzerklärung',
+      metaDescription: 'Datenschutzerklärung für cemuener.de – Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO.',
+      intro: 'Der Schutz deiner persönlichen Daten ist mir wichtig. Diese Datenschutzerklärung informiert dich darüber, welche Daten beim Besuch dieser Website verarbeitet werden.',
+      responsibleHeading: 'Verantwortlicher',
+      responsibleText: 'Verantwortlicher im Sinne der DSGVO ist:',
+      hostingHeading: 'Hosting & Server-Logs',
+      hostingText: 'Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA) gehostet. Beim Aufruf der Website kann GitHub technische Zugriffsdaten (Server-Logs) speichern, insbesondere IP-Adresse, Browsertyp, aufgerufene Seite sowie Datum und Uhrzeit des Zugriffs. Diese Verarbeitung erfolgt durch GitHub und unterliegt deren Datenschutzbestimmungen: ',
+      hostingPrivacyLink: 'GitHub Privacy Statement',
+      cookiesHeading: 'Cookies',
+      cookiesText: 'Diese Website setzt keine Cookies und verwendet kein Tracking oder Webanalyse.',
+      externalLinksHeading: 'Externe Links',
+      externalLinksText: 'Diese Website enthält Links zu externen Diensten wie SoundCloud, LinkedIn und GitHub. Wenn du auf diese Links klickst, gelangst du zu den jeweiligen Plattformen. Für deren Datenverarbeitung sind die jeweiligen Betreiber verantwortlich. Es werden keine Daten deinerseits an externe Dienste übermittelt, solange du nicht aktiv auf einen Link klickst.',
+      rightsHeading: 'Deine Rechte',
+      rightsText: 'Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit. Du kannst dich jederzeit per E-Mail an mich wenden.',
+      contactHeading: 'Kontakt in Datenschutzfragen',
+      lastUpdated: 'Stand: April 2026',
+      backToHome: 'Zurück zur Startseite'
     }
   },
   
@@ -183,6 +204,27 @@ export const translations = {
       liabilityContent: 'The content of our pages has been created with the greatest care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7 paragraph 1 DDG in accordance with general laws. According to §§ 8 to 10 DDG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information according to general laws remain unaffected by this. However, liability in this regard is only possible from the point in time at which knowledge of a specific infringement of the law is obtained. If we become aware of any such legal violations, we will remove this content immediately.',
       liabilityLinksHeading: 'Liability for Links',
       liabilityLinks: 'Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal violations, we will remove such links immediately.',
+      backToHome: 'Back to Home'
+    },
+
+    // Privacy Policy Page
+    datenschutz: {
+      title: 'Privacy Policy',
+      metaDescription: 'Privacy policy for cemuener.de – information on the processing of personal data in accordance with GDPR.',
+      intro: 'Protecting your personal data is important to me. This privacy policy informs you about what data is processed when you visit this website.',
+      responsibleHeading: 'Controller',
+      responsibleText: 'The controller within the meaning of the GDPR is:',
+      hostingHeading: 'Hosting & Server Logs',
+      hostingText: 'This website is hosted via GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA). When accessing the website, GitHub may store technical access data (server logs), including IP address, browser type, page accessed, and date/time of access. This processing is carried out by GitHub and is subject to their privacy policy: ',
+      hostingPrivacyLink: 'GitHub Privacy Statement',
+      cookiesHeading: 'Cookies',
+      cookiesText: 'This website does not use cookies and does not employ any tracking or web analytics.',
+      externalLinksHeading: 'External Links',
+      externalLinksText: 'This website contains links to external services such as SoundCloud, LinkedIn, and GitHub. Clicking these links will take you to the respective platforms. The respective operators are responsible for their data processing. No data is transmitted to external services unless you actively click a link.',
+      rightsHeading: 'Your Rights',
+      rightsText: 'You have the right to access, rectification, erasure, and restriction of the processing of your personal data, as well as the right to data portability. You can contact me at any time by email.',
+      contactHeading: 'Contact for Privacy Matters',
+      lastUpdated: 'Last updated: April 2026',
       backToHome: 'Back to Home'
     }
   }

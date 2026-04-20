@@ -61,6 +61,13 @@ export function setStoredLanguage(lang: Language, updateURL: boolean = true) {
       return;
     }
 
+    // Handle datenschutz pages: /de/datenschutz -> /en/datenschutz
+    const datenschutzMatch = path.match(/^\/(de|en)\/(datenschutz)\/?$/);
+    if (datenschutzMatch) {
+      window.location.href = `/${lang}/datenschutz`;
+      return;
+    }
+
     const service = getServiceFromURL() || 'dj'; // Default to dj
     const hash = window.location.hash;
     const newPath = `/${lang}/${service}/${hash}`;
