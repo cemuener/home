@@ -6,7 +6,7 @@ const t = translations;
 
 <nav class="navigation" id="main-nav">
   <div class="navigation__container">
-    <a href="#" class="navigation__logo">
+    <a href="/" class="navigation__logo" id="logo-link">
       <span class="navigation__logo-text">cem.uener</span>
     </a>
 
@@ -108,9 +108,36 @@ const t = translations;
     });
   }
 
+  // Update logo link to respect current language
+  function updateLogoLink(lang: Language) {
+    const logoLink = document.getElementById('logo-link') as HTMLAnchorElement | null;
+    if (logoLink) {
+      const service = (window.location.pathname.includes('/developer') ? 'developer' : 'dj');
+      logoLink.href = `/${lang}/${service}/`;
+    }
+  }
+
+  // Logo click: scroll to top if already on a section page, otherwise navigate
+  const logoLink = document.getElementById('logo-link') as HTMLAnchorElement | null;
+  logoLink?.addEventListener('click', (e) => {
+    const hasSections = document.querySelectorAll('section[id]').length > 0;
+    if (hasSections) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Clear hash from URL
+      window.history.replaceState(null, '', window.location.pathname);
+      // Remove active state from nav links
+      document.querySelectorAll('.navigation__link--active').forEach(el => {
+        el.classList.remove('navigation__link--active');
+      });
+    }
+    // else: follow the href normally (navigate to language root)
+  });
+
   // Initialize UI with stored language
   updateLanguageUI(currentLang);
   updateContent(currentLang);
+  updateLogoLink(currentLang);
 
   // Scroll spy and smooth scrolling functionality
   const nav = document.getElementById('main-nav');
@@ -126,6 +153,7 @@ const t = translations;
     setStoredLanguage(currentLang, true); // true = update URL
     updateLanguageUI(currentLang);
     updateContent(currentLang);
+    updateLogoLink(currentLang);
 
     // Trigger custom event for other components to update
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
