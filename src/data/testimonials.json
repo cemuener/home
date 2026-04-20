@@ -6,7 +6,7 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem hat auf meinem 30. Geburtstag aufgelegt und hat uns allen einen ganz tollen Abend beschert! Die Absprache davor war super unkompliziert, alles hat so geklappt wie geplant und unabhängig von allem Organisatorischen ist er einfach ein Herzensmensch, den jeder bei seiner Party dabeihaben sollte!",
-    "photo": "/assets/images/dj/nini_30.jpeg",
+    "photo": "/assets/images/testimonials/nini_30.jpeg",
     "date": "2025-04-11",
     "featured": true
   },
@@ -17,31 +17,31 @@
     "service": "dj",
     "rating": 5,
     "text": "Cem war letztes Jahr unser Hochzeits DJ. Er hat sich super um alles gekümmert. Zum Essen entspannte Vibes, perfektes Timing zum Hochzeitstanz und richtig gute Party bis spät in die Nacht. Er ist dabei auf die Wünsche der Gäste eingegangen und hatte ein super Gespür für die Stimmung. Wir waren rundum glücklich!",
-    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
+    "photo": "/assets/images/testimonials/f&j.jpg",
     "date": "2025-09-27",
     "featured": true
   },
   {
     "id": "test-003",
-    "name": "Sarah Müller",
+    "name": "Sinem",
     "role": "Geburtstagsfeier",
     "service": "dj",
     "rating": 5,
-    "text": "Mein 30. Geburtstag wurde dank Cem's DJ-Skills zum absoluten Highlight! Die Mischung aus House, Latin und Afro-Beats hat alle Generationen auf die Tanzfläche gebracht. Seine Oriental-Vibes waren genau das i-Tüpfelchen!",
-    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
-    "date": "2026-01-10",
-    "featured": false
+    "text": "Eine Wahl, die ich nie bereut habe!!! Cem hat an meinem 40. Geburtstag aufgelegt und ich hatte wirklich viele spezielle Wünsche, was das musikalische Setting betrifft. Er hat es weit besser umgesetzt, als ich es mir vorgestellt habe. Seine persönliche offenherzige Art rundet dann alles perfekt ab. Die Stimmung war top. Mit ganz gutem Gewissen kann ich sagen: wendet euch an Cem für eure anstehenden Events.",
+    "photo": "/assets/images/testimonials/sini.jpg",
+    "date": "2024-12-14",
+    "featured": true
   },
   {
     "id": "test-004",
-    "name": "Blitz Club München",
-    "role": "Club Management",
+    "name": "Johanne&Mehmet",
+    "role": "Hochzeitspaar",
     "service": "dj",
     "rating": 5,
-    "text": "Cem ist seit einem Jahr unser Resident DJ und bringt jedes Mal frischen Wind in den Club. Seine Sets sind durchdacht, energiegeladen und immer voller Überraschungen. Die Gäste lieben ihn!",
-    "photo": "/assets/images/testimonials/placeholder-avatar.svg",
-    "date": "2025-12-05",
-    "featured": false
+    "text": "Cem hat unsere Hochzeit einfach famositastisch begleitet. Er hat von Anfang an für eine mega Stimmung gesorgt und es geschafft, dass die Tanzfläche durchgehend voll war. Wir waren mehr als zufrieden und hätten uns keinen besseren DJ für unseren besonderen Tag wünschen können. Absolute Herzensempfehlung!",
+    "photo": "/assets/images/testimonials/j&m.jpeg",
+    "date": "2025-10-25",
+    "featured": true
   }
 ]
 
