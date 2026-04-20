@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
 <aside class="scroll-nav" aria-label="Page sections navigation">
   <ul class="scroll-nav__list">
     {navItems.map((item) => (
-      <li class="scroll-nav__item" key={item.id}>
+      <li class="scroll-nav__item">
         <a
           href={`#${item.id}`}
           class="scroll-nav__link"
@@ -36,6 +36,18 @@ const navItems: NavItem[] = [
         </a>
       </li>
     ))}
+    <li class="scroll-nav__item scroll-nav__item--top">
+      <button
+        class="scroll-nav__top-btn"
+        id="scroll-top-btn"
+        aria-label="Scroll to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        <span class="scroll-nav__label scroll-nav__top-label">Scroll to top</span>
+      </button>
+    </li>
   </ul>
 </aside>
 
@@ -50,7 +62,7 @@ const navItems: NavItem[] = [
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
+      const targetSection = targetId ? document.querySelector(targetId) : null;
 
       if (targetSection) {
         // Update URL hash
@@ -113,5 +125,11 @@ const navItems: NavItem[] = [
 
   // Initial check
   updateActiveDot();
+
+  // Scroll to top button
+  document.getElementById('scroll-top-btn')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.history.replaceState(null, '', window.location.pathname);
+  });
 </script>
 

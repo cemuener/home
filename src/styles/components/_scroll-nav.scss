@@ -46,6 +46,48 @@
 
   &__item {
     margin: 0;
+
+    &--top {
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid $border;
+    }
+  }
+
+  &__top-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.25rem;
+    color: $text-secondary;
+    opacity: 0.5;
+    transition: all $transition-fast;
+    border-radius: 50%;
+
+    &:hover {
+      opacity: 1;
+      color: $accent;
+      transform: translateY(-2px);
+
+      .scroll-nav__top-label {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 4px;
+    }
+  }
+
+  &__top-label {
+    // inherits all __label styles, just needs to be shown on button hover
+    pointer-events: none;
   }
 
   &__link {
@@ -160,3 +202,4 @@
     }
   }
 }
+
