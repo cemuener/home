@@ -45,9 +45,10 @@ export interface Event {
   id: string;
   title: string;
   date: string; // ISO format: "2026-06-20"
+  time: string; // ISO format: "20:00"
   venue: string;
   type: 'wedding' | 'birthday' | 'club' | 'corporate';
-  status: 'upcoming' | 'past';
+  status: 'upcoming' | 'past' | 'highlight';
   description?: string;
   url?: string; // Optional external link (event page, venue, etc.)
 }

@@ -48,6 +48,9 @@ const upcomingEvents = events
                   <div class="dj-section__event-content">
                     <h4 class="dj-section__event-title">{event.title}</h4>
                     <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.time && (
+                      <p class="dj-section__event-time">🕐 {event.time}</p>
+                    )}
                     {event.description && (
                       <p class="dj-section__event-description">
                         {event.description}
@@ -73,6 +76,9 @@ const upcomingEvents = events
                   <div class="dj-section__event-content">
                     <h4 class="dj-section__event-title">{event.title}</h4>
                     <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    {event.time && (
+                      <p class="dj-section__event-time">🕐 {event.time}</p>
+                    )}
                     {event.description && (
                       <p class="dj-section__event-description">
                         {event.description}
