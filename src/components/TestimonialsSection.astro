@@ -13,7 +13,7 @@ const djTestimonials = testimonials
 
 <section class="testimonials-section" id="testimonials">
   <div class="testimonials-section__container">
-    <header class="testimonials-section__header">
+    <header class="testimonials-section__header reveal">
       <h2 class="testimonials-section__title text--gradient-dj" data-i18n="testimonials.title">{t.testimonials.title}</h2>
       <p class="testimonials-section__subtitle" data-i18n="testimonials.subtitle">
         {t.testimonials.subtitle}
@@ -21,7 +21,7 @@ const djTestimonials = testimonials
     </header>
 
     {djTestimonials.length > 0 ? (
-      <div class="testimonials-carousel" aria-label="Testimonials carousel">
+      <div class="testimonials-carousel reveal reveal--fade" style="transition-delay:0.2s" aria-label="Testimonials carousel">
         <button class="testimonials-carousel__btn testimonials-carousel__btn--prev" aria-label="Previous testimonial">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>

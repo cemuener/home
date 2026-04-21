@@ -9,62 +9,90 @@
 
 // Slide up
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// Slide left (for left-side elements)
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 // Scale in
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 // Pulse
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50%       { opacity: 0.5; }
 }
 
 // Float
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50%       { transform: translateY(-10px); }
 }
 
-// Animation utility classes
+// Scroll indicator bounce
+@keyframes bounceY {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+// ── Utility classes ──────────────────────────────────────────────────────────
 .animate {
-  &--fade-in { animation: fadeIn 0.6s ease-out; }
+  &--fade-in  { animation: fadeIn  0.6s ease-out; }
   &--slide-up { animation: slideUp 0.6s ease-out; }
   &--scale-in { animation: scaleIn 0.4s ease-out; }
-  &--pulse { animation: pulse 2s ease-in-out infinite; }
-  &--float { animation: float 3s ease-in-out infinite; }
+  &--pulse    { animation: pulse   2s ease-in-out infinite; }
+  &--float    { animation: float   3s ease-in-out infinite; }
 }
 
-// Scroll reveal (used with JS)
+// ── Scroll reveal ────────────────────────────────────────────────────────────
+// Default: slide up
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 
   &.is-revealed {
     opacity: 1;
     transform: translateY(0);
   }
+
+  // Variants
+  &--scale {
+    transform: scale(0.94) translateY(20px);
+    &.is-revealed { transform: scale(1) translateY(0); }
+  }
+
+  &--left {
+    transform: translateX(-30px);
+    &.is-revealed { transform: translateX(0); }
+  }
+
+  &--fade {
+    transform: none;
+    &.is-revealed { transform: none; }
+  }
 }
 
-// Reduced motion support
+// ── One-shot slide-in on section titles ──────────────────────────────────────
+// Applied via JS when element enters viewport
+.shimmer-once {
+  animation: slideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+// ── Scroll indicator bounce ──────────────────────────────────────────────────
+.hero__scroll-indicator {
+  animation: bounceY 2s ease-in-out infinite !important;
+}
+
+// ── Reduced motion ───────────────────────────────────────────────────────────
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -21,14 +21,14 @@ const formatDate = (dateString: string) => {
 
 <section class="dj-section" id="mixtapes">
   <div class="dj-section__container">
-    <header class="dj-section__header">
+    <header class="dj-section__header reveal">
       <h2 class="dj-section__title text--gradient-dj" data-i18n="mixtapes.title">{t.mixtapes.title}</h2>
       <p class="dj-section__subtitle" data-i18n="mixtapes.subtitle">{t.mixtapes.subtitle}</p>
     </header>
 
     {featuredMixes.length > 0 && (
       <div class="dj-section__mixes">
-        <div class="dj-section__mix-grid">
+        <div class="dj-section__mix-grid reveal-children" data-stagger-step="70" data-reveal-variant="scale">
           {featuredMixes.map((mix) => (
             <a
               href={mix.embedUrl}
@@ -36,7 +36,6 @@ const formatDate = (dateString: string) => {
               rel="noopener noreferrer"
               class="dj-section__mix-card"
               aria-label={`${mix.title} – ${t.mixtapes.listenOn}`}
-              key={mix.id}
             >
               <div class="dj-section__mix-cover">
                 <img
@@ -55,7 +54,7 @@ const formatDate = (dateString: string) => {
                 <p class="dj-section__mix-date">{formatDate(mix.date)}</p>
                 <div class="dj-section__mix-genres">
                   {mix.genres.map((genre) => (
-                    <span class="dj-section__genre-tag" key={genre}>{genre}</span>
+                    <span class="dj-section__genre-tag">{genre}</span>
                   ))}
                 </div>
               </div>

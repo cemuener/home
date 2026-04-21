@@ -13,12 +13,12 @@ const upcomingEvents = events
 
 <section class="dj-section" id="bio">
   <div class="dj-section__container">
-    <header class="dj-section__header">
+    <header class="dj-section__header reveal">
       <h2 class="dj-section__title text--gradient-dj" data-i18n="bio.title">{t.bio.title}</h2>
       <p class="dj-section__subtitle" data-i18n="bio.subtitle">{t.bio.subtitle}</p>
     </header>
 
-    <div class="dj-section__bio">
+    <div class="dj-section__bio reveal reveal--fade" style="transition-delay:0.15s">
       <p data-i18n="bio.bioPara1">
         {t.bio.bioPara1}
       </p>
@@ -29,8 +29,8 @@ const upcomingEvents = events
 
     {upcomingEvents.length > 0 && (
       <div class="dj-section__events">
-        <h3 class="dj-section__section-title" data-i18n="bio.upcomingEvents">{t.bio.upcomingEvents}</h3>
-        <div class="dj-section__event-list">
+        <h3 class="dj-section__section-title reveal" data-i18n="bio.upcomingEvents">{t.bio.upcomingEvents}</h3>
+        <div class="dj-section__event-list reveal-children" data-stagger-step="90">
           {upcomingEvents.map((event) => (
             <article class="dj-section__event-card" key={event.id}>
               {event.url ? (
