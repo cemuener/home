@@ -112,6 +112,89 @@
       transform: scale(1.25);
     }
   }
+
+  // ─── Desktop gallery mode ───────────────────────────────────────────────
+  @include desktop {
+    max-width: 100%;
+
+    // Track becomes a positioned container; JS sets its height to the active card
+    &__track {
+      position: relative;
+      overflow-x: clip;
+      overflow-y: visible;
+      scroll-snap-type: none;
+      display: block;        // no flex — cards are absolutely positioned
+      padding: 2rem 0 $gap-md;
+    }
+
+    &__btn {
+      // account for 2rem top padding of the track so buttons align with card centre
+      top: calc(2rem + var(--track-height, 360px) / 2);
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      // horizontally flank the active card (600px wide, centred)
+      &--prev { left: calc(50% - 300px - 64px); }
+      &--next { right: calc(50% - 300px - 64px); }
+    }
+  }
+}
+
+// ─── Desktop gallery card states ──────────────────────────────────────────
+// Cards are absolutely positioned so DOM order never affects visual layout
+@include desktop {
+  .testimonial-card {
+    // base desktop layout
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 580px;
+    scroll-snap-align: none;
+    transition:
+      transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity   0.5s ease,
+      filter    0.5s ease,
+      box-shadow 0.5s ease;
+
+    // hidden — collapsed behind the active card, invisible
+    &.is-hidden {
+      transform: translateX(-50%) scale(0.7);
+      opacity: 0;
+      pointer-events: none;
+      filter: blur(8px);
+      z-index: 0;
+    }
+
+    // left side card
+    &.is-prev {
+      transform: translateX(calc(-50% - 560px)) scale(0.82);
+      opacity: 0.45;
+      filter: blur(3px);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    // centre / active card
+    &.is-active {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+      filter: none;
+      z-index: 2;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba($dj-primary, 0.15);
+      border-color: rgba($dj-primary, 0.4);
+      pointer-events: auto;
+    }
+
+    // right side card
+    &.is-next {
+      transform: translateX(calc(-50% + 560px)) scale(0.82);
+      opacity: 0.45;
+      filter: blur(3px);
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
 }
 
 .testimonial-card {
