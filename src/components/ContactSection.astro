@@ -52,6 +52,9 @@ const t = translations.de;
             required
             aria-required="true"
             aria-describedby="email-error"
+            autocomplete="email"
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+            inputmode="email"
           />
           <span class="contact-form__error" id="email-error" role="alert"></span>
         </div>
@@ -180,7 +183,7 @@ const t = translations.de;
     const successMessage = form.querySelector('.contact-form__message--success') as HTMLDivElement;
     const errorMessage = form.querySelector('.contact-form__message--error') as HTMLDivElement;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
     let currentLang: Language = (document.documentElement.getAttribute('lang') as Language) || 'de';
 
@@ -221,7 +224,7 @@ const t = translations.de;
     }
 
     // Real-time validation on blur
-    [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
+    [nameInput, subjectInput, messageInput].forEach(input => {
       input.addEventListener('blur', () => validateField(input));
       input.addEventListener('input', () => {
         if (input.classList.contains('contact-form__input--error')) {
@@ -229,6 +232,11 @@ const t = translations.de;
         }
       });
     });
+
+    // Email: validate on every keystroke after first blur
+    let emailTouched = false;
+    emailInput.addEventListener('blur', () => { emailTouched = true; validateField(emailInput); });
+    emailInput.addEventListener('input', () => { if (emailTouched) validateField(emailInput); });
 
     // Form submission
     form.addEventListener('submit', async (e) => {
