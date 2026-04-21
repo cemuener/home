@@ -13,8 +13,7 @@ const featuredMixes = mixes
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('de-DE', {
-    day: '2-digit',
-    month: 'long',
+    month: 'short',
     year: 'numeric'
   }).format(date);
 };
@@ -31,14 +30,21 @@ const formatDate = (dateString: string) => {
       <div class="dj-section__mixes">
         <div class="dj-section__mix-grid">
           {featuredMixes.map((mix) => (
-            <article class="dj-section__mix-card" key={mix.id}>
+            <a
+              href={mix.embedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="dj-section__mix-card"
+              aria-label={`${mix.title} – ${t.mixtapes.listenOn}`}
+              key={mix.id}
+            >
               <div class="dj-section__mix-cover">
                 <img
                   src={mix.coverImage}
                   alt={`${mix.title} Cover`}
                   loading="lazy"
-                  width="1000"
-                  height="1000"
+                  width="400"
+                  height="400"
                 />
                 <div class="dj-section__mix-overlay">
                   <span class="dj-section__mix-duration">{mix.duration}</span>
@@ -49,26 +55,15 @@ const formatDate = (dateString: string) => {
                 <p class="dj-section__mix-date">{formatDate(mix.date)}</p>
                 <div class="dj-section__mix-genres">
                   {mix.genres.map((genre) => (
-                    <span class="dj-section__genre-tag" key={genre}>
-                      {genre}
-                    </span>
+                    <span class="dj-section__genre-tag" key={genre}>{genre}</span>
                   ))}
                 </div>
-                <a
-                  href={mix.embedUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="dj-section__mix-link"
-                >
-                  <span data-i18n="mixtapes.listenOn">{t.mixtapes.listenOn}</span> →
-                </a>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
     )}
   </div>
 </section>
-
 

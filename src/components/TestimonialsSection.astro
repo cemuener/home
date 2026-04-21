@@ -20,55 +20,66 @@ const djTestimonials = testimonials
       </p>
     </header>
 
-    <div class="testimonials-section__grid">
-      {djTestimonials.map((testimonial) => (
-        <article class="testimonial-card" key={testimonial.id}>
-          <div class="testimonial-card__header">
-            {testimonial.photo && (
-              <img
-                src={testimonial.photo}
-                alt={testimonial.name}
-                class="testimonial-card__photo"
-                loading="lazy"
-                width="60"
-                height="60"
-              />
-            )}
-            <div class="testimonial-card__meta">
-              <h3 class="testimonial-card__name">{testimonial.name}</h3>
-              {testimonial.role && (
-                <p class="testimonial-card__role">{testimonial.role}</p>
-              )}
-              <div class="testimonial-card__rating" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span class={`testimonial-card__star ${i < testimonial.rating ? 'testimonial-card__star--filled' : ''}`}>
-                    ★
-                  </span>
-                ))}
+    {djTestimonials.length > 0 ? (
+      <div class="testimonials-carousel" aria-label="Testimonials carousel">
+        <button class="testimonials-carousel__btn testimonials-carousel__btn--prev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="testimonials-carousel__track" id="testimonials-track">
+          {djTestimonials.map((testimonial, idx) => (
+            <article class="testimonial-card" data-index={idx}>
+              <div class="testimonial-card__header">
+                {testimonial.photo && (
+                  <img
+                    src={testimonial.photo}
+                    alt={testimonial.name}
+                    class="testimonial-card__photo"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                  />
+                )}
+                <div class="testimonial-card__meta">
+                  <h3 class="testimonial-card__name">{testimonial.name}</h3>
+                  {testimonial.role && (
+                    <p class="testimonial-card__role">{testimonial.role}</p>
+                  )}
+                  <div class="testimonial-card__rating" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <span class={`testimonial-card__star ${i < testimonial.rating ? 'testimonial-card__star--filled' : ''}`}>★</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <blockquote class="testimonial-card__quote">
-            <p>{testimonial.text}</p>
-          </blockquote>
+              <blockquote class="testimonial-card__quote">
+                <p>{testimonial.text}</p>
+              </blockquote>
 
-          <footer class="testimonial-card__footer">
-            <time class="testimonial-card__date" datetime={testimonial.date}>
-              {new Intl.DateTimeFormat('de-DE', {
-                year: 'numeric',
-                month: 'long'
-              }).format(new Date(testimonial.date))}
-            </time>
-            <span class="testimonial-card__service testimonial-card__service--{testimonial.service}">
-              <span data-i18n="testimonials.djService">{t.testimonials.djService}</span>
-            </span>
-          </footer>
-        </article>
-      ))}
-    </div>
+              <footer class="testimonial-card__footer">
+                <time class="testimonial-card__date" datetime={testimonial.date}>
+                  {new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: 'long' }).format(new Date(testimonial.date))}
+                </time>
+                <span class="testimonial-card__service testimonial-card__service--{testimonial.service}">
+                  <span data-i18n="testimonials.djService">{t.testimonials.djService}</span>
+                </span>
+              </footer>
+            </article>
+          ))}
+        </div>
 
-    {djTestimonials.length === 0 && (
+        <button class="testimonials-carousel__btn testimonials-carousel__btn--next" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <div class="testimonials-carousel__dots" id="testimonials-dots">
+          {djTestimonials.map((_, idx) => (
+            <button class={`testimonials-carousel__dot ${idx === 0 ? 'testimonials-carousel__dot--active' : ''}`} aria-label={`Go to testimonial ${idx + 1}`} data-dot={idx} />
+          ))}
+        </div>
+      </div>
+    ) : (
       <div class="testimonials-section__empty">
         <p>More testimonials coming soon!</p>
       </div>
@@ -76,3 +87,38 @@ const djTestimonials = testimonials
   </div>
 </section>
 
+<script>
+  const track = document.getElementById('testimonials-track');
+  const dotsContainer = document.getElementById('testimonials-dots');
+
+  if (track) {
+    const cards = Array.from(track.querySelectorAll<HTMLElement>('.testimonial-card'));
+    const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll<HTMLElement>('.testimonials-carousel__dot')) : [];
+    let current = 0;
+
+    const scrollTo = (idx: number) => {
+      current = Math.max(0, Math.min(idx, cards.length - 1));
+      cards[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      dots.forEach((d, i) => d.classList.toggle('testimonials-carousel__dot--active', i === current));
+    };
+
+    document.querySelector('.testimonials-carousel__btn--prev')?.addEventListener('click', () => scrollTo(current - 1));
+    document.querySelector('.testimonials-carousel__btn--next')?.addEventListener('click', () => scrollTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => scrollTo(i)));
+
+    // Update active dot on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = cards.indexOf(entry.target as HTMLElement);
+          if (idx !== -1) {
+            current = idx;
+            dots.forEach((d, i) => d.classList.toggle('testimonials-carousel__dot--active', i === idx));
+          }
+        }
+      });
+    }, { root: track, threshold: 0.6 });
+
+    cards.forEach(card => observer.observe(card));
+  }
+</script>
