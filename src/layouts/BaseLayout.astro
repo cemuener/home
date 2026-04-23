@@ -51,6 +51,7 @@ const structuredData = {
         caption: 'DJ Cem Üner at the decks'
       },
       sameAs: [
+        'https://www.instagram.com/cemuener/',
         'https://soundcloud.com/cemuener',
         'https://github.com/cuener',
         'https://linkedin.com/in/cemuener'
@@ -71,6 +72,18 @@ const structuredData = {
         '@type': 'PostalAddress',
         addressCountry: 'DE'
       }
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL.toString(),
+      name: title,
+      description: description,
+      isPartOf: { '@id': 'https://cemuener.de/#website' },
+      about: { '@id': 'https://cemuener.de/#person' },
+      mainEntity: { '@id': 'https://cemuener.de/#person' },
+      primaryImageOfPage: { '@id': 'https://cemuener.de/#primary-image' },
+      inLanguage: lang === 'en' ? 'en-US' : 'de-DE'
     },
     {
       '@type': 'WebSite',
@@ -128,7 +141,7 @@ const structuredData = {
 ---
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -155,8 +168,8 @@ const structuredData = {
   <meta property="og:image:height" content={String(ogImageHeight)} />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:alt" content={title} />
-  <meta property="og:locale" content="de_DE" />
-  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
+  <meta property="og:locale:alternate" content={lang === 'en' ? 'de_DE' : 'en_US'} />
   <meta property="og:site_name" content="DJ Cem Üner" />
 
   <!-- Twitter -->
