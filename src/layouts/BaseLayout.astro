@@ -32,6 +32,17 @@ const faviconPath = '/favicon.svg';
 // image_src link hint — used by some crawlers as a thumbnail signal
 const imageSrcURL = ogImageURL.toString();
 
+// Compute correct hreflang URLs from the actual page path
+// e.g. /de/impressum/ → /en/impressum/ and vice versa
+const pathname = Astro.url.pathname;
+const hasLangPrefix = /^\/(de|en)\//.test(pathname);
+const deHreflang = hasLangPrefix
+  ? new URL(pathname.replace(/^\/(de|en)\//, '/de/'), Astro.site).toString()
+  : new URL(`/de/${service}/`, Astro.site).toString();
+const enHreflang = hasLangPrefix
+  ? new URL(pathname.replace(/^\/(de|en)\//, '/en/'), Astro.site).toString()
+  : new URL(`/en/${service}/`, Astro.site).toString();
+
 // Structured Data (JSON-LD) for SEO and LLM discoverability
 const structuredData = {
   '@context': 'https://schema.org',
@@ -153,9 +164,9 @@ const structuredData = {
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Alternate Language Links for International SEO -->
-  <link rel="alternate" hreflang="de" href={`https://cemuener.de/de/${service}/`} />
-  <link rel="alternate" hreflang="en" href={`https://cemuener.de/en/${service}/`} />
-  <link rel="alternate" hreflang="x-default" href={`https://cemuener.de/de/${service}/`} />
+  <link rel="alternate" hreflang="de" href={deHreflang} />
+  <link rel="alternate" hreflang="en" href={enHreflang} />
+  <link rel="alternate" hreflang="x-default" href={deHreflang} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content={type} />
