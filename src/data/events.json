@@ -38,6 +38,16 @@
     "type": "club",
     "status": "past",
     "description": "Saturday House Fever"
+  },
+  {
+    "title": "Bar Night",
+    "date": "2026-05-23",
+    "time": "21:00-01:00",
+    "venue": "Terra Bar, Munich",
+    "type": "bar",
+    "status": "upcoming",
+    "description": "DJ Performance @ Terra Bar, Munich",
+    "url": "https://www.terra-bar.de/"
   }
 ]
 
