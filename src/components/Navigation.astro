@@ -1,7 +1,28 @@
 ---
 import { translations } from '../i18n/translations';
 
+export interface Props {
+  service?: 'dj' | 'developer';
+}
+
+const { service = 'dj' } = Astro.props;
 const t = translations;
+
+const djNavItems = [
+  { href: '#bio',          section: 'bio',          i18n: 'nav.bio',       label: t.de.nav.bio },
+  { href: '#mixtapes',     section: 'mixtapes',     i18n: 'nav.mixtapes',  label: t.de.nav.mixtapes },
+  { href: '#testimonials', section: 'testimonials', i18n: 'nav.references',label: t.de.nav.references },
+  { href: '#contact',      section: 'contact',      i18n: 'nav.contact',   label: t.de.nav.contact },
+];
+
+const devNavItems = [
+  { href: '#about',    section: 'about',    i18n: 'nav.about',    label: t.de.nav.about },
+  { href: '#skills',   section: 'skills',   i18n: 'nav.skills',   label: t.de.nav.skills },
+  { href: '#projects', section: 'projects', i18n: 'nav.projects', label: t.de.nav.projects },
+  { href: '#cv',       section: 'cv',       i18n: 'nav.cv',       label: t.de.nav.cv },
+];
+
+const navItems = service === 'developer' ? devNavItems : djNavItems;
 ---
 
 <nav class="navigation" id="main-nav">
@@ -11,26 +32,13 @@ const t = translations;
     </a>
 
     <ul class="navigation__menu" id="nav-menu">
-      <li class="navigation__item">
-        <a href="#bio" class="navigation__link" data-section="bio">
-          <span data-i18n="nav.bio">{t.de.nav.bio}</span>
-        </a>
-      </li>
-      <li class="navigation__item">
-        <a href="#mixtapes" class="navigation__link" data-section="mixtapes">
-          <span data-i18n="nav.mixtapes">{t.de.nav.mixtapes}</span>
-        </a>
-      </li>
-      <li class="navigation__item">
-        <a href="#testimonials" class="navigation__link" data-section="testimonials">
-          <span data-i18n="nav.references">{t.de.nav.references}</span>
-        </a>
-      </li>
-      <li class="navigation__item">
-        <a href="#contact" class="navigation__link" data-section="contact">
-          <span data-i18n="nav.contact">{t.de.nav.contact}</span>
-        </a>
-      </li>
+      {navItems.map(item => (
+        <li class="navigation__item">
+          <a href={item.href} class="navigation__link" data-section={item.section}>
+            <span data-i18n={item.i18n}>{item.label}</span>
+          </a>
+        </li>
+      ))}
       <li class="navigation__menu-lang" id="menu-lang">
         <button class="navigation__menu-lang-btn navigation__menu-lang-btn--active" data-lang="de" id="menu-lang-de">DE</button>
         <span class="navigation__menu-lang-divider">/</span>

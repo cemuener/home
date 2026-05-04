@@ -7,7 +7,12 @@ export const translations = {
       bio: 'Bio',
       mixtapes: 'Mixtapes',
       references: 'Referenzen',
-      contact: 'Kontakt'
+      contact: 'Kontakt',
+      // Developer page nav
+      about: 'Über mich',
+      skills: 'Tech Stack',
+      projects: 'Projekte',
+      cv: 'Lebenslauf'
     },
     
     // Hero Section
@@ -93,6 +98,33 @@ export const translations = {
       backToHome: 'Zurück zur Startseite'
     },
 
+    // Developer Portfolio Page
+    developer: {
+      title: 'Portfolio | Cem Üner',
+      metaDescription: 'Full-Stack Developer Portfolio von Cem Üner – TypeScript, React, Node.js, Astro.',
+      heroTitle: 'Portfolio',
+      heroSubtitle: 'Full-Stack Developer',
+      heroTagline: 'TypeScript • React • Node.js • Astro',
+      aboutTitle: 'Über mich',
+      aboutPara1: 'Ich entwickle moderne Webanwendungen mit einem starken Fokus auf Performance und Benutzerfreundlichkeit. Mit Erfahrung in TypeScript, React und Node.js baue ich skalierbare, wartbare Lösungen – von der Konzeption bis zur Produktion.',
+      aboutPara2: 'Als Full-Stack Developer verbinde ich technisches Know-how mit kreativem Denken. Wie beim DJ-Set zählt auch beim Code das perfekte Zusammenspiel aller Elemente – sauber strukturiert, präzise ausgeführt, mit einem guten Gespür für das Wesentliche.',
+      skillsTitle: 'Tech Stack',
+      projectsTitle: 'Projekte',
+      projectsSubtitle: 'Eine Auswahl meiner Entwicklungsarbeiten',
+      projectsEmpty: 'Projekte werden bald hinzugefügt.',
+      cvTitle: 'Lebenslauf',
+      cvSubtitle: 'Meinen vollständigen Werdegang als PDF herunterladen',
+      cvDownload: 'CV herunterladen',
+      cvNote: 'PDF • Englisch • 2026',
+      linksTitle: 'Weitere Kanäle',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      djServiceLink: 'DJ Services',
+      visitGithub: 'GitHub ansehen',
+      visitLinkedin: 'LinkedIn ansehen',
+      backToHome: 'Zurück zur Startseite'
+    },
+
     // Datenschutz Page
     datenschutz: {
       title: 'Datenschutzerklärung',
@@ -121,7 +153,12 @@ export const translations = {
       bio: 'Bio',
       mixtapes: 'Mixtapes',
       references: 'References',
-      contact: 'Contact'
+      contact: 'Contact',
+      // Developer page nav
+      about: 'About',
+      skills: 'Tech Stack',
+      projects: 'Projects',
+      cv: 'Resume'
     },
     
     // Hero Section
@@ -205,6 +242,33 @@ export const translations = {
       liabilityContent: 'The content of our pages has been created with the greatest care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7 paragraph 1 DDG in accordance with general laws. According to §§ 8 to 10 DDG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information according to general laws remain unaffected by this. However, liability in this regard is only possible from the point in time at which knowledge of a specific infringement of the law is obtained. If we become aware of any such legal violations, we will remove this content immediately.',
       liabilityLinksHeading: 'Liability for Links',
       liabilityLinks: 'Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal violations, we will remove such links immediately.',
+      backToHome: 'Back to Home'
+    },
+
+    // Developer Portfolio Page
+    developer: {
+      title: 'Portfolio | Cem Üner',
+      metaDescription: 'Full-Stack Developer Portfolio by Cem Üner – TypeScript, React, Node.js, Astro.',
+      heroTitle: 'Portfolio',
+      heroSubtitle: 'Full-Stack Developer',
+      heroTagline: 'TypeScript • React • Node.js • Astro',
+      aboutTitle: 'About Me',
+      aboutPara1: 'I build modern web applications with a strong focus on performance and user experience. With expertise in TypeScript, React, and Node.js, I create scalable, maintainable solutions – from concept to production.',
+      aboutPara2: 'As a full-stack developer, I combine technical knowledge with creative thinking. Good code – like a great DJ set – is about the perfect interplay of all elements: cleanly structured, precisely executed, with a sharp sense for what matters.',
+      skillsTitle: 'Tech Stack',
+      projectsTitle: 'Projects',
+      projectsSubtitle: 'A selection of my development work',
+      projectsEmpty: 'Projects coming soon.',
+      cvTitle: 'Resume',
+      cvSubtitle: 'Download my full CV as a PDF',
+      cvDownload: 'Download CV',
+      cvNote: 'PDF • English • 2026',
+      linksTitle: 'Find Me Online',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      djServiceLink: 'DJ Services',
+      visitGithub: 'View GitHub',
+      visitLinkedin: 'View LinkedIn',
       backToHome: 'Back to Home'
     },
 

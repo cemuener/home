@@ -4,34 +4,183 @@ import Navigation from '../../../components/Navigation.astro';
 import { translations } from '../../../i18n/translations';
 
 const t = translations.en;
+const d = t.developer;
 const lang = 'en';
 const service = 'developer';
+
+const skills = [
+  { name: 'TypeScript', icon: '🔷', category: 'Language' },
+  { name: 'JavaScript', icon: '🟡', category: 'Language' },
+  { name: 'React', icon: '⚛️', category: 'Frontend' },
+  { name: 'Astro', icon: '🚀', category: 'Frontend' },
+  { name: 'HTML / CSS', icon: '🎨', category: 'Frontend' },
+  { name: 'SCSS / Sass', icon: '💅', category: 'Frontend' },
+  { name: 'Node.js', icon: '🟢', category: 'Backend' },
+  { name: 'REST APIs', icon: '🔌', category: 'Backend' },
+  { name: 'Git & GitHub', icon: '🐙', category: 'Tools' },
+  { name: 'Figma', icon: '🖌️', category: 'Tools' },
+  { name: 'Docker', icon: '🐳', category: 'Tools' },
+  { name: 'Linux / CLI', icon: '🖥️', category: 'Tools' },
+];
 ---
 
-<BaseLayout title="Portfolio | Cem Üner" description="Full-Stack Developer Portfolio" lang={lang} service={service}>
-  <Navigation />
+<BaseLayout
+  title={d.title}
+  description={d.metaDescription}
+  lang={lang}
+  service={service}
+>
+  <Navigation service="developer" />
 
-  <main class="portfolio-page">
-    <div class="portfolio-page__container">
+  <main class="dev-portfolio">
+    <div class="dev-portfolio__container">
+
+      <!-- Hero -->
       <section class="portfolio-hero">
-        <h1 class="portfolio-hero__title text--gradient-dev">Portfolio</h1>
-        <h2 class="portfolio-hero__subtitle">Full-Stack Developer</h2>
-        <p class="portfolio-hero__tagline">TypeScript • React • Node.js • Astro</p>
+        <div class="portfolio-hero__avatar">
+          <img
+            src="/assets/images/developer/profile_professional.jpg"
+            alt="Cem Üner – Full-Stack Developer"
+            class="portfolio-hero__avatar-img"
+            width="160"
+            height="160"
+            loading="eager"
+          />
+        </div>
+        <div class="portfolio-hero__badge">👨‍💻 Full-Stack Developer</div>
+        <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
+        <p class="portfolio-hero__tagline">{d.heroTagline}</p>
+        <div class="portfolio-hero__ctas">
+          <a href="#cv" class="btn btn--primary">
+            <span>📄</span> {d.cvDownload}
+          </a>
+          <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <span>🐙</span> GitHub
+          </a>
+        </div>
       </section>
 
-      <section class="portfolio-placeholder">
-        <div class="portfolio-placeholder__content">
-          <h2>🚧 Under Construction</h2>
-          <p>This page is currently being built.</p>
-          <p>My development projects and technical skills will be showcased here soon.</p>
-
-          <div class="portfolio-placeholder__links">
-            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--primary">GitHub</a>
-            <a href="https://linkedin.com/in/cemuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">LinkedIn</a>
-            <a href="/en/dj/" class="btn btn--secondary">DJ Services</a>
+      <!-- About -->
+      <section class="portfolio-about" id="about">
+        <div class="portfolio-about__content">
+          <div class="portfolio-about__text">
+            <h2 class="section-title">{d.aboutTitle}</h2>
+            <p>{d.aboutPara1}</p>
+            <p>{d.aboutPara2}</p>
+          </div>
+          <div class="portfolio-about__meta">
+            <div class="meta-card">
+              <span class="meta-card__icon">📍</span>
+              <span>Munich, Germany</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-card__icon">💼</span>
+              <span>Full-Stack Developer</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-card__icon">🎓</span>
+              <span>M.Sc Human-Computer-Interaction</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-card__icon">🌍</span>
+              <span>German, English, Turkish</span>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- Tech Stack -->
+      <section class="portfolio-skills" id="skills">
+        <h2 class="section-title">{d.skillsTitle}</h2>
+        <div class="skills-grid">
+          {skills.map(skill => (
+            <div class="skill-card">
+              <span class="skill-card__icon">{skill.icon}</span>
+              <span class="skill-card__name">{skill.name}</span>
+              <span class="skill-card__category">{skill.category}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="portfolio-projects" id="projects">
+        <h2 class="section-title">{d.projectsTitle}</h2>
+        <p class="section-subtitle">{d.projectsSubtitle}</p>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-card__header">
+              <span class="project-card__emoji">🌐</span>
+              <div class="project-card__tags">
+                <span class="tag">Astro</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">SCSS</span>
+              </div>
+            </div>
+            <h3 class="project-card__title">cemuener.de</h3>
+            <p class="project-card__desc">
+              My personal portfolio website – built entirely from scratch with Astro, TypeScript, and SCSS.
+              Bilingual (DE/EN), SEO-optimised, statically generated, and hosted on GitHub Pages.
+            </p>
+            <div class="project-card__links">
+              <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">
+                🔗 View Live
+              </a>
+              <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost">
+                🐙 GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV Download -->
+      <section class="portfolio-cv" id="cv">
+        <div class="cv-card">
+          <div class="cv-card__icon">📄</div>
+          <div class="cv-card__content">
+            <h2>{d.cvTitle}</h2>
+            <p>{d.cvSubtitle}</p>
+            <span class="cv-card__note">{d.cvNote}</span>
+          </div>
+          <a
+            href="/assets/CV_Cem_Uener_2026_EN_v2.pdf"
+            download="CV_Cem_Uener_2026.pdf"
+            class="btn btn--primary btn--lg"
+          >
+            ⬇️ {d.cvDownload}
+          </a>
+        </div>
+      </section>
+
+      <!-- Links -->
+      <section class="portfolio-links">
+        <h2 class="section-title">{d.linksTitle}</h2>
+        <div class="links-grid">
+          <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="link-card__icon">🐙</span>
+            <div>
+              <span class="link-card__title">GitHub</span>
+              <span class="link-card__desc">github.com/cuener</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/cemuener" target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="link-card__icon">💼</span>
+            <div>
+              <span class="link-card__title">LinkedIn</span>
+              <span class="link-card__desc">linkedin.com/in/cemuener</span>
+            </div>
+          </a>
+          <a href="/en/dj/" class="link-card">
+            <span class="link-card__icon">🎵</span>
+            <div>
+              <span class="link-card__title">{d.djServiceLink}</span>
+              <span class="link-card__desc">DJ Cem Üner</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
     </div>
   </main>
 </BaseLayout>
@@ -40,7 +189,7 @@ const service = 'developer';
   @use '../../../styles/variables' as *;
   @use '../../../styles/mixins' as *;
 
-  .portfolio-page {
+  .dev-portfolio {
     min-height: 100vh;
     padding-top: 80px;
     background: $bg-dark;
@@ -48,74 +197,370 @@ const service = 'developer';
 
     @include element('container') {
       @include container;
-      padding: $gap-xl 2rem;
+      padding-top: $gap-xl;
+      padding-bottom: $gap-xl;
+      display: flex;
+      flex-direction: column;
+      gap: $gap-xl;
     }
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    margin-bottom: $gap-sm;
+    background: $dev-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    color: $text-secondary;
+    margin-bottom: $gap-lg;
+    font-size: 1.1rem;
   }
 
   .portfolio-hero {
     text-align: center;
-    padding: $gap-xl 0;
+    padding: $gap-lg 0;
 
-    @include element('title') {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      margin-bottom: $gap-sm;
-    }
-
-    @include element('subtitle') {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      color: $text-secondary;
+    @include element('avatar') {
+      display: flex;
+      justify-content: center;
       margin-bottom: $gap-md;
     }
 
+    @include element('avatar-img') {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba($dev-primary, 0.5);
+      box-shadow: 0 0 0 6px rgba($dev-primary, 0.1), $shadow-lg;
+    }
+
+    @include element('badge') {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: rgba($dev-primary, 0.15);
+      border: 1px solid rgba($dev-primary, 0.4);
+      border-radius: $radius-xl;
+      font-size: 0.9rem;
+      color: $dev-secondary;
+      margin-bottom: $gap-md;
+      letter-spacing: 0.05em;
+    }
+
+    @include element('title') {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: $gap-sm;
+      line-height: 1.1;
+    }
+
     @include element('tagline') {
-      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: $text-secondary;
-      font-family: monospace;
+      font-family: 'Courier New', monospace;
+      margin-bottom: $gap-lg;
+      letter-spacing: 0.04em;
+    }
+
+    @include element('ctas') {
+      display: flex;
+      gap: $gap-sm;
+      justify-content: center;
+      flex-wrap: wrap;
     }
   }
 
-  .portfolio-placeholder {
-    max-width: 600px;
-    margin: $gap-xl auto;
-    padding: $gap-xl;
-    background: rgba($dev-primary, 0.1);
-    border: 2px solid $dev-primary;
-    border-radius: $radius-lg;
-    text-align: center;
-
+  .portfolio-about {
     @include element('content') {
-      h2 {
-        font-size: 2rem;
-        margin-bottom: $gap-md;
-      }
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $gap-lg;
 
+      @include above($tablet) {
+        grid-template-columns: 1.5fr 1fr;
+        align-items: start;
+      }
+    }
+
+    @include element('text') {
       p {
         color: $text-secondary;
+        line-height: 1.8;
         margin-bottom: $gap-md;
-        line-height: 1.6;
+        font-size: 1.05rem;
+        &:last-child { margin-bottom: 0; }
       }
+    }
+
+    @include element('meta') {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-sm;
+    }
+  }
+
+  .meta-card {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+    padding: 1rem 1.25rem;
+    background: rgba($dev-primary, 0.08);
+    border: 1px solid rgba($dev-primary, 0.2);
+    border-radius: $radius-md;
+    font-size: 0.95rem;
+    color: $text-secondary;
+    @include smooth-transition;
+
+    &:hover {
+      background: rgba($dev-primary, 0.15);
+      color: $text-primary;
+    }
+
+    @include element('icon') { font-size: 1.2rem; }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: $gap-sm;
+
+    @include above($tablet) {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+  }
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 1rem;
+    background: rgba($dev-primary, 0.08);
+    border: 1px solid rgba($dev-primary, 0.2);
+    border-radius: $radius-lg;
+    text-align: center;
+    @include smooth-transition;
+
+    &:hover {
+      background: rgba($dev-primary, 0.18);
+      border-color: rgba($dev-secondary, 0.5);
+      transform: translateY(-3px);
+      box-shadow: $shadow-md;
+    }
+
+    @include element('icon') { font-size: 1.75rem; }
+    @include element('name') { font-weight: 600; font-size: 0.95rem; color: $text-primary; }
+    @include element('category') {
+      font-size: 0.75rem;
+      color: $dev-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $gap-md;
+
+    @include above($tablet) { grid-template-columns: repeat(2, 1fr); }
+    @include above($desktop) { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .project-card {
+    background: rgba($dev-primary, 0.06);
+    border: 1px solid rgba($dev-primary, 0.2);
+    border-radius: $radius-lg;
+    padding: $gap-md;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-sm;
+    @include smooth-transition;
+
+    &:hover {
+      background: rgba($dev-primary, 0.12);
+      border-color: rgba($dev-secondary, 0.4);
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+
+    @include element('header') {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    @include element('emoji') { font-size: 2rem; }
+
+    @include element('tags') {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    @include element('title') {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: $text-primary;
+      margin: 0;
+    }
+
+    @include element('desc') {
+      color: $text-secondary;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      flex: 1;
     }
 
     @include element('links') {
       display: flex;
       gap: $gap-sm;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: $gap-lg;
+      margin-top: auto;
     }
   }
 
-  .btn {
+  .tag {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba($dev-secondary, 0.15);
+    color: $dev-secondary;
+    border-radius: $radius-sm;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
+    border-radius: $radius-md;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba($dev-secondary, 0.15);
+    color: $dev-secondary;
+    @include smooth-transition;
+
+    &:hover {
+      background: rgba($dev-secondary, 0.3);
+      transform: translateY(-1px);
+    }
+
+    @include modifier('ghost') {
+      background: transparent;
+      border: 1px solid rgba($dev-primary, 0.3);
+      color: $text-secondary;
+
+      &:hover {
+        border-color: $dev-primary;
+        color: $text-primary;
+      }
+    }
+  }
+
+  .portfolio-cv {
+    scroll-margin-top: 100px;
+  }
+
+  .cv-card {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+    padding: $gap-lg;
+    background: rgba($dev-primary, 0.1);
+    border: 2px solid rgba($dev-primary, 0.4);
+    border-radius: $radius-lg;
+    flex-wrap: wrap;
+
+    @include element('icon') { font-size: 3.5rem; flex-shrink: 0; }
+
+    @include element('content') {
+      flex: 1;
+      min-width: 200px;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: $text-primary;
+      }
+
+      p {
+        color: $text-secondary;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    @include element('note') {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba($dev-secondary, 0.1);
+      color: $dev-secondary;
+      border-radius: $radius-sm;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $gap-sm;
+
+    @include above($tablet) { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+    padding: 1.25rem 1.5rem;
+    background: rgba($dev-primary, 0.08);
+    border: 1px solid rgba($dev-primary, 0.2);
+    border-radius: $radius-lg;
+    text-decoration: none;
+    @include smooth-transition;
+
+    &:hover {
+      background: rgba($dev-primary, 0.18);
+      border-color: rgba($dev-secondary, 0.5);
+      transform: translateY(-3px);
+      box-shadow: $shadow-md;
+    }
+
+    @include element('icon') { font-size: 1.75rem; flex-shrink: 0; }
+    @include element('title') { font-weight: 700; color: $text-primary; display: block; font-size: 1rem; }
+    @include element('desc') { color: $text-secondary; font-size: 0.85rem; display: block; }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
     border-radius: $radius-md;
     font-weight: 600;
-    @include smooth-transition;
+    font-size: 1rem;
     text-decoration: none;
+    @include smooth-transition;
+    cursor: pointer;
 
     @include modifier('primary') {
       background: $dev-gradient;
       color: white;
+      border: none;
 
       &:hover {
         transform: translateY(-2px);
@@ -124,7 +569,8 @@ const service = 'developer';
     }
 
     @include modifier('secondary') {
-      border: 2px solid $border;
+      background: transparent;
+      border: 2px solid rgba($dev-primary, 0.4);
       color: $text-primary;
 
       &:hover {
@@ -132,6 +578,11 @@ const service = 'developer';
         color: $dev-primary;
         transform: translateY(-2px);
       }
+    }
+
+    @include modifier('lg') {
+      padding: 1rem 2rem;
+      font-size: 1.05rem;
     }
   }
 </style>
