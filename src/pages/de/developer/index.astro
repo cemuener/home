@@ -9,19 +9,24 @@ const d = t.developer;
 const lang = 'de';
 const service = 'developer';
 
+// level: 3 = Expert · 2 = Proficient · 1 = Familiar
 const skills = [
-  { name: 'TypeScript', icon: '🔷', category: 'Language' },
-  { name: 'JavaScript', icon: '🟡', category: 'Language' },
-  { name: 'React', icon: '⚛️', category: 'Frontend' },
-  { name: 'Astro', icon: '🚀', category: 'Frontend' },
-  { name: 'HTML / CSS', icon: '🎨', category: 'Frontend' },
-  { name: 'Node.js', icon: '🟢', category: 'Backend' },
-  { name: 'REST APIs', icon: '🔌', category: 'Backend' },
-  { name: 'Git & GitHub', icon: '🐙', category: 'Tools' },
-  { name: 'Figma', icon: '🖌️', category: 'Tools' },
-  { name: 'Docker', icon: '🐳', category: 'Tools' },
-  { name: 'Linux / CLI', icon: '🖥️', category: 'Tools' },
+  { name: 'TypeScript', icon: '🔷', category: 'Language', level: 3 },
+  { name: 'JavaScript', icon: '🟡', category: 'Language', level: 3 },
+  { name: 'React', icon: '⚛️', category: 'Frontend', level: 3 },
+  { name: 'Astro', icon: '🚀', category: 'Frontend', level: 3 },
+  { name: 'HTML / CSS', icon: '🎨', category: 'Frontend', level: 3 },
+  { name: 'SCSS / Sass', icon: '💅', category: 'Frontend', level: 2 },
+  { name: 'Node.js', icon: '🟢', category: 'Backend', level: 2 },
+  { name: 'REST APIs', icon: '🔌', category: 'Backend', level: 2 },
+  { name: 'Git & GitHub', icon: '🐙', category: 'Tools', level: 3 },
+  { name: 'Figma', icon: '🖌️', category: 'Tools', level: 2 },
+  { name: 'Docker', icon: '🐳', category: 'Tools', level: 1 },
+  { name: 'Linux / CLI', icon: '🖥️', category: 'Tools', level: 2 },
 ];
+
+const skillLabel = (level: number) =>
+  level === 3 ? d.skillExpert : level === 2 ? d.skillProficient : d.skillFamiliar;
 ---
 
 <BaseLayout
@@ -46,17 +51,21 @@ const skills = [
             width="160"
             height="160"
             loading="eager"
+            fetchpriority="high"
           />
         </div>
-        <div class="portfolio-hero__badge">👨‍💻 Full-Stack Developer</div>
+        <div class="portfolio-hero__badge">{d.heroBadge}</div>
         <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
         <p class="portfolio-hero__tagline">{d.heroTagline}</p>
         <div class="portfolio-hero__ctas">
-          <a href="#cv" class="btn btn--primary">
-            <span>📄</span> {d.cvDownload}
+          <a href="#cv" class="btn btn--primary" id="hero-cv-btn">
+            <span>📄</span> {d.cvView}
           </a>
           <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
             <span>🐙</span> GitHub
+          </a>
+          <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline">
+            <span>✉️</span> {d.contactCta}
           </a>
         </div>
       </section>
@@ -99,6 +108,11 @@ const skills = [
               <span class="skill-card__icon">{skill.icon}</span>
               <span class="skill-card__name">{skill.name}</span>
               <span class="skill-card__category">{skill.category}</span>
+              <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
+                {[1,2,3].map(dot => (
+                  <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -109,6 +123,7 @@ const skills = [
         <h2 class="section-title">{d.projectsTitle}</h2>
         <p class="section-subtitle">{d.projectsSubtitle}</p>
         <div class="projects-grid">
+          <!-- Projekt 1 -->
           <div class="project-card">
             <div class="project-card__header">
               <span class="project-card__emoji">🌐</span>
@@ -119,10 +134,7 @@ const skills = [
               </div>
             </div>
             <h3 class="project-card__title">cemuener.de</h3>
-            <p class="project-card__desc">
-              Meine persönliche Portfolio-Website – komplett selbst entwickelt mit Astro, TypeScript und SCSS.
-              Mehrsprachig (DE/EN), SEO-optimiert, statisch generiert und auf GitHub Pages gehostet.
-            </p>
+            <p class="project-card__desc">{d.project1Desc}</p>
             <div class="project-card__links">
               <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">
                 🔗 Live ansehen
@@ -132,25 +144,95 @@ const skills = [
               </a>
             </div>
           </div>
+          <!-- Projekt 2 -->
+          <div class="project-card">
+            <div class="project-card__header">
+              <span class="project-card__emoji">🧪</span>
+              <div class="project-card__tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Research</span>
+              </div>
+            </div>
+            <h3 class="project-card__title">{d.project2Title}</h3>
+            <p class="project-card__desc">{d.project2Desc}</p>
+            <div class="project-card__links">
+              <span class="project-link project-link--muted">🔒 Privat / Akademisch</span>
+            </div>
+          </div>
+          <!-- Projekt 3 -->
+          <div class="project-card">
+            <div class="project-card__header">
+              <span class="project-card__emoji">🎛️</span>
+              <div class="project-card__tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">React</span>
+                <span class="tag">REST API</span>
+              </div>
+            </div>
+            <h3 class="project-card__title">{d.project3Title}</h3>
+            <p class="project-card__desc">{d.project3Desc}</p>
+            <div class="project-card__links">
+              <span class="project-link project-link--muted">🚧 In Entwicklung</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- CV Download -->
-      <section class="portfolio-cv" id="cv">
-        <div class="cv-card">
-          <div class="cv-card__icon">📄</div>
-          <div class="cv-card__content">
-            <h2>{d.cvTitle}</h2>
-            <p>{d.cvSubtitle}</p>
-            <span class="cv-card__note">{d.cvNote}</span>
+      <!-- Aktueller Fokus -->
+      <section class="portfolio-focus">
+        <div class="focus-card">
+          <div class="focus-card__icon">🎯</div>
+          <div class="focus-card__content">
+            <h2>{d.focusTitle}</h2>
+            <p>{d.focusPara}</p>
           </div>
-          <a
-            href="/assets/CV_Cem_Uener_2026_EN_v2.pdf"
-            download="CV_Cem_Uener_2026.pdf"
-            class="btn btn--primary btn--lg"
-          >
-            ⬇️ {d.cvDownload}
-          </a>
+        </div>
+      </section>
+
+      <!-- CV Viewer -->
+      <section class="portfolio-cv" id="cv">
+        <div class="cv-viewer">
+          <div class="cv-viewer__header">
+            <div class="cv-viewer__title">
+              <span>📄</span>
+              <div>
+                <h2>{d.cvTitle}</h2>
+                <span class="cv-viewer__note">{d.cvNote}</span>
+              </div>
+            </div>
+            <div class="cv-viewer__actions">
+              <button
+                id="cv-toggle-btn"
+                class="btn btn--primary"
+                type="button"
+                data-open={d.cvView}
+                data-close={d.cvClose}
+              >
+                <span id="cv-toggle-icon">👁️</span>
+                <span id="cv-toggle-text">{d.cvView}</span>
+              </button>
+              <a
+                href="/assets/cv-latest.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn--secondary btn--sm"
+              >
+                ↗ {d.cvOpenTab}
+              </a>
+            </div>
+          </div>
+          <div class="cv-viewer__body" id="cv-body">
+            <div class="cv-viewer__frame-wrap">
+              <iframe
+                data-src="/assets/cv-latest.pdf#toolbar=0&navpanes=0"
+                class="cv-viewer__iframe"
+                title="CV Cem Üner"
+              >
+                <p>{d.cvFallback} <a href="/assets/cv-latest.pdf" download="CV_Cem_Uener.pdf">{d.cvDownload}</a>.</p>
+              </iframe>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -214,6 +296,12 @@ const skills = [
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @media (forced-colors: active) {
+      -webkit-text-fill-color: unset;
+      background: none;
+      color: ButtonText;
+    }
   }
 
   .section-subtitle {
@@ -225,7 +313,27 @@ const skills = [
   // ── Hero ──────────────────────────────
   .portfolio-hero {
     text-align: center;
-    padding: $gap-lg 0;
+    padding: $gap-xl 0 $gap-lg;
+    position: relative;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    background: rgba($dev-primary, 0.04);
+    border: 1px solid rgba($dev-primary, 0.1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba($dev-primary, 0.2) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    & > * {
+      position: relative;
+      z-index: 1;
+    }
 
     @include element('avatar') {
       display: flex;
@@ -366,6 +474,27 @@ const skills = [
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
+    @include element('level') {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      margin-top: 2px;
+    }
+  }
+
+  .skill-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba($dev-primary, 0.15);
+    border: 1px solid rgba($dev-primary, 0.35);
+
+    &--active {
+      background: $dev-secondary;
+      border-color: $dev-secondary;
+      box-shadow: 0 0 4px rgba($dev-secondary, 0.5);
+    }
   }
 
   // ── Projects ──────────────────────────
@@ -472,6 +601,15 @@ const skills = [
         color: $text-primary;
       }
     }
+
+    @include modifier('muted') {
+      background: transparent;
+      border: 1px solid rgba($dev-primary, 0.15);
+      color: rgba($text-secondary, 0.6);
+      cursor: default;
+      pointer-events: none;
+      font-style: italic;
+    }
   }
 
   // ── CV Download ───────────────────────
@@ -479,46 +617,112 @@ const skills = [
     scroll-margin-top: 100px;
   }
 
-  .cv-card {
-    display: flex;
-    align-items: center;
-    gap: $gap-md;
-    padding: $gap-lg;
-    background: rgba($dev-primary, 0.1);
-    border: 2px solid rgba($dev-primary, 0.4);
+  .cv-viewer {
+    border: 1px solid rgba($dev-primary, 0.3);
     border-radius: $radius-lg;
-    flex-wrap: wrap;
+    overflow: hidden;
+    background: rgba($dev-primary, 0.06);
 
-    @include element('icon') { font-size: 3.5rem; flex-shrink: 0; }
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: $gap-sm;
+      padding: $gap-md $gap-lg;
+      background: rgba($dev-primary, 0.08);
+    }
 
-    @include element('content') {
-      flex: 1;
-      min-width: 200px;
+    &__title {
+      display: flex;
+      align-items: center;
+      gap: $gap-sm;
+
+      span:first-child { font-size: 1.75rem; }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 700;
-        margin-bottom: 0.4rem;
         color: $text-primary;
-      }
-
-      p {
-        color: $text-secondary;
-        margin-bottom: 0.5rem;
+        margin: 0 0 0.2rem;
       }
     }
 
-    @include element('note') {
+    &__note {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.6rem;
       background: rgba($dev-secondary, 0.1);
       color: $dev-secondary;
       border-radius: $radius-sm;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.04em;
     }
+
+    &__actions {
+      display: flex;
+      gap: $gap-sm;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    &__body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &.is-open {
+        grid-template-rows: 1fr;
+      }
+    }
+
+    &__frame-wrap {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    &__iframe {
+      width: 100%;
+      height: 80vh;
+      min-height: 480px;
+      border: none;
+      display: block;
+      background: #fff;
+    }
   }
+
+  .portfolio-focus {
+    .focus-card {
+      display: flex;
+      align-items: flex-start;
+      gap: $gap-md;
+      padding: $gap-md $gap-lg;
+      background: rgba($dev-primary, 0.07);
+      border: 1px solid rgba($dev-secondary, 0.3);
+      border-left: 4px solid $dev-secondary;
+      border-radius: $radius-lg;
+
+      &__icon { font-size: 1.75rem; flex-shrink: 0; padding-top: 2px; }
+
+      &__content {
+        h2 {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: $dev-secondary;
+          margin-bottom: 0.4rem;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        p {
+          color: $text-secondary;
+          line-height: 1.7;
+          font-size: 0.975rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+
 
   // ── Links ─────────────────────────────
   .links-grid {
@@ -588,9 +792,67 @@ const skills = [
       }
     }
 
+    @include modifier('outline') {
+      background: transparent;
+      border: 2px solid rgba($dev-secondary, 0.5);
+      color: $dev-secondary;
+
+      &:hover {
+        background: rgba($dev-secondary, 0.1);
+        border-color: $dev-secondary;
+        transform: translateY(-2px);
+      }
+    }
+
     @include modifier('lg') {
       padding: 1rem 2rem;
       font-size: 1.05rem;
     }
+
+    @include modifier('sm') {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
   }
 </style>
+
+<script>
+  const body = document.getElementById('cv-body') as HTMLElement;
+  const toggleBtn = document.getElementById('cv-toggle-btn') as HTMLButtonElement;
+  const toggleText = document.getElementById('cv-toggle-text') as HTMLElement;
+  const toggleIcon = document.getElementById('cv-toggle-icon') as HTMLElement;
+  const iframe = document.querySelector('.cv-viewer__iframe') as HTMLIFrameElement;
+
+  const OPEN_LABEL = toggleBtn?.dataset.open ?? 'Lebenslauf ansehen';
+  const CLOSE_LABEL = toggleBtn?.dataset.close ?? 'Schließen';
+  let loaded = false;
+
+  function openViewer() {
+    if (!loaded && iframe?.dataset.src) {
+      iframe.src = iframe.dataset.src;
+      loaded = true;
+    }
+    body.classList.add('is-open');
+    toggleIcon.textContent = '✕';
+    toggleText.textContent = CLOSE_LABEL;
+    document.getElementById('cv')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function toggleViewer() {
+    if (body.classList.contains('is-open')) {
+      body.classList.remove('is-open');
+      toggleIcon.textContent = '👁️';
+      toggleText.textContent = OPEN_LABEL;
+    } else {
+      openViewer();
+    }
+  }
+
+  toggleBtn?.addEventListener('click', toggleViewer);
+
+  document.getElementById('hero-cv-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openViewer();
+  });
+</script>
+
