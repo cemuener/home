@@ -43,57 +43,61 @@ const skillLabel = (level: number) =>
 
       <!-- Hero -->
       <section class="portfolio-hero">
-        <div class="portfolio-hero__avatar">
-          <img
-            src="/assets/images/developer/profile_professional.jpg"
-            alt="Cem Üner – Full-Stack Developer"
-            class="portfolio-hero__avatar-img"
-            width="160"
-            height="160"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <div class="portfolio-hero__badge">{d.heroBadge}</div>
-        <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
-        <p class="portfolio-hero__tagline">{d.heroTagline}</p>
-        <div class="portfolio-hero__ctas">
-          <a href="#cv" class="btn btn--primary" id="hero-cv-btn">
-            <span>📄</span> {d.cvView}
-          </a>
-          <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-            <span>🐙</span> GitHub
-          </a>
-          <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline">
-            <span>✉️</span> {d.contactCta}
-          </a>
+        <div class="dev-section-inner">
+          <div class="portfolio-hero__avatar">
+            <img
+              src="/assets/images/developer/profile_professional.jpg"
+              alt="Cem Üner – Full-Stack Developer"
+              class="portfolio-hero__avatar-img"
+              width="160"
+              height="160"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="portfolio-hero__badge">{d.heroBadge}</div>
+          <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
+          <p class="portfolio-hero__tagline">{d.heroTagline}</p>
+          <div class="portfolio-hero__ctas">
+            <a href="#cv" class="btn btn--primary" id="hero-cv-btn">
+              <span>📄</span> {d.cvView}
+            </a>
+            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+              <span>🐙</span> GitHub
+            </a>
+            <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline">
+              <span>✉️</span> {d.contactCta}
+            </a>
+          </div>
         </div>
       </section>
 
       <!-- About -->
       <section class="portfolio-about" id="about">
-        <div class="portfolio-about__content">
-          <div class="portfolio-about__text">
-            <h2 class="section-title">{d.aboutTitle}</h2>
-            <p>{d.aboutPara1}</p>
-            <p>{d.aboutPara2}</p>
-          </div>
-          <div class="portfolio-about__meta">
-            <div class="meta-card">
-              <span class="meta-card__icon">📍</span>
-              <span>Munich, Germany</span>
+        <div class="dev-section-inner">
+          <div class="portfolio-about__content">
+            <div class="portfolio-about__text">
+              <h2 class="section-title">{d.aboutTitle}</h2>
+              <p>{d.aboutPara1}</p>
+              <p>{d.aboutPara2}</p>
             </div>
-            <div class="meta-card">
-              <span class="meta-card__icon">💼</span>
-              <span>Full-Stack Developer</span>
-            </div>
-            <div class="meta-card">
-              <span class="meta-card__icon">🎓</span>
-              <span>M.Sc Human-Computer-Interaction</span>
-            </div>
-            <div class="meta-card">
-              <span class="meta-card__icon">🌍</span>
-              <span>German, English, Turkish</span>
+            <div class="portfolio-about__meta">
+              <div class="meta-card">
+                <span class="meta-card__icon">📍</span>
+                <span>Munich, Germany</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-card__icon">💼</span>
+                <span>Full-Stack Developer</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-card__icon">🎓</span>
+                <span>M.Sc Human-Computer-Interaction</span>
+              </div>
+              <div class="meta-card">
+                <span class="meta-card__icon">🌍</span>
+                <span>German, English, Turkish</span>
+              </div>
             </div>
           </div>
         </div>
@@ -101,79 +105,79 @@ const skillLabel = (level: number) =>
 
       <!-- Tech Stack -->
       <section class="portfolio-skills" id="skills">
-        <h2 class="section-title">{d.skillsTitle}</h2>
-        <div class="skills-grid">
-          {skills.map(skill => (
-            <div class="skill-card">
-              <span class="skill-card__icon">{skill.icon}</span>
-              <span class="skill-card__name">{skill.name}</span>
-              <span class="skill-card__category">{skill.category}</span>
-              <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
-                {[1,2,3].map(dot => (
-                  <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
-                ))}
+        <div class="dev-section-inner">
+          <h2 class="section-title">{d.skillsTitle}</h2>
+          <div class="skills-grid">
+            {skills.map(skill => (
+              <div class="skill-card">
+                <span class="skill-card__icon">{skill.icon}</span>
+                <span class="skill-card__name">{skill.name}</span>
+                <span class="skill-card__category">{skill.category}</span>
+                <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
+                  {[1,2,3].map(dot => (
+                    <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       <!-- Projects -->
       <section class="portfolio-projects" id="projects">
-        <h2 class="section-title">{d.projectsTitle}</h2>
-        <p class="section-subtitle">{d.projectsSubtitle}</p>
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <div class="project-card__header">
-              <span class="project-card__emoji">🌐</span>
-              <div class="project-card__tags">
-                <span class="tag">Astro</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">SCSS</span>
+        <div class="dev-section-inner">
+          <h2 class="section-title">{d.projectsTitle}</h2>
+          <p class="section-subtitle">{d.projectsSubtitle}</p>
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="project-card__header">
+                <span class="project-card__emoji">🌐</span>
+                <div class="project-card__tags">
+                  <span class="tag">Astro</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">SCSS</span>
+                </div>
+              </div>
+              <h3 class="project-card__title">cemuener.de</h3>
+              <p class="project-card__desc">{d.project1Desc}</p>
+              <div class="project-card__links">
+                <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">🔗 View Live</a>
+                <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost">🐙 GitHub</a>
               </div>
             </div>
-            <h3 class="project-card__title">cemuener.de</h3>
-            <p class="project-card__desc">{d.project1Desc}</p>
-            <div class="project-card__links">
-              <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">
-                🔗 View Live
-              </a>
-              <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost">
-                🐙 GitHub
-              </a>
-            </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="project-card__header">
-              <span class="project-card__emoji">🧪</span>
-              <div class="project-card__tags">
-                <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Research</span>
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-card__header">
+                <span class="project-card__emoji">🧪</span>
+                <div class="project-card__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Research</span>
+                </div>
+              </div>
+              <h3 class="project-card__title">{d.project2Title}</h3>
+              <p class="project-card__desc">{d.project2Desc}</p>
+              <div class="project-card__links">
+                <span class="project-link project-link--muted">🔒 Private / Academic</span>
               </div>
             </div>
-            <h3 class="project-card__title">{d.project2Title}</h3>
-            <p class="project-card__desc">{d.project2Desc}</p>
-            <div class="project-card__links">
-              <span class="project-link project-link--muted">🔒 Private / Academic</span>
-            </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="project-card">
-            <div class="project-card__header">
-              <span class="project-card__emoji">🎛️</span>
-              <div class="project-card__tags">
-                <span class="tag">Node.js</span>
-                <span class="tag">React</span>
-                <span class="tag">REST API</span>
+            <!-- Project 3 -->
+            <div class="project-card">
+              <div class="project-card__header">
+                <span class="project-card__emoji">🎛️</span>
+                <div class="project-card__tags">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">React</span>
+                  <span class="tag">REST API</span>
+                </div>
               </div>
-            </div>
-            <h3 class="project-card__title">{d.project3Title}</h3>
-            <p class="project-card__desc">{d.project3Desc}</p>
-            <div class="project-card__links">
-              <span class="project-link project-link--muted">🚧 In Progress</span>
+              <h3 class="project-card__title">{d.project3Title}</h3>
+              <p class="project-card__desc">{d.project3Desc}</p>
+              <div class="project-card__links">
+                <span class="project-link project-link--muted">🚧 In Progress</span>
+              </div>
             </div>
           </div>
         </div>
@@ -181,56 +185,51 @@ const skillLabel = (level: number) =>
 
       <!-- Currently Focused On -->
       <section class="portfolio-focus">
-        <div class="focus-card">
-          <div class="focus-card__icon">🎯</div>
-          <div class="focus-card__content">
-            <h2>{d.focusTitle}</h2>
-            <p>{d.focusPara}</p>
+        <div class="dev-section-inner">
+          <div class="focus-card">
+            <div class="focus-card__icon">🎯</div>
+            <div class="focus-card__content">
+              <h2>{d.focusTitle}</h2>
+              <p>{d.focusPara}</p>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- CV Viewer -->
       <section class="portfolio-cv" id="cv">
-        <div class="cv-viewer">
-          <div class="cv-viewer__header">
-            <div class="cv-viewer__title">
-              <span>📄</span>
-              <div>
-                <h2>{d.cvTitle}</h2>
-                <span class="cv-viewer__note">{d.cvNote}</span>
+        <div class="dev-section-inner">
+          <div class="cv-viewer">
+            <div class="cv-viewer__header">
+              <div class="cv-viewer__title">
+                <span>📄</span>
+                <div>
+                  <h2>{d.cvTitle}</h2>
+                  <span class="cv-viewer__note">{d.cvNote}</span>
+                </div>
+              </div>
+              <div class="cv-viewer__actions">
+                <button
+                  id="cv-toggle-btn"
+                  class="btn btn--primary"
+                  type="button"
+                  data-open={d.cvView}
+                  data-close={d.cvClose}
+                >
+                  <span id="cv-toggle-icon">👁️</span>
+                  <span id="cv-toggle-text">{d.cvView}</span>
+                </button>
+                <a href="/assets/cv-latest.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">
+                  ↗ {d.cvOpenTab}
+                </a>
               </div>
             </div>
-            <div class="cv-viewer__actions">
-              <button
-                id="cv-toggle-btn"
-                class="btn btn--primary"
-                type="button"
-                data-open={d.cvView}
-                data-close={d.cvClose}
-              >
-                <span id="cv-toggle-icon">👁️</span>
-                <span id="cv-toggle-text">{d.cvView}</span>
-              </button>
-              <a
-                href="/assets/cv-latest.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn--secondary btn--sm"
-              >
-                ↗ {d.cvOpenTab}
-              </a>
-            </div>
-          </div>
-          <div class="cv-viewer__body" id="cv-body">
-            <div class="cv-viewer__frame-wrap">
-              <iframe
-                data-src="/assets/cv-latest.pdf#toolbar=0&navpanes=0"
-                class="cv-viewer__iframe"
-                title="CV Cem Üner"
-              >
-                <p>{d.cvFallback} <a href="/assets/cv-latest.pdf" download="CV_Cem_Uener.pdf">{d.cvDownload}</a>.</p>
-              </iframe>
+            <div class="cv-viewer__body" id="cv-body">
+              <div class="cv-viewer__frame-wrap">
+                <iframe data-src="/assets/cv-latest.pdf#toolbar=0&navpanes=0" class="cv-viewer__iframe" title="CV Cem Üner">
+                  <p>{d.cvFallback} <a href="/assets/cv-latest.pdf" download="CV_Cem_Uener.pdf">{d.cvDownload}</a>.</p>
+                </iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -238,29 +237,37 @@ const skillLabel = (level: number) =>
 
       <!-- Links -->
       <section class="portfolio-links">
-        <h2 class="section-title">{d.linksTitle}</h2>
-        <div class="links-grid">
-          <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="link-card">
-            <span class="link-card__icon">🐙</span>
-            <div>
-              <span class="link-card__title">GitHub</span>
-              <span class="link-card__desc">github.com/cuener</span>
-            </div>
-          </a>
-          <a href="https://linkedin.com/in/cemuener" target="_blank" rel="noopener noreferrer" class="link-card">
-            <span class="link-card__icon">💼</span>
-            <div>
-              <span class="link-card__title">LinkedIn</span>
-              <span class="link-card__desc">linkedin.com/in/cemuener</span>
-            </div>
-          </a>
-          <a href="/en/dj/" class="link-card">
-            <span class="link-card__icon">🎵</span>
-            <div>
-              <span class="link-card__title">{d.djServiceLink}</span>
-              <span class="link-card__desc">DJ Cem Üner</span>
-            </div>
-          </a>
+        <div class="dev-section-inner">
+          <h2 class="section-title">{d.linksTitle}</h2>
+          <div class="dev-social-grid">
+            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="dev-social-link" aria-label="View GitHub profile">
+              <svg class="dev-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              <div>
+                <span class="dev-social-title">GitHub</span>
+                <span class="dev-social-desc">github.com/cuener</span>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/cemuener" target="_blank" rel="noopener noreferrer" class="dev-social-link" aria-label="Connect on LinkedIn">
+              <svg class="dev-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <div>
+                <span class="dev-social-title">LinkedIn</span>
+                <span class="dev-social-desc">linkedin.com/in/cemuener</span>
+              </div>
+            </a>
+            <a href="/en/dj/" class="dev-social-link" aria-label="DJ Services page">
+              <svg class="dev-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+              </svg>
+              <div>
+                <span class="dev-social-title">{d.djServiceLink}</span>
+                <span class="dev-social-desc">DJ Cem Üner</span>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -271,7 +278,9 @@ const skillLabel = (level: number) =>
 <style lang="scss">
   @use '../../../styles/variables' as *;
   @use '../../../styles/mixins' as *;
+  @use 'sass:color';
 
+  // ── Page shell ────────────────────────
   .dev-portfolio {
     min-height: 100vh;
     padding-top: 80px;
@@ -279,15 +288,18 @@ const skillLabel = (level: number) =>
     color: $text-primary;
 
     @include element('container') {
-      @include container;
-      padding-top: $gap-xl;
-      padding-bottom: $gap-xl;
       display: flex;
       flex-direction: column;
-      gap: $gap-xl;
+      width: 100%;
     }
   }
 
+  // Inner container used by every section
+  .dev-section-inner {
+    @include container;
+  }
+
+  // ── Section titles ────────────────────
   .section-title {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 900;
@@ -310,15 +322,15 @@ const skillLabel = (level: number) =>
     font-size: 1.1rem;
   }
 
+  // ── Hero ──────────────────────────────
   .portfolio-hero {
     text-align: center;
-    padding: $gap-xl 0 $gap-lg;
+    padding: $section-padding 0;
     position: relative;
     overflow: hidden;
-    border-radius: $radius-lg;
-    background: rgba($dev-primary, 0.04);
-    border: 1px solid rgba($dev-primary, 0.1);
+    background: $bg-dark;
 
+    // Dot grid
     &::before {
       content: '';
       position: absolute;
@@ -329,10 +341,7 @@ const skillLabel = (level: number) =>
       z-index: 0;
     }
 
-    & > * {
-      position: relative;
-      z-index: 1;
-    }
+    .dev-section-inner { position: relative; z-index: 1; }
 
     @include element('avatar') {
       display: flex;
@@ -385,7 +394,11 @@ const skillLabel = (level: number) =>
     }
   }
 
+  // ── About ─────────────────────────────
   .portfolio-about {
+    padding: $section-padding 0;
+    background: linear-gradient(180deg, $bg-dark 0%, color.adjust($bg-dark, $lightness: 3%) 100%);
+
     @include element('content') {
       display: grid;
       grid-template-columns: 1fr;
@@ -419,25 +432,32 @@ const skillLabel = (level: number) =>
     align-items: center;
     gap: $gap-sm;
     padding: 1rem 1.25rem;
-    background: rgba($dev-primary, 0.08);
-    border: 1px solid rgba($dev-primary, 0.2);
+    background: color.adjust($bg-dark, $lightness: 5%);
+    border: 1px solid $border;
     border-radius: $radius-md;
     font-size: 0.95rem;
     color: $text-secondary;
     @include smooth-transition;
 
     &:hover {
-      background: rgba($dev-primary, 0.15);
+      border-color: $dev-primary;
       color: $text-primary;
     }
 
     @include element('icon') { font-size: 1.2rem; }
   }
 
+  // ── Skills ────────────────────────────
+  .portfolio-skills {
+    padding: $section-padding 0;
+    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 3%) 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+  }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: $gap-sm;
+    margin-top: $gap-md;
 
     @include above($tablet) {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -450,15 +470,14 @@ const skillLabel = (level: number) =>
     align-items: center;
     gap: 0.5rem;
     padding: 1.25rem 1rem;
-    background: rgba($dev-primary, 0.08);
-    border: 1px solid rgba($dev-primary, 0.2);
+    background: color.adjust($bg-dark, $lightness: 7%);
+    border: 1px solid $border;
     border-radius: $radius-lg;
     text-align: center;
     @include smooth-transition;
 
     &:hover {
-      background: rgba($dev-primary, 0.18);
-      border-color: rgba($dev-secondary, 0.5);
+      border-color: $dev-primary;
       transform: translateY(-3px);
       box-shadow: $shadow-md;
     }
@@ -494,18 +513,25 @@ const skillLabel = (level: number) =>
     }
   }
 
+  // ── Projects ──────────────────────────
+  .portfolio-projects {
+    padding: $section-padding 0;
+    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 5%) 0%, color.adjust($bg-dark, $lightness: 3%) 100%);
+  }
+
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: $gap-md;
+    margin-top: $gap-md;
 
     @include above($tablet) { grid-template-columns: repeat(2, 1fr); }
     @include above($desktop) { grid-template-columns: repeat(3, 1fr); }
   }
 
   .project-card {
-    background: rgba($dev-primary, 0.06);
-    border: 1px solid rgba($dev-primary, 0.2);
+    background: color.adjust($bg-dark, $lightness: 7%);
+    border: 1px solid $border;
     border-radius: $radius-lg;
     padding: $gap-md;
     display: flex;
@@ -514,8 +540,7 @@ const skillLabel = (level: number) =>
     @include smooth-transition;
 
     &:hover {
-      background: rgba($dev-primary, 0.12);
-      border-color: rgba($dev-secondary, 0.4);
+      border-color: $dev-primary;
       transform: translateY(-4px);
       box-shadow: $shadow-lg;
     }
@@ -529,12 +554,7 @@ const skillLabel = (level: number) =>
     }
 
     @include element('emoji') { font-size: 2rem; }
-
-    @include element('tags') {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
+    @include element('tags') { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
     @include element('title') {
       font-size: 1.25rem;
@@ -561,7 +581,8 @@ const skillLabel = (level: number) =>
   .tag {
     display: inline-block;
     padding: 0.2rem 0.6rem;
-    background: rgba($dev-secondary, 0.15);
+    background: rgba($dev-secondary, 0.1);
+    border: 1px solid rgba($dev-secondary, 0.3);
     color: $dev-secondary;
     border-radius: $radius-sm;
     font-size: 0.75rem;
@@ -578,24 +599,18 @@ const skillLabel = (level: number) =>
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    background: rgba($dev-secondary, 0.15);
+    background: rgba($dev-secondary, 0.1);
+    border: 1px solid rgba($dev-secondary, 0.3);
     color: $dev-secondary;
     @include smooth-transition;
 
-    &:hover {
-      background: rgba($dev-secondary, 0.3);
-      transform: translateY(-1px);
-    }
+    &:hover { background: rgba($dev-secondary, 0.2); transform: translateY(-1px); }
 
     @include modifier('ghost') {
       background: transparent;
-      border: 1px solid rgba($dev-primary, 0.3);
+      border: 1px solid $border;
       color: $text-secondary;
-
-      &:hover {
-        border-color: $dev-primary;
-        color: $text-primary;
-      }
+      &:hover { border-color: $dev-primary; color: $text-primary; }
     }
 
     @include modifier('muted') {
@@ -608,93 +623,18 @@ const skillLabel = (level: number) =>
     }
   }
 
-  .portfolio-cv {
-    scroll-margin-top: 100px;
-  }
-
-  .cv-viewer {
-    border: 1px solid rgba($dev-primary, 0.3);
-    border-radius: $radius-lg;
-    overflow: hidden;
-    background: rgba($dev-primary, 0.06);
-
-    &__header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: $gap-sm;
-      padding: $gap-md $gap-lg;
-      background: rgba($dev-primary, 0.08);
-    }
-
-    &__title {
-      display: flex;
-      align-items: center;
-      gap: $gap-sm;
-
-      span:first-child { font-size: 1.75rem; }
-
-      h2 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: $text-primary;
-        margin: 0 0 0.2rem;
-      }
-    }
-
-    &__note {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      background: rgba($dev-secondary, 0.1);
-      color: $dev-secondary;
-      border-radius: $radius-sm;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    &__actions {
-      display: flex;
-      gap: $gap-sm;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    // Slide-down container using CSS grid trick
-    &__body {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-
-      &.is-open {
-        grid-template-rows: 1fr;
-      }
-    }
-
-    &__frame-wrap {
-      overflow: hidden;
-      min-height: 0;
-    }
-
-    &__iframe {
-      width: 100%;
-      height: 80vh;
-      min-height: 480px;
-      border: none;
-      display: block;
-      background: #fff;
-    }
-  }
-
+  // ── Focus ─────────────────────────────
   .portfolio-focus {
+    padding: $section-padding 0;
+    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 3%) 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+
     .focus-card {
       display: flex;
       align-items: flex-start;
       gap: $gap-md;
       padding: $gap-md $gap-lg;
-      background: rgba($dev-primary, 0.07);
-      border: 1px solid rgba($dev-secondary, 0.3);
+      background: color.adjust($bg-dark, $lightness: 7%);
+      border: 1px solid $border;
       border-left: 4px solid $dev-secondary;
       border-radius: $radius-lg;
 
@@ -709,47 +649,123 @@ const skillLabel = (level: number) =>
           text-transform: uppercase;
           letter-spacing: 0.06em;
         }
-        p {
-          color: $text-secondary;
-          line-height: 1.7;
-          font-size: 0.975rem;
-          margin: 0;
-        }
+        p { color: $text-secondary; line-height: 1.7; font-size: 0.975rem; margin: 0; }
       }
     }
   }
 
-  .links-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $gap-sm;
-
-    @include above($tablet) { grid-template-columns: repeat(3, 1fr); }
+  // ── CV Viewer ─────────────────────────
+  .portfolio-cv {
+    padding: $section-padding 0;
+    background: color.adjust($bg-dark, $lightness: 5%);
+    scroll-margin-top: 100px;
   }
 
-  .link-card {
+  .cv-viewer {
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: color.adjust($bg-dark, $lightness: 7%);
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: $gap-sm;
+      padding: $gap-md $gap-lg;
+      background: color.adjust($bg-dark, $lightness: 9%);
+      border-bottom: 1px solid $border;
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+      gap: $gap-sm;
+      span:first-child { font-size: 1.75rem; }
+      h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
+    }
+
+    &__note {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background: rgba($dev-secondary, 0.1);
+      color: $dev-secondary;
+      border-radius: $radius-sm;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    &__actions { display: flex; gap: $gap-sm; align-items: center; flex-wrap: wrap; }
+
+    &__body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      &.is-open { grid-template-rows: 1fr; }
+    }
+
+    &__frame-wrap { overflow: hidden; min-height: 0; }
+
+    &__iframe {
+      width: 100%;
+      height: 80vh;
+      min-height: 480px;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+  }
+
+  // ── Links / Social ────────────────────
+  .portfolio-links {
+    padding: $section-padding 0;
+    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 5%) 0%, $bg-dark 100%);
+  }
+
+  .dev-social-grid {
+    display: grid;
+    gap: $gap-sm;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: $gap-md;
+  }
+
+  .dev-social-link {
     display: flex;
     align-items: center;
-    gap: $gap-sm;
-    padding: 1.25rem 1.5rem;
-    background: rgba($dev-primary, 0.08);
-    border: 1px solid rgba($dev-primary, 0.2);
-    border-radius: $radius-lg;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: color.adjust($bg-dark, $lightness: 5%);
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    color: $text-secondary;
     text-decoration: none;
     @include smooth-transition;
 
     &:hover {
-      background: rgba($dev-primary, 0.18);
-      border-color: rgba($dev-secondary, 0.5);
-      transform: translateY(-3px);
+      border-color: $dev-secondary;
+      color: $dev-secondary;
+      transform: translateY(-2px);
       box-shadow: $shadow-md;
     }
 
-    @include element('icon') { font-size: 1.75rem; flex-shrink: 0; }
-    @include element('title') { font-weight: 700; color: $text-primary; display: block; font-size: 1rem; }
-    @include element('desc') { color: $text-secondary; font-size: 0.85rem; display: block; }
+    &:focus-visible {
+      outline: 2px solid $dev-secondary;
+      outline-offset: 2px;
+    }
   }
 
+  .dev-social-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .dev-social-title { display: block; font-weight: 600; font-size: 0.95rem; color: $text-primary; }
+  .dev-social-desc { display: block; font-size: 0.8rem; color: $text-secondary; margin-top: 1px; }
+
+  // ── Buttons ───────────────────────────
   .btn {
     display: inline-flex;
     align-items: center;
@@ -766,46 +782,25 @@ const skillLabel = (level: number) =>
       background: $dev-gradient;
       color: white;
       border: none;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: $shadow-lg;
-      }
+      &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; }
     }
 
     @include modifier('secondary') {
       background: transparent;
-      border: 2px solid rgba($dev-primary, 0.4);
+      border: 2px solid $border;
       color: $text-primary;
-
-      &:hover {
-        border-color: $dev-primary;
-        color: $dev-primary;
-        transform: translateY(-2px);
-      }
+      &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); }
     }
 
     @include modifier('outline') {
       background: transparent;
       border: 2px solid rgba($dev-secondary, 0.5);
       color: $dev-secondary;
-
-      &:hover {
-        background: rgba($dev-secondary, 0.1);
-        border-color: $dev-secondary;
-        transform: translateY(-2px);
-      }
+      &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); }
     }
 
-    @include modifier('lg') {
-      padding: 1rem 2rem;
-      font-size: 1.05rem;
-    }
-
-    @include modifier('sm') {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-    }
+    @include modifier('lg') { padding: 1rem 2rem; font-size: 1.05rem; }
+    @include modifier('sm') { padding: 0.5rem 1rem; font-size: 0.875rem; }
   }
 </style>
 
