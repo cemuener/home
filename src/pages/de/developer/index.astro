@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
+import ScrollNav from '../../../components/ScrollNav.astro';
 import { translations } from '../../../i18n/translations';
 
 const t = translations.de;
@@ -30,6 +31,7 @@ const skills = [
   service={service}
 >
   <Navigation service="developer" />
+  <ScrollNav service="developer" />
 
   <main class="dev-portfolio">
     <div class="dev-portfolio__container">

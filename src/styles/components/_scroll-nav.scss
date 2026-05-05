@@ -170,6 +170,21 @@
   }
 }
 
+// Developer service: use dev gradient for active/hover dots
+[data-service="developer"] {
+  .scroll-nav__link {
+    &:hover .scroll-nav__dot {
+      background: $dev-gradient;
+      box-shadow: 0 0 12px rgba($dev-primary, 0.5);
+    }
+
+    &--active .scroll-nav__dot {
+      background: $dev-gradient;
+      box-shadow: 0 0 8px rgba($dev-primary, 0.3);
+    }
+  }
+}
+
 // Alternative layout for touch-friendly tablets (optional)
 @include tablet {
   .scroll-nav {
