@@ -3,6 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import ScrollNav from '../../../components/ScrollNav.astro';
 import { translations } from '../../../i18n/translations';
+import {
+  Code, Braces, Atom, Rocket, Palette, Paintbrush, Server, Network,
+  GitBranch, PenTool, Container, Terminal,
+  FileText, Mail, MapPin, Briefcase, GraduationCap, Globe,
+  FlaskConical, SlidersHorizontal, ExternalLink, Lock, Construction,
+  Target, Eye, X
+} from '@lucide/astro';
 
 const t = translations.de;
 const d = t.developer;
@@ -11,18 +18,18 @@ const service = 'developer';
 
 // level: 3 = Expert · 2 = Proficient · 1 = Familiar
 const skills = [
-  { name: 'TypeScript', icon: '🔷', category: 'Language', level: 3 },
-  { name: 'JavaScript', icon: '🟡', category: 'Language', level: 3 },
-  { name: 'React', icon: '⚛️', category: 'Frontend', level: 3 },
-  { name: 'Astro', icon: '🚀', category: 'Frontend', level: 3 },
-  { name: 'HTML / CSS', icon: '🎨', category: 'Frontend', level: 3 },
-  { name: 'SCSS / Sass', icon: '💅', category: 'Frontend', level: 2 },
-  { name: 'Node.js', icon: '🟢', category: 'Backend', level: 2 },
-  { name: 'REST APIs', icon: '🔌', category: 'Backend', level: 2 },
-  { name: 'Git & GitHub', icon: '🐙', category: 'Tools', level: 3 },
-  { name: 'Figma', icon: '🖌️', category: 'Tools', level: 2 },
-  { name: 'Docker', icon: '🐳', category: 'Tools', level: 1 },
-  { name: 'Linux / CLI', icon: '🖥️', category: 'Tools', level: 2 },
+  { name: 'TypeScript', IconComponent: Code, category: 'Language', level: 3 },
+  { name: 'JavaScript', IconComponent: Braces, category: 'Language', level: 3 },
+  { name: 'React', IconComponent: Atom, category: 'Frontend', level: 3 },
+  { name: 'Astro', IconComponent: Rocket, category: 'Frontend', level: 3 },
+  { name: 'HTML / CSS', IconComponent: Palette, category: 'Frontend', level: 3 },
+  { name: 'SCSS / Sass', IconComponent: Paintbrush, category: 'Frontend', level: 2 },
+  { name: 'Node.js', IconComponent: Server, category: 'Backend', level: 2 },
+  { name: 'REST APIs', IconComponent: Network, category: 'Backend', level: 2 },
+  { name: 'Git & GitHub', IconComponent: GitBranch, category: 'Tools', level: 3 },
+  { name: 'Figma', IconComponent: PenTool, category: 'Tools', level: 2 },
+  { name: 'Docker', IconComponent: Container, category: 'Tools', level: 1 },
+  { name: 'Linux / CLI', IconComponent: Terminal, category: 'Tools', level: 2 },
 ];
 
 const skillLabel = (level: number) =>
@@ -42,13 +49,13 @@ const skillLabel = (level: number) =>
           <div class="portfolio-hero__avatar">
             <img src="/assets/images/developer/profile_professional.jpg" alt="Cem Üner – Full-Stack Developer" class="portfolio-hero__avatar-img" width="160" height="160" loading="eager" fetchpriority="high" />
           </div>
-          <div class="portfolio-hero__badge">{d.heroBadge}</div>
+          <div class="portfolio-hero__badge"><Code size={15} aria-hidden="true" /> {d.heroBadge}</div>
           <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
           <p class="portfolio-hero__tagline">{d.heroTagline}</p>
           <div class="portfolio-hero__ctas">
-            <a href="#cv" class="btn btn--primary" id="hero-cv-btn"><span>📄</span> {d.cvView}</a>
-            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary"><span>🐙</span> GitHub</a>
-            <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline"><span>✉️</span> {d.contactCta}</a>
+            <a href="#cv" class="btn btn--primary" id="hero-cv-btn"><FileText size={18} aria-hidden="true" /> {d.cvView}</a>
+            <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary"><GitBranch size={18} aria-hidden="true" /> GitHub</a>
+            <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline"><Mail size={18} aria-hidden="true" /> {d.contactCta}</a>
           </div>
         </div>
       </section>
@@ -63,10 +70,10 @@ const skillLabel = (level: number) =>
               <p>{d.aboutPara2}</p>
             </div>
             <div class="portfolio-about__meta">
-              <div class="meta-card"><span class="meta-card__icon">📍</span><span>München, Deutschland</span></div>
-              <div class="meta-card"><span class="meta-card__icon">💼</span><span>Full-Stack Developer</span></div>
-              <div class="meta-card"><span class="meta-card__icon">🎓</span><span>M.Sc Human-Computer-Interaction</span></div>
-              <div class="meta-card"><span class="meta-card__icon">🌍</span><span>Deutsch, Englisch, Türkisch</span></div>
+              <div class="meta-card"><span class="meta-card__icon"><MapPin size={18} aria-hidden="true" /></span><span>München, Deutschland</span></div>
+              <div class="meta-card"><span class="meta-card__icon"><Briefcase size={18} aria-hidden="true" /></span><span>Full-Stack Developer</span></div>
+              <div class="meta-card"><span class="meta-card__icon"><GraduationCap size={18} aria-hidden="true" /></span><span>M.Sc Human-Computer-Interaction</span></div>
+              <div class="meta-card"><span class="meta-card__icon"><Globe size={18} aria-hidden="true" /></span><span>Deutsch, Englisch, Türkisch</span></div>
             </div>
           </div>
         </div>
@@ -77,18 +84,21 @@ const skillLabel = (level: number) =>
         <div class="dev-section-inner">
           <h2 class="section-title">{d.skillsTitle}</h2>
           <div class="skills-grid">
-            {skills.map(skill => (
-              <div class="skill-card">
-                <span class="skill-card__icon">{skill.icon}</span>
-                <span class="skill-card__name">{skill.name}</span>
-                <span class="skill-card__category">{skill.category}</span>
-                <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
-                  {[1,2,3].map(dot => (
-                    <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
-                  ))}
+            {skills.map((skill) => {
+              const SkillIcon = skill.IconComponent;
+              return (
+                <div class="skill-card">
+                  <span class="skill-card__icon"><SkillIcon size={26} aria-hidden="true" /></span>
+                  <span class="skill-card__name">{skill.name}</span>
+                  <span class="skill-card__category">{skill.category}</span>
+                  <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
+                    {[1,2,3].map(dot => (
+                      <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -101,33 +111,33 @@ const skillLabel = (level: number) =>
           <div class="projects-grid">
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🌐</span>
+                <span class="project-card__icon"><Globe size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags"><span class="tag">Astro</span><span class="tag">TypeScript</span><span class="tag">SCSS</span></div>
               </div>
               <h3 class="project-card__title">cemuener.de</h3>
               <p class="project-card__desc">{d.project1Desc}</p>
               <div class="project-card__links">
-                <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">🔗 Live ansehen</a>
-                <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost">🐙 GitHub</a>
+                <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link"><ExternalLink size={14} aria-hidden="true" /> Live ansehen</a>
+                <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost"><GitBranch size={14} aria-hidden="true" /> GitHub</a>
               </div>
             </div>
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🧪</span>
+                <span class="project-card__icon"><FlaskConical size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Research</span></div>
               </div>
               <h3 class="project-card__title">{d.project2Title}</h3>
               <p class="project-card__desc">{d.project2Desc}</p>
-              <div class="project-card__links"><span class="project-link project-link--muted">🔒 Privat / Akademisch</span></div>
+              <div class="project-card__links"><span class="project-link project-link--muted"><Lock size={13} aria-hidden="true" /> Privat / Akademisch</span></div>
             </div>
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🎛️</span>
+                <span class="project-card__icon"><SlidersHorizontal size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags"><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">REST API</span></div>
               </div>
               <h3 class="project-card__title">{d.project3Title}</h3>
               <p class="project-card__desc">{d.project3Desc}</p>
-              <div class="project-card__links"><span class="project-link project-link--muted">🚧 In Entwicklung</span></div>
+              <div class="project-card__links"><span class="project-link project-link--muted"><Construction size={13} aria-hidden="true" /> In Entwicklung</span></div>
             </div>
           </div>
         </div>
@@ -137,7 +147,7 @@ const skillLabel = (level: number) =>
       <section class="portfolio-focus">
         <div class="dev-section-inner">
           <div class="focus-card">
-            <div class="focus-card__icon">🎯</div>
+            <div class="focus-card__icon"><Target size={26} aria-hidden="true" /></div>
             <div class="focus-card__content">
               <h2>{d.focusTitle}</h2>
               <p>{d.focusPara}</p>
@@ -152,12 +162,15 @@ const skillLabel = (level: number) =>
           <div class="cv-viewer">
             <div class="cv-viewer__header">
               <div class="cv-viewer__title">
-                <span>📄</span>
+                <span class="cv-viewer__title-icon"><FileText size={26} aria-hidden="true" /></span>
                 <div><h2>{d.cvTitle}</h2><span class="cv-viewer__note">{d.cvNote}</span></div>
               </div>
               <div class="cv-viewer__actions">
                 <button id="cv-toggle-btn" class="btn btn--primary" type="button" data-open={d.cvView} data-close={d.cvClose}>
-                  <span id="cv-toggle-icon">👁️</span>
+                  <span id="cv-toggle-icon" class="cv-toggle-icon-wrap">
+                    <span id="cv-icon-view" class="cv-icon"><Eye size={18} aria-hidden="true" /></span>
+                    <span id="cv-icon-close" class="cv-icon cv-icon--hidden"><X size={18} aria-hidden="true" /></span>
+                  </span>
                   <span id="cv-toggle-text">{d.cvView}</span>
                 </button>
                 <a href="/assets/cv-latest.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">↗ {d.cvOpenTab}</a>
@@ -266,10 +279,12 @@ const skillLabel = (level: number) =>
       box-shadow: 0 0 0 6px rgba($dev-primary, 0.1), $shadow-lg;
     }
     @include element('badge') {
-      display: inline-block; padding: 0.5rem 1.25rem;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.25rem;
       background: rgba($dev-primary, 0.15); border: 1px solid rgba($dev-primary, 0.4);
       border-radius: $radius-xl; font-size: 0.9rem; color: $dev-secondary;
       margin-bottom: $gap-md; letter-spacing: 0.05em;
+      :global(svg) { flex-shrink: 0; }
     }
     @include element('title') { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin-bottom: $gap-sm; line-height: 1.1; }
     @include element('tagline') {
@@ -298,7 +313,10 @@ const skillLabel = (level: number) =>
     border-radius: $radius-md; font-size: 0.95rem; color: $text-secondary;
     @include smooth-transition;
     &:hover { border-color: $dev-primary; color: $text-primary; }
-    @include element('icon') { font-size: 1.2rem; }
+    @include element('icon') {
+      display: flex; align-items: center; flex-shrink: 0; color: $dev-secondary;
+      :global(svg) { width: 18px; height: 18px; }
+    }
   }
 
   .portfolio-skills {
@@ -318,7 +336,11 @@ const skillLabel = (level: number) =>
     border: 1px solid $border; border-radius: $radius-lg; text-align: center;
     @include smooth-transition;
     &:hover { border-color: $dev-primary; transform: translateY(-3px); box-shadow: $shadow-md; }
-    @include element('icon') { font-size: 1.75rem; }
+    @include element('icon') {
+      display: flex; align-items: center; justify-content: center;
+      color: $dev-secondary;
+      :global(svg) { width: 26px; height: 26px; }
+    }
     @include element('name') { font-weight: 600; font-size: 0.95rem; color: $text-primary; }
     @include element('category') { font-size: 0.75rem; color: $dev-secondary; text-transform: uppercase; letter-spacing: 0.06em; }
     @include element('level') { display: flex; gap: 4px; align-items: center; margin-top: 2px; }
@@ -347,7 +369,10 @@ const skillLabel = (level: number) =>
     @include smooth-transition;
     &:hover { border-color: $dev-primary; transform: translateY(-4px); box-shadow: $shadow-lg; }
     @include element('header') { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    @include element('emoji') { font-size: 2rem; }
+    @include element('icon') {
+      display: flex; align-items: center; color: $dev-secondary;
+      :global(svg) { width: 30px; height: 30px; }
+    }
     @include element('tags') { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     @include element('title') { font-size: 1.25rem; font-weight: 700; color: $text-primary; margin: 0; }
     @include element('desc') { color: $text-secondary; line-height: 1.7; font-size: 0.95rem; flex: 1; }
@@ -361,10 +386,11 @@ const skillLabel = (level: number) =>
   }
 
   .project-link {
-    display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.5rem 1rem;
+    display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 1rem;
     border-radius: $radius-md; font-size: 0.875rem; font-weight: 600; text-decoration: none;
     background: rgba($dev-secondary, 0.1); border: 1px solid rgba($dev-secondary, 0.3); color: $dev-secondary;
     @include smooth-transition;
+    :global(svg) { flex-shrink: 0; }
     &:hover { background: rgba($dev-secondary, 0.2); transform: translateY(-1px); }
     @include modifier('ghost') { background: transparent; border: 1px solid $border; color: $text-secondary; &:hover { border-color: $dev-primary; color: $text-primary; } }
     @include modifier('muted') { background: transparent; border: 1px solid rgba($dev-primary, 0.15); color: rgba($text-secondary, 0.6); cursor: default; pointer-events: none; font-style: italic; }
@@ -377,7 +403,11 @@ const skillLabel = (level: number) =>
       display: flex; align-items: flex-start; gap: $gap-md; padding: $gap-md $gap-lg;
       background: color.adjust($bg-dark, $lightness: 7%); border: 1px solid $border;
       border-left: 4px solid $dev-secondary; border-radius: $radius-lg;
-      &__icon { font-size: 1.75rem; flex-shrink: 0; padding-top: 2px; }
+      &__icon {
+        display: flex; align-items: center; flex-shrink: 0; padding-top: 2px;
+        color: $dev-secondary;
+        :global(svg) { width: 26px; height: 26px; }
+      }
       &__content {
         h2 { font-size: 1.1rem; font-weight: 700; color: $dev-secondary; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
         p { color: $text-secondary; line-height: 1.7; font-size: 0.975rem; margin: 0; }
@@ -401,9 +431,12 @@ const skillLabel = (level: number) =>
     }
     &__title {
       display: flex; align-items: center; gap: $gap-sm;
-      span:first-child { font-size: 1.75rem; }
-      h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
     }
+    &__title-icon {
+      display: flex; align-items: center; color: $dev-secondary;
+      :global(svg) { width: 26px; height: 26px; }
+    }
+    &__title h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
     &__note {
       display: inline-block; padding: 0.2rem 0.6rem;
       background: rgba($dev-secondary, 0.1); color: $dev-secondary;
@@ -418,6 +451,10 @@ const skillLabel = (level: number) =>
     &__frame-wrap { overflow: hidden; min-height: 0; }
     &__iframe { width: 100%; height: 80vh; min-height: 480px; border: none; display: block; background: #fff; }
   }
+
+  .cv-toggle-icon-wrap { display: flex; align-items: center; }
+  .cv-icon { display: flex; align-items: center; }
+  .cv-icon--hidden { display: none; }
 
   .portfolio-links {
     padding: $section-padding 0;
@@ -447,6 +484,7 @@ const skillLabel = (level: number) =>
     display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem;
     border-radius: $radius-md; font-weight: 600; font-size: 1rem; text-decoration: none;
     @include smooth-transition; cursor: pointer;
+    :global(svg) { flex-shrink: 0; }
     @include modifier('primary') { background: $dev-gradient; color: white; border: none; &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; } }
     @include modifier('secondary') { background: transparent; border: 2px solid $border; color: $text-primary; &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); } }
     @include modifier('outline') { background: transparent; border: 2px solid rgba($dev-secondary, 0.5); color: $dev-secondary; &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); } }
@@ -459,7 +497,8 @@ const skillLabel = (level: number) =>
   const body = document.getElementById('cv-body') as HTMLElement;
   const toggleBtn = document.getElementById('cv-toggle-btn') as HTMLButtonElement;
   const toggleText = document.getElementById('cv-toggle-text') as HTMLElement;
-  const toggleIcon = document.getElementById('cv-toggle-icon') as HTMLElement;
+  const iconView = document.getElementById('cv-icon-view') as HTMLElement;
+  const iconClose = document.getElementById('cv-icon-close') as HTMLElement;
   const iframe = document.querySelector('.cv-viewer__iframe') as HTMLIFrameElement;
 
   const OPEN_LABEL = toggleBtn?.dataset.open ?? 'Lebenslauf ansehen';
@@ -469,7 +508,8 @@ const skillLabel = (level: number) =>
   function openViewer() {
     if (!loaded && iframe?.dataset.src) { iframe.src = iframe.dataset.src; loaded = true; }
     body.classList.add('is-open');
-    toggleIcon.textContent = '✕';
+    iconView.style.display = 'none';
+    iconClose.style.display = '';
     toggleText.textContent = CLOSE_LABEL;
     document.getElementById('cv')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -477,7 +517,8 @@ const skillLabel = (level: number) =>
   function toggleViewer() {
     if (body.classList.contains('is-open')) {
       body.classList.remove('is-open');
-      toggleIcon.textContent = '👁️';
+      iconView.style.display = '';
+      iconClose.style.display = 'none';
       toggleText.textContent = OPEN_LABEL;
     } else { openViewer(); }
   }

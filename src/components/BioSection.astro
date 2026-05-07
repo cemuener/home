@@ -2,6 +2,7 @@
 import type { Event } from '../types';
 import eventsData from '../data/events.json';
 import { translations } from '../i18n/translations';
+import { MapPin, Clock } from '@lucide/astro';
 
 const t = translations.de;
 const events = eventsData as Event[];
@@ -51,9 +52,9 @@ const pastEvents = events
                   </div>
                   <div class="dj-section__event-content">
                     <h4 class="dj-section__event-title">{event.title}</h4>
-                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    <p class="dj-section__event-venue"><MapPin size={14} class="dj-event-icon" aria-hidden="true" /> {event.venue}</p>
                     {event.time && (
-                      <p class="dj-section__event-time">🕐 {event.time}</p>
+                      <p class="dj-section__event-time"><Clock size={14} class="dj-event-icon" aria-hidden="true" /> {event.time}</p>
                     )}
                     {event.description && (
                       <p class="dj-section__event-description">
@@ -79,9 +80,9 @@ const pastEvents = events
                   </div>
                   <div class="dj-section__event-content">
                     <h4 class="dj-section__event-title">{event.title}</h4>
-                    <p class="dj-section__event-venue">📍 {event.venue}</p>
+                    <p class="dj-section__event-venue"><MapPin size={14} class="dj-event-icon" aria-hidden="true" /> {event.venue}</p>
                     {event.time && (
-                      <p class="dj-section__event-time">🕐 {event.time}</p>
+                      <p class="dj-section__event-time"><Clock size={14} class="dj-event-icon" aria-hidden="true" /> {event.time}</p>
                     )}
                     {event.description && (
                       <p class="dj-section__event-description">
@@ -127,9 +128,9 @@ const pastEvents = events
                     </div>
                     <div class="dj-section__event-content">
                       <h4 class="dj-section__event-title">{event.title}</h4>
-                      <p class="dj-section__event-venue">📍 {event.venue}</p>
+                      <p class="dj-section__event-venue"><MapPin size={14} class="dj-event-icon" aria-hidden="true" /> {event.venue}</p>
                       {event.time && (
-                        <p class="dj-section__event-time">🕐 {event.time}</p>
+                        <p class="dj-section__event-time"><Clock size={14} class="dj-event-icon" aria-hidden="true" /> {event.time}</p>
                       )}
                       {event.description && (
                         <p class="dj-section__event-description">{event.description}</p>
@@ -153,9 +154,9 @@ const pastEvents = events
                     </div>
                     <div class="dj-section__event-content">
                       <h4 class="dj-section__event-title">{event.title}</h4>
-                      <p class="dj-section__event-venue">📍 {event.venue}</p>
+                      <p class="dj-section__event-venue"><MapPin size={14} class="dj-event-icon" aria-hidden="true" /> {event.venue}</p>
                       {event.time && (
-                        <p class="dj-section__event-time">🕐 {event.time}</p>
+                        <p class="dj-section__event-time"><Clock size={14} class="dj-event-icon" aria-hidden="true" /> {event.time}</p>
                       )}
                       {event.description && (
                         <p class="dj-section__event-description">{event.description}</p>
@@ -175,4 +176,15 @@ const pastEvents = events
   </div>
 </section>
 
-
+<style>
+  .dj-section__event-venue,
+  .dj-section__event-time {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  :global(.dj-event-icon) {
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
+</style>

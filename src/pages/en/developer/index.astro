@@ -3,6 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import ScrollNav from '../../../components/ScrollNav.astro';
 import { translations } from '../../../i18n/translations';
+import {
+  Code, Braces, Atom, Rocket, Palette, Paintbrush, Server, Network,
+  GitBranch, PenTool, Container, Terminal,
+  FileText, Mail, MapPin, Briefcase, GraduationCap, Globe,
+  FlaskConical, SlidersHorizontal, ExternalLink, Lock, Construction,
+  Target, Eye, X
+} from '@lucide/astro';
 
 const t = translations.en;
 const d = t.developer;
@@ -11,18 +18,18 @@ const service = 'developer';
 
 // level: 3 = Expert · 2 = Proficient · 1 = Familiar
 const skills = [
-  { name: 'TypeScript', icon: '🔷', category: 'Language', level: 3 },
-  { name: 'JavaScript', icon: '🟡', category: 'Language', level: 3 },
-  { name: 'React', icon: '⚛️', category: 'Frontend', level: 3 },
-  { name: 'Astro', icon: '🚀', category: 'Frontend', level: 3 },
-  { name: 'HTML / CSS', icon: '🎨', category: 'Frontend', level: 3 },
-  { name: 'SCSS / Sass', icon: '💅', category: 'Frontend', level: 2 },
-  { name: 'Node.js', icon: '🟢', category: 'Backend', level: 2 },
-  { name: 'REST APIs', icon: '🔌', category: 'Backend', level: 2 },
-  { name: 'Git & GitHub', icon: '🐙', category: 'Tools', level: 3 },
-  { name: 'Figma', icon: '🖌️', category: 'Tools', level: 2 },
-  { name: 'Docker', icon: '🐳', category: 'Tools', level: 1 },
-  { name: 'Linux / CLI', icon: '🖥️', category: 'Tools', level: 2 },
+  { name: 'TypeScript', IconComponent: Code, category: 'Language', level: 3 },
+  { name: 'JavaScript', IconComponent: Braces, category: 'Language', level: 3 },
+  { name: 'React', IconComponent: Atom, category: 'Frontend', level: 3 },
+  { name: 'Astro', IconComponent: Rocket, category: 'Frontend', level: 3 },
+  { name: 'HTML / CSS', IconComponent: Palette, category: 'Frontend', level: 3 },
+  { name: 'SCSS / Sass', IconComponent: Paintbrush, category: 'Frontend', level: 2 },
+  { name: 'Node.js', IconComponent: Server, category: 'Backend', level: 2 },
+  { name: 'REST APIs', IconComponent: Network, category: 'Backend', level: 2 },
+  { name: 'Git & GitHub', IconComponent: GitBranch, category: 'Tools', level: 3 },
+  { name: 'Figma', IconComponent: PenTool, category: 'Tools', level: 2 },
+  { name: 'Docker', IconComponent: Container, category: 'Tools', level: 1 },
+  { name: 'Linux / CLI', IconComponent: Terminal, category: 'Tools', level: 2 },
 ];
 
 const skillLabel = (level: number) =>
@@ -55,18 +62,18 @@ const skillLabel = (level: number) =>
               fetchpriority="high"
             />
           </div>
-          <div class="portfolio-hero__badge">{d.heroBadge}</div>
+          <div class="portfolio-hero__badge"><Code size={15} aria-hidden="true" /> {d.heroBadge}</div>
           <h1 class="portfolio-hero__title text--gradient-dev">{d.heroTitle}</h1>
           <p class="portfolio-hero__tagline">{d.heroTagline}</p>
           <div class="portfolio-hero__ctas">
             <a href="#cv" class="btn btn--primary" id="hero-cv-btn">
-              <span>📄</span> {d.cvView}
+              <FileText size={18} aria-hidden="true" /> {d.cvView}
             </a>
             <a href="https://github.com/cuener" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-              <span>🐙</span> GitHub
+              <GitBranch size={18} aria-hidden="true" /> GitHub
             </a>
             <a href="mailto:dj-cem.uener@outlook.com" class="btn btn--outline">
-              <span>✉️</span> {d.contactCta}
+              <Mail size={18} aria-hidden="true" /> {d.contactCta}
             </a>
           </div>
         </div>
@@ -83,19 +90,19 @@ const skillLabel = (level: number) =>
             </div>
             <div class="portfolio-about__meta">
               <div class="meta-card">
-                <span class="meta-card__icon">📍</span>
+                <span class="meta-card__icon"><MapPin size={18} aria-hidden="true" /></span>
                 <span>Munich, Germany</span>
               </div>
               <div class="meta-card">
-                <span class="meta-card__icon">💼</span>
+                <span class="meta-card__icon"><Briefcase size={18} aria-hidden="true" /></span>
                 <span>Full-Stack Developer</span>
               </div>
               <div class="meta-card">
-                <span class="meta-card__icon">🎓</span>
+                <span class="meta-card__icon"><GraduationCap size={18} aria-hidden="true" /></span>
                 <span>M.Sc Human-Computer-Interaction</span>
               </div>
               <div class="meta-card">
-                <span class="meta-card__icon">🌍</span>
+                <span class="meta-card__icon"><Globe size={18} aria-hidden="true" /></span>
                 <span>German, English, Turkish</span>
               </div>
             </div>
@@ -108,18 +115,21 @@ const skillLabel = (level: number) =>
         <div class="dev-section-inner">
           <h2 class="section-title">{d.skillsTitle}</h2>
           <div class="skills-grid">
-            {skills.map(skill => (
-              <div class="skill-card">
-                <span class="skill-card__icon">{skill.icon}</span>
-                <span class="skill-card__name">{skill.name}</span>
-                <span class="skill-card__category">{skill.category}</span>
-                <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
-                  {[1,2,3].map(dot => (
-                    <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
-                  ))}
+            {skills.map((skill) => {
+              const SkillIcon = skill.IconComponent;
+              return (
+                <div class="skill-card">
+                  <span class="skill-card__icon"><SkillIcon size={26} aria-hidden="true" /></span>
+                  <span class="skill-card__name">{skill.name}</span>
+                  <span class="skill-card__category">{skill.category}</span>
+                  <div class="skill-card__level" aria-label={skillLabel(skill.level)}>
+                    {[1,2,3].map(dot => (
+                      <span class={`skill-dot${dot <= skill.level ? ' skill-dot--active' : ''}`}></span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -133,7 +143,7 @@ const skillLabel = (level: number) =>
             <!-- Project 1 -->
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🌐</span>
+                <span class="project-card__icon"><Globe size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags">
                   <span class="tag">Astro</span>
                   <span class="tag">TypeScript</span>
@@ -143,14 +153,14 @@ const skillLabel = (level: number) =>
               <h3 class="project-card__title">cemuener.de</h3>
               <p class="project-card__desc">{d.project1Desc}</p>
               <div class="project-card__links">
-                <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link">🔗 View Live</a>
-                <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost">🐙 GitHub</a>
+                <a href="https://cemuener.de" target="_blank" rel="noopener noreferrer" class="project-link"><ExternalLink size={14} aria-hidden="true" /> View Live</a>
+                <a href="https://github.com/cuener/home" target="_blank" rel="noopener noreferrer" class="project-link project-link--ghost"><GitBranch size={14} aria-hidden="true" /> GitHub</a>
               </div>
             </div>
             <!-- Project 2 -->
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🧪</span>
+                <span class="project-card__icon"><FlaskConical size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags">
                   <span class="tag">React</span>
                   <span class="tag">TypeScript</span>
@@ -160,13 +170,13 @@ const skillLabel = (level: number) =>
               <h3 class="project-card__title">{d.project2Title}</h3>
               <p class="project-card__desc">{d.project2Desc}</p>
               <div class="project-card__links">
-                <span class="project-link project-link--muted">🔒 Private / Academic</span>
+                <span class="project-link project-link--muted"><Lock size={13} aria-hidden="true" /> Private / Academic</span>
               </div>
             </div>
             <!-- Project 3 -->
             <div class="project-card">
               <div class="project-card__header">
-                <span class="project-card__emoji">🎛️</span>
+                <span class="project-card__icon"><SlidersHorizontal size={30} aria-hidden="true" /></span>
                 <div class="project-card__tags">
                   <span class="tag">Node.js</span>
                   <span class="tag">React</span>
@@ -176,7 +186,7 @@ const skillLabel = (level: number) =>
               <h3 class="project-card__title">{d.project3Title}</h3>
               <p class="project-card__desc">{d.project3Desc}</p>
               <div class="project-card__links">
-                <span class="project-link project-link--muted">🚧 In Progress</span>
+                <span class="project-link project-link--muted"><Construction size={13} aria-hidden="true" /> In Progress</span>
               </div>
             </div>
           </div>
@@ -187,7 +197,7 @@ const skillLabel = (level: number) =>
       <section class="portfolio-focus">
         <div class="dev-section-inner">
           <div class="focus-card">
-            <div class="focus-card__icon">🎯</div>
+            <div class="focus-card__icon"><Target size={26} aria-hidden="true" /></div>
             <div class="focus-card__content">
               <h2>{d.focusTitle}</h2>
               <p>{d.focusPara}</p>
@@ -202,7 +212,7 @@ const skillLabel = (level: number) =>
           <div class="cv-viewer">
             <div class="cv-viewer__header">
               <div class="cv-viewer__title">
-                <span>📄</span>
+                <span class="cv-viewer__title-icon"><FileText size={26} aria-hidden="true" /></span>
                 <div>
                   <h2>{d.cvTitle}</h2>
                   <span class="cv-viewer__note">{d.cvNote}</span>
@@ -216,7 +226,10 @@ const skillLabel = (level: number) =>
                   data-open={d.cvView}
                   data-close={d.cvClose}
                 >
-                  <span id="cv-toggle-icon">👁️</span>
+                  <span id="cv-toggle-icon" class="cv-toggle-icon-wrap">
+                    <span id="cv-icon-view" class="cv-icon"><Eye size={18} aria-hidden="true" /></span>
+                    <span id="cv-icon-close" class="cv-icon cv-icon--hidden"><X size={18} aria-hidden="true" /></span>
+                  </span>
                   <span id="cv-toggle-text">{d.cvView}</span>
                 </button>
                 <a href="/assets/cv-latest.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">
@@ -294,10 +307,7 @@ const skillLabel = (level: number) =>
     }
   }
 
-  // Inner container used by every section
-  .dev-section-inner {
-    @include container;
-  }
+  .dev-section-inner { @include container; }
 
   // ── Section titles ────────────────────
   .section-title {
@@ -316,11 +326,7 @@ const skillLabel = (level: number) =>
     }
   }
 
-  .section-subtitle {
-    color: $text-secondary;
-    margin-bottom: $gap-lg;
-    font-size: 1.1rem;
-  }
+  .section-subtitle { color: $text-secondary; margin-bottom: $gap-lg; font-size: 1.1rem; }
 
   // ── Hero ──────────────────────────────
   .portfolio-hero {
@@ -330,7 +336,6 @@ const skillLabel = (level: number) =>
     overflow: hidden;
     background: $bg-dark;
 
-    // Dot grid
     &::before {
       content: '';
       position: absolute;
@@ -343,55 +348,32 @@ const skillLabel = (level: number) =>
 
     .dev-section-inner { position: relative; z-index: 1; }
 
-    @include element('avatar') {
-      display: flex;
-      justify-content: center;
-      margin-bottom: $gap-md;
-    }
+    @include element('avatar') { display: flex; justify-content: center; margin-bottom: $gap-md; }
 
     @include element('avatar-img') {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
+      width: 160px; height: 160px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
       border: 3px solid rgba($dev-primary, 0.5);
       box-shadow: 0 0 0 6px rgba($dev-primary, 0.1), $shadow-lg;
     }
 
     @include element('badge') {
-      display: inline-block;
+      display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.5rem 1.25rem;
-      background: rgba($dev-primary, 0.15);
-      border: 1px solid rgba($dev-primary, 0.4);
-      border-radius: $radius-xl;
-      font-size: 0.9rem;
-      color: $dev-secondary;
-      margin-bottom: $gap-md;
-      letter-spacing: 0.05em;
+      background: rgba($dev-primary, 0.15); border: 1px solid rgba($dev-primary, 0.4);
+      border-radius: $radius-xl; font-size: 0.9rem; color: $dev-secondary;
+      margin-bottom: $gap-md; letter-spacing: 0.05em;
+      :global(svg) { flex-shrink: 0; }
     }
 
-    @include element('title') {
-      font-size: clamp(3rem, 8vw, 5rem);
-      font-weight: 900;
-      margin-bottom: $gap-sm;
-      line-height: 1.1;
-    }
+    @include element('title') { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin-bottom: $gap-sm; line-height: 1.1; }
 
     @include element('tagline') {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: $text-secondary;
-      font-family: 'Courier New', monospace;
-      margin-bottom: $gap-lg;
-      letter-spacing: 0.04em;
+      font-size: clamp(1rem, 2.5vw, 1.4rem); color: $text-secondary;
+      font-family: 'Courier New', monospace; margin-bottom: $gap-lg; letter-spacing: 0.04em;
     }
 
-    @include element('ctas') {
-      display: flex;
-      gap: $gap-sm;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    @include element('ctas') { display: flex; gap: $gap-sm; justify-content: center; flex-wrap: wrap; }
   }
 
   // ── About ─────────────────────────────
@@ -400,51 +382,29 @@ const skillLabel = (level: number) =>
     background: linear-gradient(180deg, $bg-dark 0%, color.adjust($bg-dark, $lightness: 3%) 100%);
 
     @include element('content') {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: $gap-lg;
-
-      @include above($tablet) {
-        grid-template-columns: 1.5fr 1fr;
-        align-items: start;
-      }
+      display: grid; grid-template-columns: 1fr; gap: $gap-lg;
+      @include above($tablet) { grid-template-columns: 1.5fr 1fr; align-items: start; }
     }
 
     @include element('text') {
-      p {
-        color: $text-secondary;
-        line-height: 1.8;
-        margin-bottom: $gap-md;
-        font-size: 1.05rem;
-        &:last-child { margin-bottom: 0; }
-      }
+      p { color: $text-secondary; line-height: 1.8; margin-bottom: $gap-md; font-size: 1.05rem; &:last-child { margin-bottom: 0; } }
     }
 
-    @include element('meta') {
-      display: flex;
-      flex-direction: column;
-      gap: $gap-sm;
-    }
+    @include element('meta') { display: flex; flex-direction: column; gap: $gap-sm; }
   }
 
   .meta-card {
-    display: flex;
-    align-items: center;
-    gap: $gap-sm;
-    padding: 1rem 1.25rem;
-    background: color.adjust($bg-dark, $lightness: 5%);
-    border: 1px solid $border;
-    border-radius: $radius-md;
-    font-size: 0.95rem;
-    color: $text-secondary;
+    display: flex; align-items: center; gap: $gap-sm; padding: 1rem 1.25rem;
+    background: color.adjust($bg-dark, $lightness: 5%); border: 1px solid $border;
+    border-radius: $radius-md; font-size: 0.95rem; color: $text-secondary;
     @include smooth-transition;
 
-    &:hover {
-      border-color: $dev-primary;
-      color: $text-primary;
-    }
+    &:hover { border-color: $dev-primary; color: $text-primary; }
 
-    @include element('icon') { font-size: 1.2rem; }
+    @include element('icon') {
+      display: flex; align-items: center; flex-shrink: 0; color: $dev-secondary;
+      :global(svg) { width: 18px; height: 18px; }
+    }
   }
 
   // ── Skills ────────────────────────────
@@ -459,58 +419,31 @@ const skillLabel = (level: number) =>
     gap: $gap-sm;
     margin-top: $gap-md;
 
-    @include above($tablet) {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
+    @include above($tablet) { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   }
 
   .skill-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1.25rem 1rem;
-    background: color.adjust($bg-dark, $lightness: 7%);
-    border: 1px solid $border;
-    border-radius: $radius-lg;
-    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    padding: 1.25rem 1rem; background: color.adjust($bg-dark, $lightness: 7%);
+    border: 1px solid $border; border-radius: $radius-lg; text-align: center;
     @include smooth-transition;
 
-    &:hover {
-      border-color: $dev-primary;
-      transform: translateY(-3px);
-      box-shadow: $shadow-md;
-    }
+    &:hover { border-color: $dev-primary; transform: translateY(-3px); box-shadow: $shadow-md; }
 
-    @include element('icon') { font-size: 1.75rem; }
-    @include element('name') { font-weight: 600; font-size: 0.95rem; color: $text-primary; }
-    @include element('category') {
-      font-size: 0.75rem;
+    @include element('icon') {
+      display: flex; align-items: center; justify-content: center;
       color: $dev-secondary;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      :global(svg) { width: 26px; height: 26px; }
     }
-    @include element('level') {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      margin-top: 2px;
-    }
+    @include element('name') { font-weight: 600; font-size: 0.95rem; color: $text-primary; }
+    @include element('category') { font-size: 0.75rem; color: $dev-secondary; text-transform: uppercase; letter-spacing: 0.06em; }
+    @include element('level') { display: flex; gap: 4px; align-items: center; margin-top: 2px; }
   }
 
   .skill-dot {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba($dev-primary, 0.15);
-    border: 1px solid rgba($dev-primary, 0.35);
-
-    &--active {
-      background: $dev-secondary;
-      border-color: $dev-secondary;
-      box-shadow: 0 0 4px rgba($dev-secondary, 0.5);
-    }
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: rgba($dev-primary, 0.15); border: 1px solid rgba($dev-primary, 0.35);
+    &--active { background: $dev-secondary; border-color: $dev-secondary; box-shadow: 0 0 4px rgba($dev-secondary, 0.5); }
   }
 
   // ── Projects ──────────────────────────
@@ -520,107 +453,46 @@ const skillLabel = (level: number) =>
   }
 
   .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $gap-md;
-    margin-top: $gap-md;
-
+    display: grid; grid-template-columns: 1fr; gap: $gap-md; margin-top: $gap-md;
     @include above($tablet) { grid-template-columns: repeat(2, 1fr); }
     @include above($desktop) { grid-template-columns: repeat(3, 1fr); }
   }
 
   .project-card {
-    background: color.adjust($bg-dark, $lightness: 7%);
-    border: 1px solid $border;
-    border-radius: $radius-lg;
-    padding: $gap-md;
-    display: flex;
-    flex-direction: column;
-    gap: $gap-sm;
+    background: color.adjust($bg-dark, $lightness: 7%); border: 1px solid $border;
+    border-radius: $radius-lg; padding: $gap-md; display: flex; flex-direction: column; gap: $gap-sm;
     @include smooth-transition;
 
-    &:hover {
-      border-color: $dev-primary;
-      transform: translateY(-4px);
-      box-shadow: $shadow-lg;
-    }
+    &:hover { border-color: $dev-primary; transform: translateY(-4px); box-shadow: $shadow-lg; }
 
-    @include element('header') {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    @include element('header') { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    @include element('icon') {
+      display: flex; align-items: center; color: $dev-secondary;
+      :global(svg) { width: 30px; height: 30px; }
     }
-
-    @include element('emoji') { font-size: 2rem; }
     @include element('tags') { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-
-    @include element('title') {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: $text-primary;
-      margin: 0;
-    }
-
-    @include element('desc') {
-      color: $text-secondary;
-      line-height: 1.7;
-      font-size: 0.95rem;
-      flex: 1;
-    }
-
-    @include element('links') {
-      display: flex;
-      gap: $gap-sm;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
+    @include element('title') { font-size: 1.25rem; font-weight: 700; color: $text-primary; margin: 0; }
+    @include element('desc') { color: $text-secondary; line-height: 1.7; font-size: 0.95rem; flex: 1; }
+    @include element('links') { display: flex; gap: $gap-sm; flex-wrap: wrap; margin-top: auto; }
   }
 
   .tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: rgba($dev-secondary, 0.1);
-    border: 1px solid rgba($dev-secondary, 0.3);
-    color: $dev-secondary;
-    border-radius: $radius-sm;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    display: inline-block; padding: 0.2rem 0.6rem;
+    background: rgba($dev-secondary, 0.1); border: 1px solid rgba($dev-secondary, 0.3);
+    color: $dev-secondary; border-radius: $radius-sm; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
   }
 
   .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.5rem 1rem;
-    border-radius: $radius-md;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    background: rgba($dev-secondary, 0.1);
-    border: 1px solid rgba($dev-secondary, 0.3);
-    color: $dev-secondary;
+    display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 1rem;
+    border-radius: $radius-md; font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    background: rgba($dev-secondary, 0.1); border: 1px solid rgba($dev-secondary, 0.3); color: $dev-secondary;
     @include smooth-transition;
+    :global(svg) { flex-shrink: 0; }
 
     &:hover { background: rgba($dev-secondary, 0.2); transform: translateY(-1px); }
 
-    @include modifier('ghost') {
-      background: transparent;
-      border: 1px solid $border;
-      color: $text-secondary;
-      &:hover { border-color: $dev-primary; color: $text-primary; }
-    }
-
-    @include modifier('muted') {
-      background: transparent;
-      border: 1px solid rgba($dev-primary, 0.15);
-      color: rgba($text-secondary, 0.6);
-      cursor: default;
-      pointer-events: none;
-      font-style: italic;
-    }
+    @include modifier('ghost') { background: transparent; border: 1px solid $border; color: $text-secondary; &:hover { border-color: $dev-primary; color: $dev-primary; } }
+    @include modifier('muted') { background: transparent; border: 1px solid rgba($dev-primary, 0.15); color: rgba($text-secondary, 0.6); cursor: default; pointer-events: none; font-style: italic; }
   }
 
   // ── Focus ─────────────────────────────
@@ -629,26 +501,18 @@ const skillLabel = (level: number) =>
     background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 3%) 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
 
     .focus-card {
-      display: flex;
-      align-items: flex-start;
-      gap: $gap-md;
-      padding: $gap-md $gap-lg;
-      background: color.adjust($bg-dark, $lightness: 7%);
-      border: 1px solid $border;
-      border-left: 4px solid $dev-secondary;
-      border-radius: $radius-lg;
+      display: flex; align-items: flex-start; gap: $gap-md; padding: $gap-md $gap-lg;
+      background: color.adjust($bg-dark, $lightness: 7%); border: 1px solid $border;
+      border-left: 4px solid $dev-secondary; border-radius: $radius-lg;
 
-      &__icon { font-size: 1.75rem; flex-shrink: 0; padding-top: 2px; }
+      &__icon {
+        display: flex; align-items: center; flex-shrink: 0; padding-top: 2px;
+        color: $dev-secondary;
+        :global(svg) { width: 26px; height: 26px; }
+      }
 
       &__content {
-        h2 {
-          font-size: 1.1rem;
-          font-weight: 700;
-          color: $dev-secondary;
-          margin-bottom: 0.4rem;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-        }
+        h2 { font-size: 1.1rem; font-weight: 700; color: $dev-secondary; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
         p { color: $text-secondary; line-height: 1.7; font-size: 0.975rem; margin: 0; }
       }
     }
@@ -662,61 +526,46 @@ const skillLabel = (level: number) =>
   }
 
   .cv-viewer {
-    border: 1px solid $border;
-    border-radius: $radius-lg;
-    overflow: hidden;
+    border: 1px solid $border; border-radius: $radius-lg; overflow: hidden;
     background: color.adjust($bg-dark, $lightness: 7%);
 
     &__header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: $gap-sm;
-      padding: $gap-md $gap-lg;
-      background: color.adjust($bg-dark, $lightness: 9%);
-      border-bottom: 1px solid $border;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+      gap: $gap-sm; padding: $gap-md $gap-lg;
+      background: color.adjust($bg-dark, $lightness: 9%); border-bottom: 1px solid $border;
     }
 
-    &__title {
-      display: flex;
-      align-items: center;
-      gap: $gap-sm;
-      span:first-child { font-size: 1.75rem; }
-      h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
+    &__title { display: flex; align-items: center; gap: $gap-sm; }
+
+    &__title-icon {
+      display: flex; align-items: center; color: $dev-secondary;
+      :global(svg) { width: 26px; height: 26px; }
     }
+
+    &__title h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
 
     &__note {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      background: rgba($dev-secondary, 0.1);
-      color: $dev-secondary;
-      border-radius: $radius-sm;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      display: inline-block; padding: 0.2rem 0.6rem;
+      background: rgba($dev-secondary, 0.1); color: $dev-secondary;
+      border-radius: $radius-sm; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
     }
 
     &__actions { display: flex; gap: $gap-sm; align-items: center; flex-wrap: wrap; }
 
     &__body {
-      display: grid;
-      grid-template-rows: 0fr;
+      display: grid; grid-template-rows: 0fr;
       transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       &.is-open { grid-template-rows: 1fr; }
     }
 
     &__frame-wrap { overflow: hidden; min-height: 0; }
 
-    &__iframe {
-      width: 100%;
-      height: 80vh;
-      min-height: 480px;
-      border: none;
-      display: block;
-      background: #fff;
-    }
+    &__iframe { width: 100%; height: 80vh; min-height: 480px; border: none; display: block; background: #fff; }
   }
+
+  .cv-toggle-icon-wrap { display: flex; align-items: center; }
+  .cv-icon { display: flex; align-items: center; }
+  .cv-icon--hidden { display: none; }
 
   // ── Links / Social ────────────────────
   .portfolio-links {
@@ -725,80 +574,35 @@ const skillLabel = (level: number) =>
   }
 
   .dev-social-grid {
-    display: grid;
-    gap: $gap-sm;
+    display: grid; gap: $gap-sm;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     margin-top: $gap-md;
   }
 
   .dev-social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    background: color.adjust($bg-dark, $lightness: 5%);
-    border: 1px solid $border;
-    border-radius: $radius-md;
-    color: $text-secondary;
-    text-decoration: none;
+    display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem;
+    background: color.adjust($bg-dark, $lightness: 5%); border: 1px solid $border;
+    border-radius: $radius-md; color: $text-secondary; text-decoration: none;
     @include smooth-transition;
 
-    &:hover {
-      border-color: $dev-secondary;
-      color: $dev-secondary;
-      transform: translateY(-2px);
-      box-shadow: $shadow-md;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $dev-secondary;
-      outline-offset: 2px;
-    }
+    &:hover { border-color: $dev-secondary; color: $dev-secondary; transform: translateY(-2px); box-shadow: $shadow-md; }
+    &:focus-visible { outline: 2px solid $dev-secondary; outline-offset: 2px; }
   }
 
-  .dev-social-icon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-  }
-
+  .dev-social-icon { width: 24px; height: 24px; flex-shrink: 0; }
   .dev-social-title { display: block; font-weight: 600; font-size: 0.95rem; color: $text-primary; }
   .dev-social-desc { display: block; font-size: 0.8rem; color: $text-secondary; margin-top: 1px; }
 
   // ── Buttons ───────────────────────────
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    border-radius: $radius-md;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    @include smooth-transition;
-    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem;
+    border-radius: $radius-md; font-weight: 600; font-size: 1rem; text-decoration: none;
+    @include smooth-transition; cursor: pointer;
+    :global(svg) { flex-shrink: 0; }
 
-    @include modifier('primary') {
-      background: $dev-gradient;
-      color: white;
-      border: none;
-      &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; }
-    }
-
-    @include modifier('secondary') {
-      background: transparent;
-      border: 2px solid $border;
-      color: $text-primary;
-      &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); }
-    }
-
-    @include modifier('outline') {
-      background: transparent;
-      border: 2px solid rgba($dev-secondary, 0.5);
-      color: $dev-secondary;
-      &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); }
-    }
-
+    @include modifier('primary') { background: $dev-gradient; color: white; border: none; &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; } }
+    @include modifier('secondary') { background: transparent; border: 2px solid $border; color: $text-primary; &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); } }
+    @include modifier('outline') { background: transparent; border: 2px solid rgba($dev-secondary, 0.5); color: $dev-secondary; &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); } }
     @include modifier('lg') { padding: 1rem 2rem; font-size: 1.05rem; }
     @include modifier('sm') { padding: 0.5rem 1rem; font-size: 0.875rem; }
   }
@@ -808,7 +612,8 @@ const skillLabel = (level: number) =>
   const body = document.getElementById('cv-body') as HTMLElement;
   const toggleBtn = document.getElementById('cv-toggle-btn') as HTMLButtonElement;
   const toggleText = document.getElementById('cv-toggle-text') as HTMLElement;
-  const toggleIcon = document.getElementById('cv-toggle-icon') as HTMLElement;
+  const iconView = document.getElementById('cv-icon-view') as HTMLElement;
+  const iconClose = document.getElementById('cv-icon-close') as HTMLElement;
   const iframe = document.querySelector('.cv-viewer__iframe') as HTMLIFrameElement;
 
   const OPEN_LABEL = toggleBtn?.dataset.open ?? 'View CV';
@@ -816,13 +621,13 @@ const skillLabel = (level: number) =>
   let loaded = false;
 
   function openViewer() {
-    // Lazy-load the PDF only on first open
     if (!loaded && iframe?.dataset.src) {
       iframe.src = iframe.dataset.src;
       loaded = true;
     }
     body.classList.add('is-open');
-    toggleIcon.textContent = '✕';
+    iconView.style.display = 'none';
+    iconClose.style.display = '';
     toggleText.textContent = CLOSE_LABEL;
     document.getElementById('cv')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -830,7 +635,8 @@ const skillLabel = (level: number) =>
   function toggleViewer() {
     if (body.classList.contains('is-open')) {
       body.classList.remove('is-open');
-      toggleIcon.textContent = '👁️';
+      iconView.style.display = '';
+      iconClose.style.display = 'none';
       toggleText.textContent = OPEN_LABEL;
     } else {
       openViewer();
@@ -839,7 +645,6 @@ const skillLabel = (level: number) =>
 
   toggleBtn?.addEventListener('click', toggleViewer);
 
-  // Hero CTA — expand instead of anchor-jump
   document.getElementById('hero-cv-btn')?.addEventListener('click', (e) => {
     e.preventDefault();
     openViewer();
