@@ -45,7 +45,7 @@
     "time": "21:00-01:00",
     "venue": "Terra Bar, Munich",
     "type": "bar",
-    "status": "upcoming",
+    "status": "past",
     "description": "DJ Performance @ Terra Bar, Munich",
     "url": "https://www.terra-bar.de/"
   },
@@ -55,7 +55,7 @@
     "time": "22:00-00:00",
     "venue": "Roody's Tanz Bar Giesing, Munich",
     "type": "bar",
-    "status": "upcoming",
+    "status": "past",
     "description": "House music only @ Roody's, Munich",
     "url": "https://www.instagram.com/p/DYctGenjeaq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
   }

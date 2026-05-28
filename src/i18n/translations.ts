@@ -75,7 +75,8 @@ export const translations = {
         soundcloud: 'SoundCloud',
         mixcloud: 'Mixcloud',
         linkedin: 'LinkedIn',
-        github: 'GitHub'
+        github: 'GitHub',
+        residentAdvisor: 'Resident Advisor'
       },
       footer: {
         copyright: 'Alle Rechte vorbehalten.',
@@ -240,7 +241,8 @@ export const translations = {
         soundcloud: 'SoundCloud',
         mixcloud: 'Mixcloud',
         linkedin: 'LinkedIn',
-        github: 'GitHub'
+        github: 'GitHub',
+        residentAdvisor: 'Resident Advisor'
       },
       footer: {
         copyright: 'All rights reserved.',
