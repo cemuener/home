@@ -8,6 +8,12 @@ export interface Props {
 const { service = 'dj' } = Astro.props;
 const t = translations;
 
+// Derive current lang from URL so the logo href is correct for crawlers (no JS needed)
+const currentPath = Astro.url.pathname;
+const langMatch = currentPath.match(/^\/(de|en)\//);
+const currentLang = langMatch ? langMatch[1] : 'de';
+const logoHref = `/${currentLang}/${service}/`;
+
 const djNavItems = [
   { href: '#bio',          section: 'bio',          i18n: 'nav.bio',       label: t.de.nav.bio },
   { href: '#mixtapes',     section: 'mixtapes',     i18n: 'nav.mixtapes',  label: t.de.nav.mixtapes },
@@ -27,7 +33,7 @@ const navItems = service === 'developer' ? devNavItems : djNavItems;
 
 <nav class="navigation" id="main-nav">
   <div class="navigation__container">
-    <a href="/" class="navigation__logo" id="logo-link">
+    <a href={logoHref} class="navigation__logo" id="logo-link">
       <span class="navigation__logo-text">cem.uener</span>
     </a>
 

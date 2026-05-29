@@ -8,7 +8,20 @@ export default defineConfig({
   base: '/',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        page !== 'https://cemuener.de/' &&
+        page !== 'https://cemuener.de/impressum/',
+      i18n: {
+        defaultLocale: 'de',
+        locales: {
+          de: 'de-DE',
+          en: 'en-US',
+        },
+      },
+    }),
+  ],
   build: {
     assets: 'assets',
     inlineStylesheets: 'auto',
