@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://cemuener.de',
   base: '/',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [sitemap()],
   build: {
     assets: 'assets',

@@ -10,8 +10,8 @@ const t = translations.de;
       &copy; {new Date().getFullYear()} Cem Üner. <span data-i18n="contact.footer.copyright">{t.contact.footer.copyright}</span>
     </p>
     <nav class="site-footer__nav">
-      <a href="/de/impressum" class="site-footer__link" data-i18n="contact.footer.impressum" data-impressum-link="true">{t.contact.footer.impressum}</a>
-      <a href="/de/datenschutz" class="site-footer__link" data-i18n="contact.footer.datenschutz" data-datenschutz-link="true">{t.contact.footer.datenschutz}</a>
+      <a href="/de/impressum/" class="site-footer__link" data-i18n="contact.footer.impressum" data-impressum-link="true">{t.contact.footer.impressum}</a>
+      <a href="/de/datenschutz/" class="site-footer__link" data-i18n="contact.footer.datenschutz" data-datenschutz-link="true">{t.contact.footer.datenschutz}</a>
     </nav>
   </div>
 </footer>
@@ -22,10 +22,10 @@ const t = translations.de;
 
   function updateFooterLinks(lang: string) {
     document.querySelectorAll('[data-impressum-link]').forEach(el => {
-      (el as HTMLAnchorElement).href = `/${lang}/impressum`;
+      (el as HTMLAnchorElement).href = `/${lang}/impressum/`;
     });
     document.querySelectorAll('[data-datenschutz-link]').forEach(el => {
-      (el as HTMLAnchorElement).href = `/${lang}/datenschutz`;
+      (el as HTMLAnchorElement).href = `/${lang}/datenschutz/`;
     });
   }
 
