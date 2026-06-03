@@ -9,7 +9,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/dj/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/dj/"/>
   </url>
-
   <url>
     <loc>https://cemuener.de/en/dj/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/dj/"/>
@@ -23,7 +22,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/developer/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/developer/"/>
   </url>
-
   <url>
     <loc>https://cemuener.de/en/developer/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/developer/"/>
@@ -37,7 +35,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/impressum/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/impressum/"/>
   </url>
-
   <url>
     <loc>https://cemuener.de/en/impressum/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/impressum/"/>
@@ -51,7 +48,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/datenschutz/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/datenschutz/"/>
   </url>
-
   <url>
     <loc>https://cemuener.de/en/datenschutz/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/datenschutz/"/>
@@ -60,4 +56,3 @@
   </url>
 
 </urlset>
-
