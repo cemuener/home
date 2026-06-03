@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://cemuener.de/de/dj/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/dj/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/dj/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/dj/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/en/dj/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/dj/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/dj/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/dj/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/de/developer/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/developer/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/developer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/developer/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/en/developer/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/developer/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/developer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/developer/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/de/impressum/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/impressum/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/en/impressum/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/impressum/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/de/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/datenschutz/"/>
+  </url>
+
+  <url>
+    <loc>https://cemuener.de/en/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cemuener.de/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://cemuener.de/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cemuener.de/en/datenschutz/"/>
+  </url>
+
+</urlset>
+
