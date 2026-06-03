@@ -7,7 +7,7 @@ Disallow: /assets/videos/
 Disallow: /_astro/
 
 # Sitemap location
-Sitemap: https://cemuener.de/sitemap-index.xml
+Sitemap: https://cemuener.de/sitemap.xml
 
 # Allow major search engines and AI/LLM crawlers
 User-agent: Googlebot
@@ -55,4 +55,3 @@ Allow: /
 
 # Crawl delay for respectful bots (milliseconds)
 Crawl-delay: 1
-
