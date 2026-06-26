@@ -32,6 +32,7 @@ export const translations = {
       bioPara1: 'Ich bin ein DJ aus München mit einem feinen Gespür für Menschen und Atmosphäre. In kürzester Zeit erfasse ich die Stimmung des Raums und baue daraus einen musikalischen Spannungsbogen, der die Tanzfläche Schritt für Schritt füllt. Meine Sets verbinden House mit Afro-, Oriental- und Latin-Vibes, angereichert mit groovy Funk und viel Gefühl für den richtigen Moment. Vom Lowtempo bis zum energiegeladenen Drop bleibt jedes Detail im Flow.',
       bioPara2: 'Ob Hochzeit, Geburtstag oder Club-Event – ich passe Sound, Energie und Wünsche präzise an den Moment an und schaffe Abende, die lange in Erinnerung bleiben.',
       upcomingEvents: 'Kommende Events',
+      highlightEvents: 'Highlights',
       pastEvents: 'Vergangene Events',
       showPastEvents: 'Vergangene Events anzeigen',
       hidePastEvents: 'Vergangene Events ausblenden'
@@ -198,6 +199,7 @@ export const translations = {
       bioPara2: 'Whether wedding, birthday, or club event – I precisely adapt sound, energy, and wishes to the moment, creating evenings that remain memorable for a long time.',
 
       upcomingEvents: 'Upcoming Events',
+      highlightEvents: 'Highlights',
       pastEvents: 'Past Events',
       showPastEvents: 'Show Past Events',
       hidePastEvents: 'Hide Past Events'
