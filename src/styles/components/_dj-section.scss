@@ -274,6 +274,7 @@
     border-radius: $radius-md;
     border-left: 4px solid $dj-primary;
     transition: $transition-base;
+    position: relative;
 
     &:hover {
       background: color.adjust($bg-dark, $lightness: 8%);
@@ -372,6 +373,17 @@
         opacity: 0.85;
         filter: blur(0px);
         transform: scale(0.99);
+      }
+
+      .dj-section__highlight-star {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.6rem;
+        color: $dj-secondary;
+        fill: $dj-secondary;
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
       }
     }
   }

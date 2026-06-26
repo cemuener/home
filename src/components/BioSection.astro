@@ -2,7 +2,7 @@
 import type { Event } from '../types';
 import eventsData from '../data/events.json';
 import { translations } from '../i18n/translations';
-import { MapPin, Clock } from '@lucide/astro';
+import { MapPin, Clock, Star } from '@lucide/astro';
 
 const t = translations.de;
 const events = eventsData as Event[];
@@ -112,6 +112,7 @@ const regularPastEvents = pastEvents.filter(event => event.status !== 'highlight
         <div class="dj-section__event-list reveal-children" data-stagger-step="90">
           {highlightPastEvents.map((event) => (
             <article class="dj-section__event-card dj-section__event-card--past dj-section__event-card--highlight" key={event.id}>
+              <Star size={14} class="dj-section__highlight-star" aria-label="Highlight" />
               {event.url ? (
                 <a href={event.url} target="_blank" rel="noopener noreferrer" class="dj-section__event-link">
                   <div class="dj-section__event-date">
