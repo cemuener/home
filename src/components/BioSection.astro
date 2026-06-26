@@ -7,12 +7,15 @@ import { MapPin, Clock } from '@lucide/astro';
 const t = translations.de;
 const events = eventsData as Event[];
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 const upcomingEvents = events
-  .filter(event => event.status === 'upcoming')
+  .filter(event => new Date(event.date) >= today)
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
 const pastEvents = events
-  .filter(event => event.status === 'past' || event.status === 'highlight')
+  .filter(event => new Date(event.date) < today)
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
