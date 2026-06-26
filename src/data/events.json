@@ -17,7 +17,7 @@
     "time": "19:00-01:00",
     "venue": "MH5, Munich",
     "type": "corporate",
-    "status": "upcoming",
+    "status": "highlight",
     "description": "Network Event for eggs unimedia GmbH",
     "url": "https://www.eggsunimedia.com/de/de/insights/events/customer-experience-days-2026"
   },
@@ -58,6 +58,16 @@
     "status": "past",
     "description": "House music only @ Roody's, Munich",
     "url": "https://www.instagram.com/p/DYctGenjeaq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  },
+  {
+    "title": "Birthday Party",
+    "date": "2026-06-27",
+    "time": "20:00-00:00",
+    "venue": "Soluna Bar, Munich",
+    "type": "private",
+    "status": "upcomming",
+    "description": "Private Birthdays @ Solana, Munich",
+    "url": "https://www.instagram.com/soluna_bar_munich/"
   }
 ]
 
