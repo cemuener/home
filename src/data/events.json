@@ -65,9 +65,29 @@
     "time": "20:00-00:00",
     "venue": "Soluna Bar, Munich",
     "type": "private",
-    "status": "upcomming",
+    "status": "past",
     "description": "Private Birthdays @ Solana, Munich",
     "url": "https://www.instagram.com/soluna_bar_munich/"
+  },
+  {
+    "title": "Innoscripta SE - Summer Party",
+    "date": "2026-07-17",
+    "time": "18:00-00:00",
+    "venue": "Forsthaus Ilkahöhe, Tutzing",
+    "type": "corporate",
+    "status": "upcomming",
+    "description": "Corporate Summer event @ Innoscripta SE",
+    "url": "https://www.innoscripta.com/de"
+  },
+  {
+    "title": "Josefa Karree x Obvs",
+    "date": "2026-07-18",
+    "time": "16:30-20:00",
+    "venue": "Josefa Karre, Platzl München",
+    "type": "bar",
+    "status": "upcomming",
+    "description": "Day Sipping @ Josefa Karree",
+    "url": "https://tockify.com/josefa/detail/6/1784372400000"
   }
 ]
 
