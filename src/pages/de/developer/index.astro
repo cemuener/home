@@ -8,7 +8,7 @@ import {
   GitBranch, PenTool, Container, Terminal,
   FileText, Mail, MapPin, Briefcase, GraduationCap, Globe,
   FlaskConical, SlidersHorizontal, ExternalLink, Lock, Construction,
-  Target, Eye, X
+  Target, Eye, X, FileCode, BrainCircuit
 } from '@lucide/astro';
 
 const t = translations.de;
@@ -20,12 +20,14 @@ const service = 'developer';
 const skills = [
   { name: 'TypeScript', IconComponent: Code, category: 'Language', level: 3 },
   { name: 'JavaScript', IconComponent: Braces, category: 'Language', level: 3 },
+  { name: 'Python', IconComponent: FileCode, category: 'Language', level: 2 },
   { name: 'React', IconComponent: Atom, category: 'Frontend', level: 3 },
   { name: 'Astro', IconComponent: Rocket, category: 'Frontend', level: 3 },
   { name: 'HTML / CSS', IconComponent: Palette, category: 'Frontend', level: 3 },
   { name: 'SCSS / Sass', IconComponent: Paintbrush, category: 'Frontend', level: 2 },
   { name: 'Node.js', IconComponent: Server, category: 'Backend', level: 2 },
   { name: 'REST APIs', IconComponent: Network, category: 'Backend', level: 2 },
+  { name: 'RAG', IconComponent: BrainCircuit, category: 'AI', level: 2 },
   { name: 'Git & GitHub', IconComponent: GitBranch, category: 'Tools', level: 3 },
   { name: 'Figma', IconComponent: PenTool, category: 'Tools', level: 2 },
   { name: 'Docker', IconComponent: Container, category: 'Tools', level: 1 },
@@ -71,7 +73,7 @@ const skillLabel = (level: number) =>
             </div>
             <div class="portfolio-about__meta">
               <div class="meta-card"><span class="meta-card__icon"><MapPin size={18} aria-hidden="true" /></span><span>München, Deutschland</span></div>
-              <div class="meta-card"><span class="meta-card__icon"><Briefcase size={18} aria-hidden="true" /></span><span>Full-Stack Developer</span></div>
+              <div class="meta-card"><span class="meta-card__icon"><Briefcase size={18} aria-hidden="true" /></span><span>Full-Stack Development/Technical Consulting</span></div>
               <div class="meta-card"><span class="meta-card__icon"><GraduationCap size={18} aria-hidden="true" /></span><span>M.Sc Human-Computer-Interaction</span></div>
               <div class="meta-card"><span class="meta-card__icon"><Globe size={18} aria-hidden="true" /></span><span>Deutsch, Englisch, Türkisch</span></div>
             </div>
@@ -235,8 +237,8 @@ const skillLabel = (level: number) =>
   .dev-portfolio {
     min-height: 100vh;
     padding-top: 80px;
-    background: $bg-dark;
-    color: $text-primary;
+    background: transparent;
+    color: $dev-text;
     @include element('container') { display: flex; flex-direction: column; width: 100%; }
   }
 
@@ -253,23 +255,14 @@ const skillLabel = (level: number) =>
     @media (forced-colors: active) { -webkit-text-fill-color: unset; background: none; color: ButtonText; }
   }
 
-  .section-subtitle { color: $text-secondary; margin-bottom: $gap-lg; font-size: 1.1rem; }
+  .section-subtitle { color: $dev-text-muted; margin-bottom: $gap-lg; font-size: 1.1rem; }
 
   .portfolio-hero {
     text-align: center;
     padding: $section-padding 0;
     position: relative;
     overflow: hidden;
-    background: $bg-dark;
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba($dev-primary, 0.2) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
+    background: transparent;
     .dev-section-inner { position: relative; z-index: 1; }
     @include element('avatar') { display: flex; justify-content: center; margin-bottom: $gap-md; }
     @include element('avatar-img') {
@@ -288,31 +281,40 @@ const skillLabel = (level: number) =>
     }
     @include element('title') { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin-bottom: $gap-sm; line-height: 1.1; }
     @include element('tagline') {
-      font-size: clamp(1rem, 2.5vw, 1.4rem); color: $text-secondary;
-      font-family: 'Courier New', monospace; margin-bottom: $gap-lg; letter-spacing: 0.04em;
+      font-size: clamp(1rem, 2.5vw, 1.4rem); color: $dev-text-muted;
+      font-family: var(--font-mono); margin-bottom: $gap-lg; letter-spacing: 0.04em;
     }
     @include element('ctas') { display: flex; gap: $gap-sm; justify-content: center; flex-wrap: wrap; }
   }
 
   .portfolio-about {
     padding: $section-padding 0;
-    background: linear-gradient(180deg, $bg-dark 0%, color.adjust($bg-dark, $lightness: 3%) 100%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
     @include element('content') {
       display: grid; grid-template-columns: 1fr; gap: $gap-lg;
-      @include above($tablet) { grid-template-columns: 1.5fr 1fr; align-items: start; }
+      @include above($tablet) { grid-template-columns: 1.5fr 1fr; align-items: stretch; }
     }
     @include element('text') {
-      p { color: $text-secondary; line-height: 1.8; margin-bottom: $gap-md; font-size: 1.05rem; &:last-child { margin-bottom: 0; } }
+      p { color: $dev-text-muted; line-height: 1.8; margin-bottom: $gap-md; font-size: 1.05rem; &:last-child { margin-bottom: 0; } }
     }
-    @include element('meta') { display: flex; flex-direction: column; gap: $gap-sm; }
+    @include element('meta') {
+      display: flex; flex-direction: column; gap: $gap-sm;
+      // Start level with the first paragraph (below the title) and spread the cards
+      // down to the last line of text so both columns end on the same baseline
+      @include above($tablet) {
+        justify-content: space-between;
+        padding-top: calc(clamp(1.75rem, 4vw, 2.5rem) * 1.2 + $gap-sm);
+      }
+    }
   }
 
   .meta-card {
     display: flex; align-items: center; gap: $gap-sm; padding: 1rem 1.25rem;
-    background: color.adjust($bg-dark, $lightness: 5%); border: 1px solid $border;
-    border-radius: $radius-md; font-size: 0.95rem; color: $text-secondary;
+    background: color.adjust($dev-bg, $lightness: 5%); border: 1px solid $dev-border;
+    border-radius: $radius-md; font-size: 0.95rem; color: $dev-text-muted;
     @include smooth-transition;
-    &:hover { border-color: $dev-primary; color: $text-primary; }
+    &:hover { border-color: $dev-primary; color: $dev-text; }
     @include element('icon') {
       display: flex; align-items: center; flex-shrink: 0; color: $dev-secondary;
       :global(svg) { width: 18px; height: 18px; }
@@ -321,7 +323,8 @@ const skillLabel = (level: number) =>
 
   .portfolio-skills {
     padding: $section-padding 0;
-    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 3%) 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
   }
 
   .skills-grid {
@@ -332,8 +335,8 @@ const skillLabel = (level: number) =>
 
   .skill-card {
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    padding: 1.25rem 1rem; background: color.adjust($bg-dark, $lightness: 7%);
-    border: 1px solid $border; border-radius: $radius-lg; text-align: center;
+    padding: 1.25rem 1rem; background: color.adjust($dev-bg, $lightness: 7%);
+    border: 1px solid $dev-border; border-radius: $radius-lg; text-align: center;
     @include smooth-transition;
     &:hover { border-color: $dev-primary; transform: translateY(-3px); box-shadow: $shadow-md; }
     @include element('icon') {
@@ -341,7 +344,7 @@ const skillLabel = (level: number) =>
       color: $dev-secondary;
       :global(svg) { width: 26px; height: 26px; }
     }
-    @include element('name') { font-weight: 600; font-size: 0.95rem; color: $text-primary; }
+    @include element('name') { font-weight: 600; font-size: 0.95rem; color: $dev-text; }
     @include element('category') { font-size: 0.75rem; color: $dev-secondary; text-transform: uppercase; letter-spacing: 0.06em; }
     @include element('level') { display: flex; gap: 4px; align-items: center; margin-top: 2px; }
   }
@@ -354,7 +357,8 @@ const skillLabel = (level: number) =>
 
   .portfolio-projects {
     padding: $section-padding 0;
-    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 5%) 0%, color.adjust($bg-dark, $lightness: 3%) 100%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
   }
 
   .projects-grid {
@@ -364,7 +368,7 @@ const skillLabel = (level: number) =>
   }
 
   .project-card {
-    background: color.adjust($bg-dark, $lightness: 7%); border: 1px solid $border;
+    background: color.adjust($dev-bg, $lightness: 7%); border: 1px solid $dev-border;
     border-radius: $radius-lg; padding: $gap-md; display: flex; flex-direction: column; gap: $gap-sm;
     @include smooth-transition;
     &:hover { border-color: $dev-primary; transform: translateY(-4px); box-shadow: $shadow-lg; }
@@ -374,8 +378,8 @@ const skillLabel = (level: number) =>
       :global(svg) { width: 30px; height: 30px; }
     }
     @include element('tags') { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    @include element('title') { font-size: 1.25rem; font-weight: 700; color: $text-primary; margin: 0; }
-    @include element('desc') { color: $text-secondary; line-height: 1.7; font-size: 0.95rem; flex: 1; }
+    @include element('title') { font-size: 1.25rem; font-weight: 700; color: $dev-text; margin: 0; }
+    @include element('desc') { color: $dev-text-muted; line-height: 1.7; font-size: 0.95rem; flex: 1; }
     @include element('links') { display: flex; gap: $gap-sm; flex-wrap: wrap; margin-top: auto; }
   }
 
@@ -392,16 +396,17 @@ const skillLabel = (level: number) =>
     @include smooth-transition;
     :global(svg) { flex-shrink: 0; }
     &:hover { background: rgba($dev-secondary, 0.2); transform: translateY(-1px); }
-    @include modifier('ghost') { background: transparent; border: 1px solid $border; color: $text-secondary; &:hover { border-color: $dev-primary; color: $text-primary; } }
-    @include modifier('muted') { background: transparent; border: 1px solid rgba($dev-primary, 0.15); color: rgba($text-secondary, 0.6); cursor: default; pointer-events: none; font-style: italic; }
+    @include modifier('ghost') { background: transparent; border: 1px solid $dev-border; color: $dev-text-muted; &:hover { border-color: $dev-primary; color: $dev-text; } }
+    @include modifier('muted') { background: transparent; border: 1px solid rgba($dev-primary, 0.15); color: rgba($dev-text-muted, 0.6); cursor: default; pointer-events: none; font-style: italic; }
   }
 
   .portfolio-focus {
     padding: $section-padding 0;
-    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 3%) 0%, color.adjust($bg-dark, $lightness: 5%) 100%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
     .focus-card {
       display: flex; align-items: flex-start; gap: $gap-md; padding: $gap-md $gap-lg;
-      background: color.adjust($bg-dark, $lightness: 7%); border: 1px solid $border;
+      background: color.adjust($dev-bg, $lightness: 7%); border: 1px solid $dev-border;
       border-left: 4px solid $dev-secondary; border-radius: $radius-lg;
       &__icon {
         display: flex; align-items: center; flex-shrink: 0; padding-top: 2px;
@@ -410,24 +415,25 @@ const skillLabel = (level: number) =>
       }
       &__content {
         h2 { font-size: 1.1rem; font-weight: 700; color: $dev-secondary; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        p { color: $text-secondary; line-height: 1.7; font-size: 0.975rem; margin: 0; }
+        p { color: $dev-text-muted; line-height: 1.7; font-size: 0.975rem; margin: 0; }
       }
     }
   }
 
   .portfolio-cv {
     padding: $section-padding 0;
-    background: color.adjust($bg-dark, $lightness: 5%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
     scroll-margin-top: 100px;
   }
 
   .cv-viewer {
-    border: 1px solid $border; border-radius: $radius-lg; overflow: hidden;
-    background: color.adjust($bg-dark, $lightness: 7%);
+    border: 1px solid $dev-border; border-radius: $radius-lg; overflow: hidden;
+    background: color.adjust($dev-bg, $lightness: 7%);
     &__header {
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
       gap: $gap-sm; padding: $gap-md $gap-lg;
-      background: color.adjust($bg-dark, $lightness: 9%); border-bottom: 1px solid $border;
+      background: color.adjust($dev-bg, $lightness: 9%); border-bottom: 1px solid $dev-border;
     }
     &__title {
       display: flex; align-items: center; gap: $gap-sm;
@@ -436,7 +442,7 @@ const skillLabel = (level: number) =>
       display: flex; align-items: center; color: $dev-secondary;
       :global(svg) { width: 26px; height: 26px; }
     }
-    &__title h2 { font-size: 1.2rem; font-weight: 700; color: $text-primary; margin: 0 0 0.2rem; }
+    &__title h2 { font-size: 1.2rem; font-weight: 700; color: $dev-text; margin: 0 0 0.2rem; }
     &__note {
       display: inline-block; padding: 0.2rem 0.6rem;
       background: rgba($dev-secondary, 0.1); color: $dev-secondary;
@@ -458,7 +464,8 @@ const skillLabel = (level: number) =>
 
   .portfolio-links {
     padding: $section-padding 0;
-    background: linear-gradient(180deg, color.adjust($bg-dark, $lightness: 5%) 0%, $bg-dark 100%);
+    background: transparent;
+    border-top: 1px solid $dev-border;
   }
 
   .dev-social-grid {
@@ -469,27 +476,55 @@ const skillLabel = (level: number) =>
 
   .dev-social-link {
     display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem;
-    background: color.adjust($bg-dark, $lightness: 5%); border: 1px solid $border;
-    border-radius: $radius-md; color: $text-secondary; text-decoration: none;
+    background: color.adjust($dev-bg, $lightness: 5%); border: 1px solid $dev-border;
+    border-radius: $radius-md; color: $dev-text-muted; text-decoration: none;
     @include smooth-transition;
     &:hover { border-color: $dev-secondary; color: $dev-secondary; transform: translateY(-2px); box-shadow: $shadow-md; }
     &:focus-visible { outline: 2px solid $dev-secondary; outline-offset: 2px; }
   }
 
   .dev-social-icon { width: 24px; height: 24px; flex-shrink: 0; }
-  .dev-social-title { display: block; font-weight: 600; font-size: 0.95rem; color: $text-primary; }
-  .dev-social-desc { display: block; font-size: 0.8rem; color: $text-secondary; margin-top: 1px; }
+  .dev-social-title { display: block; font-weight: 600; font-size: 0.95rem; color: $dev-text; }
+  .dev-social-desc { display: block; font-size: 0.8rem; color: $dev-text-muted; margin-top: 1px; }
 
   .btn {
     display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem;
     border-radius: $radius-md; font-weight: 600; font-size: 1rem; text-decoration: none;
     @include smooth-transition; cursor: pointer;
     :global(svg) { flex-shrink: 0; }
-    @include modifier('primary') { background: $dev-gradient; color: white; border: none; &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; } }
-    @include modifier('secondary') { background: transparent; border: 2px solid $border; color: $text-primary; &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); } }
+    @include modifier('primary') { background: $dev-gradient; color: $dev-bg; border: none; &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; } }
+    @include modifier('secondary') { background: transparent; border: 2px solid $dev-border; color: $dev-text; &:hover { border-color: $dev-primary; color: $dev-primary; transform: translateY(-2px); } }
     @include modifier('outline') { background: transparent; border: 2px solid rgba($dev-secondary, 0.5); color: $dev-secondary; &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); } }
     @include modifier('lg') { padding: 1rem 2rem; font-size: 1.05rem; }
     @include modifier('sm') { padding: 0.5rem 1rem; font-size: 0.875rem; }
+  }
+
+  // ── DEV mode flavour (terminal look) ──
+  @keyframes dev-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .section-title::before { content: '// '; opacity: 0.55; }
+
+  .portfolio-hero__tagline {
+    &::before { content: '> '; color: $dev-primary; font-weight: 700; }
+    &::after { content: ' ▋'; color: $dev-primary; animation: dev-blink 1s step-end infinite; }
+  }
+
+  .tag::before { content: '#'; margin-right: 2px; opacity: 0.7; }
+
+  .skills-grid { counter-reset: skill; }
+  .skill-card {
+    counter-increment: skill;
+    &::before { content: '[' counter(skill, decimal-leading-zero) ']'; font-size: 0.65rem; letter-spacing: 0.05em; color: $dev-text-muted; }
+  }
+
+  .projects-grid { counter-reset: project; }
+  .project-card {
+    counter-increment: project;
+    &::before { content: '[' counter(project, decimal-leading-zero) ']'; font-size: 0.7rem; letter-spacing: 0.05em; color: $dev-text-muted; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-hero__tagline::after { animation: none; }
   }
 </style>
 

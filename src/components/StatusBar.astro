@@ -1,0 +1,25 @@
+---
+// Decorative IDE-style status bar, only rendered (and only visible) in DEV mode.
+// Purely visual → hidden from assistive tech.
+---
+
+<div class="status-bar" aria-hidden="true">
+  <div class="status-bar__item"><span class="status-bar__dot"></span> cem.uener.dev — ready</div>
+  <div class="status-bar__item">⎇ main</div>
+  <div class="status-bar__item">TypeScript · Astro</div>
+  <div class="status-bar__item" id="status-clock">00:00:00</div>
+  <div class="status-bar__item status-bar__item--end">Spaces: 2 · UTF-8 · LF</div>
+</div>
+
+<script>
+  const clock = document.getElementById('status-clock');
+
+  function updateClock() {
+    if (clock) clock.textContent = new Date().toLocaleTimeString('en-GB', { hour12: false });
+  }
+
+  if (clock) {
+    updateClock();
+    window.setInterval(updateClock, 1000);
+  }
+</script>

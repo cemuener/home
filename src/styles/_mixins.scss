@@ -88,14 +88,15 @@
 }
 
 // Typography
+// Fonts switch with the mode (see styles/_theme.scss → --font-display / --font-body)
 @mixin heading-base {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-display, #{$font-display});
   font-weight: 900;
   line-height: 1.2;
 }
 
 @mixin body-text {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body, #{$font-display});
   line-height: 1.6;
 }
 

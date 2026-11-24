@@ -1,0 +1,235 @@
+// _theme.scss — DJ ↔ DEV mode design layer
+//
+// DJ mode  = default (warm neon blobs, Outfit, pill shapes)
+// DEV mode = `body.dev-mode` (terminal black, JetBrains Mono, sharp corners,
+//            dot grid + scanlines). BaseLayout sets the class for the
+//            developer service, the nav switch navigates between the modes.
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ── Mode tokens ──────────────────────────────────────────────────────────────
+:root {
+  --font-display: #{$font-display};
+  --font-body: #{$font-display};
+  --font-mono: #{$font-mono};
+
+  --mode-bg: #{$bg-dark};
+  --mode-primary: #{$dj-primary};
+  --mode-accent: #{$dj-secondary};
+  --mode-text: #{$text-primary};
+  --mode-text-muted: #{$text-secondary};
+  --mode-border: #{$border};
+  --mode-glow: #{rgba($dj-primary, 0.22)};
+  --mode-glow-2: #{rgba($dj-secondary, 0.18)};
+  --mode-radius-pill: 999px;
+  --mode-radius-ui: #{$radius-md};
+  --mode-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dev-mode {
+  --font-display: #{$font-mono};
+  --font-body: #{$font-mono};
+
+  --mode-bg: #{$dev-bg};
+  --mode-primary: #{$dev-primary};
+  --mode-accent: #{$dev-secondary};
+  --mode-text: #{$dev-text};
+  --mode-text-muted: #{$dev-text-muted};
+  --mode-border: #{$dev-border};
+  --mode-glow: #{rgba($dev-primary, 0.14)};
+  --mode-glow-2: #{rgba($dev-secondary, 0.12)};
+  --mode-radius-pill: 4px;
+  --mode-radius-ui: 4px;
+}
+
+// ── Page canvas ──────────────────────────────────────────────────────────────
+body {
+  transition: background-color var(--mode-transition), color var(--mode-transition);
+}
+
+// Ambient glow blobs sit behind all content (z-index: -1)
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 500px at 20% 20%, var(--mode-glow), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 80% 70%, var(--mode-glow-2), transparent 60%);
+}
+
+body.dev-mode {
+  color: $dev-text;
+  background-color: $dev-bg;
+  // dot grid
+  background-image: radial-gradient(circle, rgba($dev-primary, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+
+  // scanlines
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba($dev-primary, 0.022) 2px,
+      rgba($dev-primary, 0.022) 4px
+    );
+  }
+
+  // leave room for the fixed status bar
+  padding-bottom: 2rem;
+
+  :focus-visible {
+    outline-color: $dev-primary;
+  }
+
+  a { color: $dev-secondary; }
+  a:hover { color: $dev-primary; }
+  ::selection { background: rgba($dev-primary, 0.3); color: $dev-text; }
+}
+
+// Section backgrounds are translucent so the ambient layer shows through
+.dj-section,
+.testimonials-section,
+.contact-section {
+  background: linear-gradient(180deg, transparent 0%, rgba($color-teal-dark, 0.12) 100%);
+  border-top: 1px solid rgba($color-teal-bright, 0.12);
+}
+
+// ── Gradient text (used on titles) ───────────────────────────────────────────
+.text--gradient-dj {
+  @include text-gradient($dj-gradient);
+}
+
+.text--gradient-dev {
+  @include text-gradient($dev-gradient);
+}
+
+// Hero title sits on the photo – keep it solid for contrast (WCAG AA)
+.hero__title.text--gradient-dj {
+  background: none;
+  -webkit-text-fill-color: $text-primary;
+  color: $text-primary;
+}
+
+@media (forced-colors: active) {
+  .text--gradient-dj,
+  .text--gradient-dev {
+    -webkit-text-fill-color: unset;
+    background: none;
+    color: CanvasText;
+  }
+}
+
+// ── Footer ───────────────────────────────────────────────────────────────────
+body.dev-mode .site-footer {
+  background: rgba($dev-bg, 0.85);
+  border-top-color: $dev-border;
+  font-family: var(--font-mono);
+
+  .site-footer__text,
+  .site-footer__link {
+    color: $dev-text-muted;
+  }
+
+  .site-footer__link:hover { color: $dev-primary; }
+}
+
+// ── Scroll navigation dots ───────────────────────────────────────────────────
+body.dev-mode .scroll-nav {
+  &__list {
+    background: rgba($dev-bg, 0.85);
+    border-color: $dev-border;
+    border-radius: 6px;
+  }
+
+  &__dot { background: $dev-border; border-radius: 2px; }
+
+  &__label {
+    background: rgba($dev-bg, 0.95);
+    border-color: $dev-border;
+    color: $dev-text;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+
+    &::after { border-left-color: $dev-border; }
+  }
+
+  &__top-btn { color: $dev-text-muted; &:hover { color: $dev-primary; } }
+}
+
+// ── Status bar (dev mode only, decorative) ───────────────────────────────────
+@keyframes theme-pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.15); }
+}
+
+.status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.4rem 2rem;
+  background: rgba($dev-bg, 0.92);
+  border-top: 1px solid rgba($dev-primary, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: $dev-text-muted;
+  pointer-events: none;
+  user-select: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+
+    &--end { margin-left: auto; }
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $dev-primary;
+    animation: theme-pulse-glow 2s ease infinite;
+  }
+
+  // Only on larger screens – it is purely decorative
+  @include above($tablet) {
+    body.dev-mode & { display: flex; }
+  }
+}
+
+// ── Mode switch transition between the two pages ─────────────────────────────
+@keyframes theme-mode-in {
+  from { opacity: 0; filter: blur(4px); transform: translateY(8px); }
+  to   { opacity: 1; filter: blur(0);   transform: translateY(0); }
+}
+
+// `backwards` only: no filter/transform stays behind after the animation
+html.mode-arrive main {
+  animation: theme-mode-in 0.6s ease backwards;
+}
+
+body.mode-leaving main {
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity 0.28s ease, filter 0.28s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.mode-arrive main { animation: none; }
+  body.mode-leaving main { transition: none; }
+  .status-bar__dot { animation: none; }
+}

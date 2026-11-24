@@ -21,9 +21,18 @@ $cycling-primary: $color-teal-bright;
 $cycling-secondary: $color-teal-mid;
 $cycling-gradient: linear-gradient(135deg, $color-teal-bright 0%, $color-teal-mid 100%);
 
-$dev-primary: $color-teal-mid;
-$dev-secondary: $color-teal-bright;
-$dev-gradient: linear-gradient(135deg, $color-teal-mid 0%, $color-teal-bright 100%);
+// Dev mode ("terminal") palette
+$dev-primary: #00FF9F;        // Neon green
+$dev-secondary: #00B4D8;      // Cyan
+$dev-gradient: linear-gradient(135deg, $dev-primary 0%, $dev-secondary 100%);
+$dev-bg: #060d07;             // Terminal black
+$dev-text: #d0ffd8;
+$dev-text-muted: #6bdf9a;
+$dev-border: rgba($dev-primary, 0.2);
+
+// Typefaces
+$font-display: 'Outfit', sans-serif;
+$font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
 // Base Colors
 $bg-dark: $color-bg-dark;

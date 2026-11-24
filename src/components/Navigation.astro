@@ -29,12 +29,18 @@ const devNavItems = [
 ];
 
 const navItems = service === 'developer' ? devNavItems : djNavItems;
+
+// DJ ↔ DEV switch: always points at the other mode (language-aware, updated client-side too)
+const isDev = service === 'developer';
+const otherService = isDev ? 'dj' : 'developer';
+const modeSwitchHref = `/${currentLang}/${otherService}/`;
+const modeSwitchTitle = isDev ? t.de.mode.toDjTitle : t.de.mode.toDevTitle;
 ---
 
 <nav class="navigation" id="main-nav">
   <div class="navigation__container">
     <a href={logoHref} class="navigation__logo" id="logo-link">
-      <span class="navigation__logo-text">cem.uener</span>
+      <span class="navigation__logo-text">cem.uener</span><sup class="navigation__logo-sup">{isDev ? 'dev' : 'dj'}</sup>
     </a>
 
     <ul class="navigation__menu" id="nav-menu">
@@ -52,6 +58,18 @@ const navItems = service === 'developer' ? devNavItems : djNavItems;
       </li>
     </ul>
     <div class="navigation__actions">
+      <a
+          href={modeSwitchHref}
+          class="navigation__mode-switch"
+          id="mode-switch"
+          data-target-service={otherService}
+          title={modeSwitchTitle}
+      >
+        <span class="navigation__mode-switch-icon" aria-hidden="true">{isDev ? '♪' : '⟩'}</span>
+        <span class="navigation__mode-switch-long" data-i18n="mode.switchTo">{t.de.mode.switchTo}</span>
+        <span>{isDev ? 'DJ' : 'Dev'}</span>
+      </a>
+
       <button
           class="navigation__lang-toggle"
           id="lang-toggle"
@@ -137,14 +155,37 @@ const navItems = service === 'developer' ? devNavItems : djNavItems;
     });
   }
 
-  // Update logo link to respect current language
+  // Update logo link + mode switch to respect current language
   function updateLogoLink(lang: Language) {
+    const service = (window.location.pathname.includes('/developer') ? 'developer' : 'dj');
     const logoLink = document.getElementById('logo-link') as HTMLAnchorElement | null;
     if (logoLink) {
-      const service = (window.location.pathname.includes('/developer') ? 'developer' : 'dj');
       logoLink.href = `/${lang}/${service}/`;
     }
+
+    const modeSwitch = document.getElementById('mode-switch') as HTMLAnchorElement | null;
+    if (modeSwitch) {
+      const target = service === 'developer' ? 'dj' : 'developer';
+      modeSwitch.href = `/${lang}/${target}/`;
+      modeSwitch.title = translations[lang].mode[target === 'dj' ? 'toDjTitle' : 'toDevTitle'];
+    }
   }
+
+  // Mode switch: short fade-out, the target page plays the matching fade-in
+  const modeSwitchLink = document.getElementById('mode-switch') as HTMLAnchorElement | null;
+  modeSwitchLink?.addEventListener('click', (e) => {
+    const modified = e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (modified || reduceMotion) return;
+
+    e.preventDefault();
+    try { sessionStorage.setItem('mode-arrive', '1'); } catch { /* storage unavailable */ }
+    document.body.classList.add('mode-leaving');
+    window.setTimeout(() => { window.location.href = modeSwitchLink.href; }, 280);
+  });
+
+  // Back/forward cache: never come back to a half-faded page
+  window.addEventListener('pageshow', () => document.body.classList.remove('mode-leaving'));
 
   // Logo click: scroll to top if already on a section page, otherwise navigate
   const logoLink = document.getElementById('logo-link') as HTMLAnchorElement | null;

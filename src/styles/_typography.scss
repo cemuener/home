@@ -3,8 +3,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// Google Fonts Import
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Outfit:wght@400;700;900&display=swap');
+// Fonts (Outfit + JetBrains Mono) are loaded via <link> in BaseLayout.astro
 
 // Base typography
 body {

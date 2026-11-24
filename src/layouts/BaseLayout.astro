@@ -7,11 +7,12 @@ export interface Props {
   imageHeight?: number;
   type?: string;
   lang?: 'de' | 'en';
-  service?: 'dj' | 'portfolio';
+  service?: 'dj' | 'developer' | 'portfolio';
   hideFooter?: boolean;
 }
 
 import Footer from '../components/Footer.astro';
+import StatusBar from '../components/StatusBar.astro';
 
 const {
   title = 'DJ Cem Üner',
@@ -28,6 +29,9 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image, Astro.site);
 const faviconPath = '/favicon.svg';
+
+const isDevMode = service === 'developer';
+const themeColor = isDevMode ? '#060d07' : '#FF006E';
 
 // image_src link hint — used by some crawlers as a thumbnail signal
 const imageSrcURL = ogImageURL.toString();
@@ -197,8 +201,8 @@ const structuredData = {
 
 
   <!-- Theme Color -->
-  <meta name="theme-color" content="#FF006E" />
-  <meta name="msapplication-TileColor" content="#FF006E" />
+  <meta name="theme-color" content={themeColor} />
+  <meta name="msapplication-TileColor" content={themeColor} />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -216,11 +220,27 @@ const structuredData = {
   <!-- Structured Data (JSON-LD) for SEO and LLM Discovery -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
+  <!-- Fonts: Outfit (DJ mode) + JetBrains Mono (DEV mode) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Mode switch: play the "arrive" animation if we came via the DJ/DEV switch -->
+  <script is:inline>
+    try {
+      if (sessionStorage.getItem('mode-arrive')) {
+        sessionStorage.removeItem('mode-arrive');
+        document.documentElement.classList.add('mode-arrive');
+      }
+    } catch (e) { /* storage unavailable */ }
+  </script>
+
   <slot name="head" />
 </head>
-<body>
+<body class={isDevMode ? 'dev-mode' : undefined} data-mode={isDevMode ? 'dev' : 'dj'}>
   <slot />
   {!hideFooter && <Footer />}
+  {isDevMode && <StatusBar />}
   <script src="../scripts/animations.ts"></script>
 </body>
 </html>

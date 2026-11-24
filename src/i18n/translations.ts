@@ -15,6 +15,13 @@ export const translations = {
       cv: 'Lebenslauf'
     },
     
+    // DJ ↔ Dev mode switch (navigation)
+    mode: {
+      switchTo: 'Wechsel zu',
+      toDevTitle: 'Zur Developer-Ansicht wechseln',
+      toDjTitle: 'Zur DJ-Ansicht wechseln'
+    },
+
     // Hero Section
     hero: {
       name: 'Cem Üner',
@@ -109,11 +116,11 @@ export const translations = {
       metaDescription: 'Full-Stack Developer & M.Sc. HCI — Portfolio von Cem Üner. TypeScript, React, Node.js, Astro.',
       heroTitle: 'Portfolio',
       heroSubtitle: 'Full-Stack Developer',
-      heroBadge: 'Full-Stack Dev · M.Sc. HCI',
+      heroBadge: 'Technical Consultant/PO · M.Sc. Human-Computer-Interaction',
       heroTagline: 'Wo Präzision auf nutzerfreundliches Design trifft',
       aboutTitle: 'Über mich',
-      aboutPara1: 'Ich bin Full-Stack Developer mit einem M.Sc. in Human-Computer Interaction der LMU München. Das Studium formt, wie ich programmiere: Ich baue Dinge, die technisch solide und wirklich angenehm zu bedienen sind – denn ich habe studiert, warum Interfaces für Menschen funktionieren oder scheitern. TypeScript, React und Node.js sind mein tägliches Handwerkszeug.',
-      aboutPara2: 'Ich lege auch als DJ auf – eine Disziplin, die denselben Instinkt trainiert wie gutes UX: den Raum lesen, im Moment adaptieren und ein Erlebnis schaffen, das nahtlos wirkt, auch wenn die Arbeit dahinter es nicht ist. Sauberer Code ist wie ein gutes Set: das perfekte Zusammenspiel aller Elemente.',
+      aboutPara1: 'Ich bin Full-Stack Developer und Technical Consultant mit einem M.Sc. in Human-Computer Interaction der LMU München. Mein Studium prägt, wie ich digitale Produkte entwickle: technisch durchdacht, intuitiv bedienbar und konsequent aus der Perspektive der Menschen, die sie nutzen.\n' +  '\n' + 'Mein Schwerpunkt liegt auf moderner Webentwicklung, Enterprise-Software und der Integration komplexer Systeme – zunehmend auch mit KI-gestützten Lösungen. TypeScript, React und Node.js gehören zu meinem täglichen Handwerkszeug.',
+      aboutPara2: 'Abseits der Tastatur stehe ich als DJ hinter den Decks. Auch dort geht es darum, den Raum zu lesen, im richtigen Moment zu reagieren und ein Erlebnis zu schaffen, bei dem alles nahtlos ineinandergreift. Für mich gilt bei beidem: Das Ergebnis wirkt mühelos, wenn das Zusammenspiel dahinter stimmt.',
       skillsTitle: 'Tech Stack',
       skillExpert: 'Expert',
       skillProficient: 'Proficient',
@@ -181,6 +188,13 @@ export const translations = {
       cv: 'Resume'
     },
     
+    // DJ ↔ Dev mode switch (navigation)
+    mode: {
+      switchTo: 'Switch to',
+      toDevTitle: 'Switch to the developer view',
+      toDjTitle: 'Switch to the DJ view'
+    },
+
     // Hero Section
     hero: {
       name: 'Cem Üner',
@@ -276,11 +290,12 @@ export const translations = {
       metaDescription: 'Full-Stack Developer & M.Sc. HCI — Portfolio by Cem Üner. TypeScript, React, Node.js, Astro.',
       heroTitle: 'Portfolio',
       heroSubtitle: 'Full-Stack Developer',
-      heroBadge: 'Full-Stack Dev · M.Sc. HCI',
+      heroBadge: 'Technical Consultant/PO · M.Sc. Human-Computer-Interaction',
       heroTagline: 'Where engineering precision meets human-centred design',
       aboutTitle: 'About Me',
-      aboutPara1: "I'm a full-stack developer with an M.Sc. in Human-Computer Interaction from LMU Munich. That degree shapes how I code: I build things that are technically solid and genuinely pleasant to use — because I've studied why interfaces succeed or fail for real people. TypeScript, React, and Node.js are my daily tools.",
-      aboutPara2: "I also perform as a DJ — a discipline that trains the same instinct as building great UX: reading the room, adapting in the moment, and crafting an experience that feels effortless even when the work behind it isn't. Clean code, like a great set, is about the perfect interplay of every element.",
+      aboutPara1: "I'm a Full-Stack Developer and Technical Consultant graduated with a Master of Science. in Human-Computer Interaction at LMU Munich. My academic background shapes how I build digital products: technically sound, intuitive to use, and designed with the people behind the screens in mind.\n" +
+          "\n" + "My focus is on modern web development, enterprise software, and integrating complex systems – increasingly including AI-powered solutions. TypeScript, React, and Node.js are part of my everyday toolkit.",
+      aboutPara2: "Beyond the keyboard, I'm also a DJ. It's about reading the room, adapting in the moment, and creating an experience where everything flows seamlessly. I believe the same applies to both disciplines: the result feels effortless when everything behind it works in harmony.",
       skillsTitle: 'Tech Stack',
       skillExpert: 'Expert',
       skillProficient: 'Proficient',

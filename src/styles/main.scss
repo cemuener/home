@@ -5,6 +5,7 @@
 @use 'mixins' as *;
 @use 'typography';
 @use 'animations';
+@use 'theme';
 
 // Component Styles (Only implemented components)
 @use 'components/navigation';
