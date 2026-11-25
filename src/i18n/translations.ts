@@ -120,7 +120,7 @@ export const translations = {
       heroTagline: 'Wo Präzision auf nutzerfreundliches Design trifft',
       aboutTitle: 'Über mich',
       aboutPara1: 'Ich bin Full-Stack Developer und Technical Consultant mit einem M.Sc. in Human-Computer Interaction der LMU München. Mein Studium prägt, wie ich digitale Produkte entwickle: technisch durchdacht, intuitiv bedienbar und konsequent aus der Perspektive der Menschen, die sie nutzen.\n' +  '\n' + 'Mein Schwerpunkt liegt auf moderner Webentwicklung, Enterprise-Software und der Integration komplexer Systeme – zunehmend auch mit KI-gestützten Lösungen. TypeScript, React und Node.js gehören zu meinem täglichen Handwerkszeug.',
-      aboutPara2: 'Mein Antrieb: Lösungen, die nicht von der Stange kommen. Ich entwickle maßgeschneiderte Software und berate dort, wo Technik und Fachlichkeit aufeinandertreffen – kreativ im Ansatz, skalierbar in der Architektur und nachhaltig im Betrieb. Gute Systeme sind wie gute Kompositionen: Jedes Element hat seinen Platz, und das Ganze wächst mit.',
+      aboutPara2: 'Ich entwickle maßgeschneiderte Software und berate dort, wo Technik und Fachabteilungen aufeinandertreffen – kreativ im Ansatz, skalierbar in der Architektur und nachhaltig im Betrieb. Gute Systeme sind wie gute Kompositionen, jedes einzelne Element hat seinen Platz, und das Ganze wächst mit. Das ist meine Philosophie',
       skillsTitle: 'Tech Stack',
       skillExpert: 'Expert',
       skillProficient: 'Proficient',
@@ -299,7 +299,7 @@ export const translations = {
       aboutTitle: 'About Me',
       aboutPara1: "I'm a Full-Stack Developer and Technical Consultant graduated with a Master of Science. in Human-Computer Interaction at LMU Munich. My academic background shapes how I build digital products: technically sound, intuitive to use, and designed with the people behind the screens in mind.\n" +
           "\n" + "My focus is on modern web development, enterprise software, and integrating complex systems – increasingly including AI-powered solutions. TypeScript, React, and Node.js are part of my everyday toolkit.",
-      aboutPara2: "My drive: solutions that don't come off the shelf. I build tailor-made software and advise where technology and business meet — creative in approach, scalable in architecture and sustainable in operation. Good systems are like good compositions: every element has its place, and the whole keeps growing.",
+      aboutPara2: "I am driven by solutions that don't come off the shelf. I build tailor-made software and advise where technology and business meet — creative in approach, scalable in architecture and sustainable in operation. Good systems are like good compositions: every element has its place, and the whole keeps growing.",
       skillsTitle: 'Tech Stack',
       skillExpert: 'Expert',
       skillProficient: 'Proficient',
