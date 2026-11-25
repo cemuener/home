@@ -34,6 +34,13 @@ const skills = [
   { name: 'Linux / CLI', IconComponent: Terminal, category: 'Tools', level: 2 },
 ];
 
+// Open-source tools currently being evaluated for AI-driven development in teams
+const focusTools = [
+  { name: 'Oh My Pi', url: 'https://github.com/can1357/oh-my-pi', desc: d.focusToolOmp },
+  { name: 'Multica', url: 'https://github.com/multica-ai/multica', desc: d.focusToolMultica },
+  { name: 'T3 Code', url: 'https://github.com/pingdotgg/t3code', desc: d.focusToolT3 },
+];
+
 const skillLabel = (level: number) =>
   level === 3 ? d.skillExpert : level === 2 ? d.skillProficient : d.skillFamiliar;
 ---
@@ -203,6 +210,19 @@ const skillLabel = (level: number) =>
             <div class="focus-card__content">
               <h2>{d.focusTitle}</h2>
               <p>{d.focusPara}</p>
+              <p class="focus-card__label">{d.focusToolsLabel}</p>
+              <ul class="focus-tools">
+                {focusTools.map((tool) => (
+                  <li class="focus-tools__item">
+                    <a href={tool.url} target="_blank" rel="noopener noreferrer" class="focus-tools__link">
+                      <GitBranch size={15} aria-hidden="true" />
+                      <span class="focus-tools__name">{tool.name}</span>
+                      <ExternalLink size={12} aria-hidden="true" />
+                    </a>
+                    <span class="focus-tools__desc">{tool.desc}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -271,15 +291,6 @@ const skillLabel = (level: number) =>
               <div>
                 <span class="dev-social-title">LinkedIn</span>
                 <span class="dev-social-desc">linkedin.com/in/cemuener</span>
-              </div>
-            </a>
-            <a href="/en/dj/" class="dev-social-link" aria-label="DJ Services page">
-              <svg class="dev-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
-              </svg>
-              <div>
-                <span class="dev-social-title">{d.djServiceLink}</span>
-                <span class="dev-social-desc">DJ Cem Üner</span>
               </div>
             </a>
           </div>
@@ -611,6 +622,47 @@ const skillLabel = (level: number) =>
     @include modifier('outline') { background: transparent; border: 2px solid rgba($dev-secondary, 0.5); color: $dev-secondary; &:hover { background: rgba($dev-secondary, 0.1); border-color: $dev-secondary; transform: translateY(-2px); } }
     @include modifier('lg') { padding: 1rem 2rem; font-size: 1.05rem; }
     @include modifier('sm') { padding: 0.5rem 1rem; font-size: 0.875rem; }
+  }
+
+  // ── Focus: tools under evaluation ──
+  .focus-card__label {
+    margin: $gap-sm 0 0.5rem !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $dev-text !important;
+    opacity: 0.8;
+  }
+
+  .focus-tools {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+
+    &__item { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.9rem; }
+
+    // Desktop: two aligned columns (tool | description)
+    @include above($tablet) {
+      grid-template-columns: max-content 1fr;
+      gap: 0.6rem 1rem;
+      align-items: center;
+      &__item { display: contents; }
+    }
+
+    &__link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      background: rgba($dev-secondary, 0.1); border: 1px solid rgba($dev-secondary, 0.3);
+      border-radius: $radius-sm; color: $dev-secondary; font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      @include smooth-transition;
+      :global(svg) { flex-shrink: 0; }
+      &:hover { background: rgba($dev-secondary, 0.2); color: $dev-primary; border-color: $dev-primary; }
+      &:focus-visible { outline: 2px solid $dev-primary; outline-offset: 2px; }
+    }
+
+    &__desc { color: $dev-text-muted; font-size: 0.9rem; line-height: 1.5; }
   }
 
   // ── DEV mode flavour (terminal look) ──

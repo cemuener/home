@@ -58,17 +58,20 @@ const modeSwitchTitle = isDev ? t.de.mode.toDjTitle : t.de.mode.toDevTitle;
       </li>
     </ul>
     <div class="navigation__actions">
-      <a
-          href={modeSwitchHref}
-          class="navigation__mode-switch"
-          id="mode-switch"
-          data-target-service={otherService}
-          title={modeSwitchTitle}
-      >
-        <span class="navigation__mode-switch-icon" aria-hidden="true">{isDev ? '♪' : '⟩'}</span>
-        <span class="navigation__mode-switch-long" data-i18n="mode.switchTo">{t.de.mode.switchTo}</span>
-        <span>{isDev ? 'DJ' : 'Dev'}</span>
-      </a>
+      {/* One-way: DJ → Dev only. The developer page deliberately does not link back to DJ. */}
+      {!isDev && (
+        <a
+            href={modeSwitchHref}
+            class="navigation__mode-switch"
+            id="mode-switch"
+            data-target-service={otherService}
+            title={modeSwitchTitle}
+        >
+          <span class="navigation__mode-switch-icon" aria-hidden="true">{isDev ? '♪' : '⟩'}</span>
+          <span class="navigation__mode-switch-long" data-i18n="mode.switchTo">{t.de.mode.switchTo}</span>
+          <span>{isDev ? 'DJ' : 'Dev'}</span>
+        </a>
+      )}
 
       <button
           class="navigation__lang-toggle"
